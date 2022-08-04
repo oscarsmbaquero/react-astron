@@ -16,6 +16,7 @@ const fetchUserToDatabase = async (urlPetition, reqData) => {
 };
 
 export const loginUser = async (dispatch, loginData) => {
+    //console.log(dispatch,loginData);
     localStorage.removeItem('currentUser');
 
 
@@ -57,7 +58,7 @@ export const registerUser = async (dispatch, registerData) => {
     try {
         dispatch({ type: "REQ_REGISTER" });
 
-        const res = await fetch(`${BASE_URL}/users`, requestOptions(registerData));
+        const res = await fetch(`${BASE_URL}/users/register`, requestOptions(registerData));
         const data = await res.json();
 
         if (data.status === 201) {

@@ -9,18 +9,29 @@ const tokenStored = localStorage.getItem("currentUser")
 const rolStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).rol
     : undefined;
+    const emailStored = localStorage.getItem("currentUser")
+    ? JSON.parse(localStorage.getItem("currentUser")).email
+    : undefined;
 
 export const initialState = {
     id: idStored,
     token: tokenStored,
     rol: rolStored,
+    email: emailStored,
     loading: false,
     errorMessage: null
 };
 
 export const AuthReducer = (initialState, action) => {
+    console.log('Entro al req_login');
     switch (action.type) {
         case "REQ_LOGIN":
+
+            return {
+                ...initialState,
+                loading: true
+            };
+        case "REQ_REGISTER":
 
             return {
                 ...initialState,
@@ -31,6 +42,7 @@ export const AuthReducer = (initialState, action) => {
                 id: action.payload.user,
                 token: action.payload.token,
                 rol: action.payload.rol,
+                email: action.payload.email,
                 loading: false
             };
         case "LOGIN_FAIL":

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { loginUser, useDispatchAuth } from "../../context";
+import { loginUser, useDispatchAuth } from "../../../context";
 import "./Login.scss";
 const loginInitialState = {
   email: "",
@@ -19,11 +19,10 @@ const navigate = useNavigate();
   };
 
   const dispatch = useDispatchAuth();
-
+  //console.log(dispatch,22);
   //enviar login al server
   const handleLogin = async (event) => {
     event.preventDefault();
-    console.log(loginForm,26);
     try {
       loginUser(dispatch, loginForm)
       .then(res=>{
@@ -31,7 +30,7 @@ const navigate = useNavigate();
           Swal.fire({ title: 'Error!', text: 'El email o el password no es correcto', icon: 'error', confirmButtonText: 'Cool' })
           console.log(res)}
     else{
-        navigate("/profile")
+        navigate("/avisos/caceres")
 
     }
       })
