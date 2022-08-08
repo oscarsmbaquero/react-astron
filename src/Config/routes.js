@@ -1,6 +1,12 @@
 
-import AvisosCaceres from "../pages/AvisosCaceres/AvisosCaceres";
-import Avisos from "../pages/AvisosCaceres/AvisosCaceres";
+// import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
+import SelectCompanies from "../core/components/SelectCompanies/SelectCompanies";
+import SelectUser from "../core/components/SelectUsers/SelectUser";
+import AvisosCaceres from "../pages/Avisos/AvisosCaceres/AvisosCaceres";
+import AvisosDetail from "../pages/Avisos/AvisosCaceres/AvisosDetail";
+import AvisosCaceresDetail from "../pages/Avisos/AvisosCaceres/AvisosDetail";
+import AddAvisos from "../pages/Avisos/AñadirAvisos/AddAvisos";
+import EditAviso from "../pages/Avisos/EditAviso/EditAviso";
 import FormContact from "../pages/Form/FormContact";
 import Home from "../pages/Home/Home";
 import Login from "../pages/User/Login/Login";
@@ -27,6 +33,22 @@ const routes = [
   {
     path: "/avisos/caceres",
     element: <AvisosCaceres />,
+  },
+  {
+    path: "/anadir/avisos",
+    element: <AddAvisos />,
+  },
+  {
+    path: "/avisos/details/:id",
+    element: <AvisosDetail />,
+  },
+  {
+    path: "/edit/aviso/:id",
+    element: <EditAviso />,
+  },
+  {
+    path: "/avisos/asignar/:id/:n_incidencia",
+    element: <SelectUser />,
   }
   
 ];

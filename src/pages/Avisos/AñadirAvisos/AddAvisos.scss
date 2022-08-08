@@ -1,0 +1,31 @@
+.form{
+    height: 500px;
+    width: 500px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    
+    & p{
+        
+        font-family: Rockwell,"Times New Roman",serif;
+        font-size: 20px;
+    }
+  }
+  .input{
+    width: 300px;
+    height: 25px;
+    border-radius: 8px;
+    border-color: black;
+  }
+  
+  .buttonForm{
+    width: 90px;
+    height: 30px;
+    margin: 20px 0 0 100px;
+    border-color:none;
+    border-radius: 8px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:black;
+    background-color:whitesmoke;    
+  }
+  

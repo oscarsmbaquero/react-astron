@@ -65,8 +65,6 @@ const Register = () => {
                         onChange={handleRegisterForm}
                         required
                     />
-                    {registerForm.account_type ==='User'&&
-                    <>
                     <label className="register__label" htmlFor="surname">Surname</label>
                     <input
                         className="register__input"
@@ -75,9 +73,7 @@ const Register = () => {
                         value={registerForm.surname}
                         onChange={handleRegisterForm}
                         // required
-                    />
-                    </>
-                    }
+                    />                    
                     <label className="register__label" htmlFor="password">Password</label>
                     <input
                         className="register__input"

@@ -5,8 +5,8 @@ import { BsFillChatDotsFill } from "react-icons/bs";
 import { FaUserTie, FaUserCircle } from "react-icons/fa";
 import "./Header.scss";
 import Navbar from "react-bootstrap/Navbar";
-import { logout, useDispatchAuth, useGetAuth } from "../../../context";
-import logo4 from "../../../assets/images/logo.jpg"
+import { logout, useDispatchAuth, useGetAuth } from "../../context";
+import logo4 from "../../assets/images/logo.jpg"
 const Header = () => {
 
   const userLogged = useGetAuth();
@@ -69,13 +69,23 @@ const Header = () => {
                     <AiOutlineMail />
                   </span>
                 </Link>
+                :''}
+                {userLogged.id && userLogged.rol === 'Dispatch' ?
+                <Link className="header__a" to="/anadir/avisos">
+                  <span className="span1">Añadir Aviso</span>
+                  <span className="span2">
+                    <BsFillChatDotsFill />
+                  </span>
+                </Link>
                 :''}                
+                {!userLogged.id ?
                 <Link className="header__a" to="users/login">
                   <span className="span1">Login</span>
                   <span className="span2">
                     <AiOutlineUserAdd />
                   </span>
                 </Link> 
+                :
                  <>
                   <AiOutlineLogout onClick={handleLogout} className="header__a" />
                   <Link className="header__a" to="/formContact">
@@ -84,6 +94,7 @@ const Header = () => {
                   </span>
                 </Link>
                 </>
+                }
               </div>
             </ul>
           </Navbar.Collapse>

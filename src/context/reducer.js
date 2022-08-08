@@ -1,5 +1,5 @@
 const idStored = localStorage.getItem("currentUser")
-    ? JSON.parse(localStorage.getItem("currentUser")).user
+    ? JSON.parse(localStorage.getItem("currentUser")).id
     : undefined;
 
 const tokenStored = localStorage.getItem("currentUser")
@@ -23,7 +23,6 @@ export const initialState = {
 };
 
 export const AuthReducer = (initialState, action) => {
-    console.log('Entro al req_login');
     switch (action.type) {
         case "REQ_LOGIN":
 
@@ -39,7 +38,7 @@ export const AuthReducer = (initialState, action) => {
             };
         case "LOGIN_OK":
             return {
-                id: action.payload.user,
+                id: action.payload.id,
                 token: action.payload.token,
                 rol: action.payload.rol,
                 email: action.payload.email,

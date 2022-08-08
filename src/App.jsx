@@ -1,10 +1,11 @@
 
 import './App.scss';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from './core/components/Header/Header';
-import Footer from './core/components/Footer/Footer';
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
 import routes from "./Config/routes";
 import { AuthProvider } from "./context";
+import Button from '@mui/material/Button';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <AuthProvider> {/* provee el auth a la aplicación */}
       <Router>
         <Header/>
+        <Button>Boton</Button>
         <div className="main">
           <Routes>            
                 {routes.map((route) => (
