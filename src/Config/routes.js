@@ -7,6 +7,7 @@ import AvisosDetail from "../pages/Avisos/AvisosCaceres/AvisosDetail";
 import AvisosCaceresDetail from "../pages/Avisos/AvisosCaceres/AvisosDetail";
 import AddAvisos from "../pages/Avisos/AñadirAvisos/AddAvisos";
 import EditAviso from "../pages/Avisos/EditAviso/EditAviso";
+import IntercencionAviso from "../pages/Avisos/IntervencionAviso/IntercencionAviso";
 import FormContact from "../pages/Form/FormContact";
 import Home from "../pages/Home/Home";
 import Login from "../pages/User/Login/Login";
@@ -49,6 +50,10 @@ const routes = [
   {
     path: "/avisos/asignar/:id/:n_incidencia",
     element: <SelectUser />,
+  },
+  {
+    path: "/avisos/intervencion/:id",
+    element: <IntercencionAviso />,
   }
   
 ];

@@ -94,6 +94,7 @@ const deleteaviso = (e, aviso) => {
                             <h1 className='avisosList__h1'>{aviso.n_incidencia} </h1>
                             <h2 className='avisosList__h2'>{aviso.centro}</h2>
                             <h3 className='avisosList__h3'>{aviso.averia}</h3>
+                            <h3 className='avisosList__h3'>{aviso.estado}</h3>
                           </div>
                           <div className="buttons2">
                             <IconButton onClick={(e)=> deleteaviso(e,aviso._id)}
@@ -118,6 +119,9 @@ const deleteaviso = (e, aviso) => {
                             </Link>
                             <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>
                              <button>Asignar Aviso</button>
+                            </Link>
+                            <Link to={`/avisos/intervencion/${aviso._id}`}>
+                             <button>Intervención</button>
                             </Link>
                           </div>
                       </div>

@@ -1,0 +1,36 @@
+.input {
+    align-items: center;  
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    width: 245px;
+    height: 5px;
+    outline: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  .select {
+     align-items: center;  
+    // background-color: whitesmoke;
+     border: 2px solid black;
+     border-radius: 8px;
+     padding: 16px;
+     width: 245px;
+     //height: 20px;
+    outline: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color:black
+  }
+  .textarea {
+    align-items: center;  
+    background-color: whitesmoke;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 16px;
+    width: 475px;
+    height: 130px;
+    outline: none;
+    margin-bottom: 10px;
+  }

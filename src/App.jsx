@@ -13,7 +13,6 @@ function App() {
     <AuthProvider> {/* provee el auth a la aplicación */}
       <Router>
         <Header/>
-        <Button>Boton</Button>
         <div className="main">
           <Routes>            
                 {routes.map((route) => (
@@ -25,7 +24,7 @@ function App() {
                     ))}
           </Routes>
         </div>
-        <Footer/>
+        {/* <Footer/> */}
       </Router>
     </AuthProvider>    
     </div>
