@@ -18,9 +18,9 @@ const EditAviso = () => {
         .then(data => SetAviso(data))
     
     }, [id])
-    
+    console.log(aviso);
     const onSubmit = async (formData) => {
-        console.log(formData,'datos');
+        // console.log(formData,'datos');
             try {
     
                 const result = await fetch(`http://localhost:5000/avisos/${id}` ,{//modifico url 24/06/2022
@@ -63,6 +63,10 @@ const EditAviso = () => {
         <label>
             <p>Localidad</p>
             <input class="input" {...setValue("localidad", aviso.localidad)} type="text" name="localidad" placeholder="Localidad"   {...register('localidad')}/>
+        </label>
+        <label>
+            <p>Provincia</p>
+            <input class="input" {...setValue("provincia", aviso.provincia)} type="text" name="provincia" placeholder="Provincia"   {...register('provincia')}/>
         </label>
         <label>
             <p>Centro</p>

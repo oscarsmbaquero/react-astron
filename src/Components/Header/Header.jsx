@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineMail, AiOutlineUserAdd, AiOutlineLogout } from "react-icons/ai";
 import { BsFillChatDotsFill } from "react-icons/bs";
 import { FaUserTie, FaUserCircle } from "react-icons/fa";
@@ -21,9 +21,9 @@ const Header = () => {
     <>
       <Navbar className="header" expand="md">
         <div>
-          <Link className="header__a" to="/">
+          <NavLink className="header__a" to="/">
             <img src={logo4} alt="logo" className="header__logo"></img>
-          </Link>
+          </NavLink>
         </div>
         <div >        
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -31,68 +31,34 @@ const Header = () => {
             <ul className="header__ul">
               <div className="header__menu">
               {userLogged.id ?
-                <Link className="header__a" to="/avisos/caceres">
-                  <span className="span1">Cáceres</span>
-                  <span className="span2">
-                    <BsFillChatDotsFill />
-                  </span>
-                </Link>
+                <NavLink className="header__a" to="/avisos/caceres">Cáceres</NavLink>
                 :''}
                 {userLogged.id ?
-                  <Link className="header__a" to="">
-                    <span className="span1">Badajoz</span>
-                    <span className="span2">
-                      <FaUserTie />
-                    </span>
-                  </Link>
+                  <NavLink className="header__a" to="">Badajoz</NavLink>
                   :''}
                   {userLogged.id ?
-                  <Link className="header__a" to="/">
-                    <span className="span1">Items</span>
-                    <span className="span2">
-                      <FaUserCircle />
-                    </span>
-                  </Link>
+                  <NavLink className="header__a" to="/">Items</NavLink>
                   :''}
                   {userLogged.id ?
-                <Link className="header__a" to="/">
-                  <span className="span1">Certificaciones</span>
-                  <span className="span2">
-                    <FaUserCircle />
-                  </span>
-                </Link>
+                <NavLink className="header__a" to="/">Certificaciones</NavLink>
                 :''}
                 {userLogged.id ?
-                <Link className="header__a" to="/formContact">
-                  <span className="span1">Contáctanos</span>
-                  <span className="span2">
-                    <AiOutlineMail />
-                  </span>
-                </Link>
+                <NavLink className="header__a" to="/formContact">Contacto</NavLink>
                 :''}
                 {userLogged.id && userLogged.rol === 'Dispatch' ?
-                <Link className="header__a" to="/anadir/avisos">
-                  <span className="span1">Añadir Aviso</span>
-                  <span className="span2">
-                    <BsFillChatDotsFill />
-                  </span>
-                </Link>
-                :''}                
+                <NavLink className="header__a" to="/anadir/avisos">Añadir Aviso
+                </NavLink>
+                :''}
                 {!userLogged.id ?
-                <Link className="header__a" to="users/login">
-                  <span className="span1">Login</span>
-                  <span className="span2">
-                    <AiOutlineUserAdd />
-                  </span>
-                </Link> 
+                <NavLink className="header__a" to="users/login">Login</NavLink> 
                 :
                  <>
                   <AiOutlineLogout onClick={handleLogout} className="header__a" />
-                  <Link className="header__a" to="/formContact">
+                  <NavLink className="header__a" to="/formContact">
                   <span className="span1">{userLogged.email}</span>
                   <span className="span2">
                   </span>
-                </Link>
+                </NavLink>
                 </>
                 }
               </div>

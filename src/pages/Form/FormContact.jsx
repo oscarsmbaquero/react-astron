@@ -103,8 +103,6 @@ const FormContact = () => {
         <button className="sectionForm__button">
           Enviar mensaje
         </button>
-
-
       </form>
       </section>
       </>

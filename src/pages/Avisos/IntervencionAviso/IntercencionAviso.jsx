@@ -88,18 +88,18 @@ const IntercencionAviso = () => {
         </label> */}
         <label>
             <p>Inicio</p>
-            <input class="input" {...setValue("fecha_inicio", aviso.fecha_inicio)} type="date" name="fecha_inicio" placeholder="Inicio"  {...register('fecha_inicio')}/>
+            <input class="input"  type="datetime-local" name="fecha_inicio" placeholder="Inicio"  {...register('fecha_inicio')}/>
         </label>
         <label>
             <p>Fin</p>
-            <input class="input" {...setValue("fecha_fin", aviso.fecha_fin)} type="date" name="fecha_fin" placeholder="Fin"  {...register('fecha_fin')}/>
+            <input class="input"  type="datetime-local" name="fecha_fin" placeholder="Fin"  {...register('fecha_fin')}/>
         </label>
         <label>
             <p>km</p>
             <input class="input" {...setValue("km", aviso.km)} type="number" name="km" placeholder="Km"  {...register('km')}/>
         </label>
         <label>
-            <p>Descripción Averia</p>
+            <p>Descripción Intervención</p>
             <textarea class="textarea" {...setValue("intervencion", aviso.intervencion)} type="text" name="intervencion" placeholder="Intervencion"  {...register('intervencion')}/>
         </label>
         <br></br>

@@ -4,14 +4,18 @@ import { Link, Navigate } from 'react-router-dom';
 import SearchInput from '../../../core/components/SearchInput/SearchInput';
 import Loader from "../../../core/components/Loader/Loader";
 import './AvisosCaceres.scss';
+import { BASE_URL } from "../../../assets/ApiRoutes";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { Create } from '@mui/icons-material';
 import Swal from 'sweetalert2'// hay que probarlo
 import {  useGetAuth } from "../../../context/context";
-import SelectCompanies from '../../../core/components/SelectCompanies/SelectCompanies';
-import SelectUser from '../../../core/components/SelectUsers/SelectUser';
+// import SelectCompanies from '../../../core/components/SelectCompanies/SelectCompanies';
+// import SelectUser from '../../../core/components/SelectUsers/SelectUser';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+
 
 
 const AvisosCaceres = () => {
@@ -30,7 +34,7 @@ const AvisosCaceres = () => {
           .then(response => response.json())
           .then(data => SetAvisos(data))
       }, []);
-console.log(avisos);
+console.log(avisos,33);
 useEffect(() => {
   fetch('http://localhost:5000/users')
     .then(response => response.json())
@@ -48,8 +52,9 @@ const filteredAvisos = avisos.filter((avisos) =>
 );
 
 const deleteaviso = (e, aviso) => {
+  
   e.preventDefault();
-
+  console.log('entro');
   // const thisClicked = e.currentTarget;
   // thisClicked.innerText ="Borrando"  ;
 
@@ -66,11 +71,42 @@ const deleteaviso = (e, aviso) => {
     fetch('http://localhost:5000/avisos')
     .then(response => response.json())
     .then(data => SetAvisos(data))
+    
     Navigate("/avisos/caceres")
     
   }
   })
 }
+
+const deleteassign = (id,incidencias) =>{
+  //e.preventDefault();
+  console.log(id,incidencias,81);
+  fetch(`${BASE_URL}/users/deleteAssign`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${userLogged.token}`
+    },
+    body: JSON.stringify({
+      userId: id,
+      avisoId:incidencias,
+      estado: 'Abierta'
+    })
+
+  }).then(res => {
+    if (res.status === 200) {
+      //getJobs()
+      Swal.fire("Candidatura retirada correctamente", res.message, "success");
+      //setApplyBtn(false);
+    }
+
+  }).catch((error) => {
+    // console.log("entró por el error");
+    console.error(error);
+  })
+}
+
+
   return (
     <>
       
@@ -91,12 +127,16 @@ const deleteaviso = (e, aviso) => {
                       <div className='avisosList__info'>
                         
                           <div className='avisosList__text' >
-                            <h1 className='avisosList__h1'>{aviso.n_incidencia} </h1>
-                            <h2 className='avisosList__h2'>{aviso.centro}</h2>
-                            <h3 className='avisosList__h3'>{aviso.averia}</h3>
-                            <h3 className='avisosList__h3'>{aviso.estado}</h3>
+                            <h1 className='avisosList__h1'> {aviso.n_incidencia} </h1>
+                            <h2 className='avisosList__h2'> {aviso.centro}</h2>
+                            <h2 className='avisosList__h2'> {aviso.localidad}</h2>
+                            <h3 className='avisosList__h3'>Descripción de avería: {aviso.averia}</h3>
+                            {aviso.estado === 'Pendiente'?
+                                <h3 className='pendiente'> {aviso.estado}</h3>
+                                :<h3 className='noCerrada'> {aviso.estado}</h3>
+                                }
                           </div>
-                          <div className="buttons2">
+                          <div className="avisosList__buttons2">
                             <IconButton onClick={(e)=> deleteaviso(e,aviso._id)}
                                  aria-label="delete" 
                                  size="large" 
@@ -117,15 +157,26 @@ const deleteaviso = (e, aviso) => {
                                  ><Create />
                               </IconButton>
                             </Link>
-                            <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>
-                             <button>Asignar Aviso</button>
-                            </Link>
-                            <Link to={`/avisos/intervencion/${aviso._id}`}>
-                             <button>Intervención</button>
-                            </Link>
+                            <ButtonGroup color="primary" aria-label="medium secondary button group">
+                              {aviso.estado === 'Asignado'?
+                              <Button onClick={(e)=> deleteassign(aviso._id,aviso.n_incidencia)}>Desasignar
+                               
+                                </Button>
+                                :
+                                <Button>
+                                <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>Asignar Aviso</Link>
+                                </Button>
+                               }
+                               {aviso.estado === 'Asignado'?
+                               <Button>
+                                <Link to={`/avisos/intervencion/${aviso._id}`}>Intervención</Link>
+                                </Button>
+                                :'' }
+                                
+                            </ButtonGroup>
                           </div>
                       </div>
-                    </div>
+                   </div>
                 </div>
                 ))}
                 </div>
