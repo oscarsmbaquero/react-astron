@@ -1,6 +1,5 @@
 import React,{ useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
-import { BASE_URL } from "../../../assets/ApiRoutes";
 
 const AvisosDetail = () => {
   const { id } = useParams();
@@ -11,7 +10,7 @@ const AvisosDetail = () => {
 
   useEffect(() => {
     
-    fetch(`${BASE_URL}/avisos/${id}`)
+    fetch(`http://localhost:5000/avisos/${id}`)
       .then(response => response.json())
       .then(data => SetAvisos(data))      
      }, [id]); 

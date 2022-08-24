@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import '../EditAviso/EditAviso.scss';
 import { useForm } from 'react-hook-form'
 import {  useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../assets/ApiRoutes";
 
 const IntercencionAviso = () => {
 
@@ -13,7 +14,7 @@ const IntercencionAviso = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/avisos/${id}`)
+        fetch(`${BASE_URL}/avisos/${id}`)
         .then(response => response.json())
         .then(data => SetAviso(data))
     

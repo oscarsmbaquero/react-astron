@@ -31,10 +31,13 @@ const Header = () => {
             <ul className="header__ul">
               <div className="header__menu">
               {userLogged.id ?
+              <>
+                <NavLink className="header__a" to="/avisos">Avisos</NavLink>
                 <NavLink className="header__a" to="/avisos/caceres">Cáceres</NavLink>
+                </>
                 :''}
                 {userLogged.id ?
-                  <NavLink className="header__a" to="">Badajoz</NavLink>
+                  <NavLink className="header__a" to="/avisos/badajoz">Badajoz</NavLink>
                   :''}
                   {userLogged.id ?
                   <NavLink className="header__a" to="/">Items</NavLink>

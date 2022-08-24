@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import { useParams } from "react-router-dom";
-
 import Swal from "sweetalert2";
 
-const SelectUser = () => {
+const ReselectUser = () => {
   const [users, setUsers] = useState([]);
   const [selected, setSelected] = useState("default");
 
@@ -26,7 +25,7 @@ const SelectUser = () => {
   };
 
   const fetchApi = (userId) => {
-    fetch(`${BASE_URL}/users/assignAviso`, {
+    fetch(`${BASE_URL}/users/reAssignAviso`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -40,7 +39,7 @@ const SelectUser = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          Swal.fire("aviso asignado correctamente", res.message, "success");
+          Swal.fire("aviso Reasignado correctamente", res.message, "success");
           // setButtonState(true);
         }
       })
@@ -49,7 +48,7 @@ const SelectUser = () => {
 
   return (
     <div>
-      <p>Asignar el aviso con número de incidencia {n_incidencia}</p>
+      <p>Reasignar el aviso con número de incidencia {n_incidencia}</p>
       {/* <select name="users"  className='select'> */}
       <select value={selected} onChange={handleChange}>
         {/* <option>Selecciona un usuario</option> */}
@@ -66,4 +65,4 @@ const SelectUser = () => {
   );
 };
 
-export default SelectUser;
+export default ReselectUser;
