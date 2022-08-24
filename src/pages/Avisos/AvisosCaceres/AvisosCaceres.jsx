@@ -139,7 +139,7 @@ const deleteaviso = (e, aviso) => {
                                 
                             </>
                           }
-                          title={aviso.n_incidencia}
+                          title ={aviso.n_incidencia} 
                           
                           />
                         <CardContent
@@ -177,7 +177,7 @@ const deleteaviso = (e, aviso) => {
                                     <Link to={`/avisos/intervencion/${aviso._id}`}>Añadir Int.</Link>
                                 </Button>
                                 <Button>
-                                    <Link to={`/avisos/intervencion/${aviso._id}`}>Mostrar Int.</Link>
+                                    <Link to={`/mostrar/intervencion/${aviso._id}`}>Mostrar Int.</Link>
                                 </Button>
                             </CardActions>
                       </Card>

@@ -16,6 +16,7 @@ import Login from "../pages/User/Login/Login";
 import Register from "../pages/User/Register/Register";
 import PendientesCaceres from "../pages/Avisos/AvisosCaceres/PendientesCaceres";
 import ReselectUser from "../core/components/ReselectUser/ReselectUser";
+import MostrarIntervencion from "../pages/Avisos/IntervencionAviso/MostrarIntervencion";
 
 
 const routes = [
@@ -74,6 +75,10 @@ const routes = [
   {
     path: "/avisos/intervencion/:id",
     element: <IntercencionAviso />,
+  },
+  {
+    path: "/mostrar/intervencion/:id",
+    element: <MostrarIntervencion />,
   }
   
 ];
