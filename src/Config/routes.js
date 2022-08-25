@@ -20,6 +20,7 @@ import MostrarIntervencion from "../pages/Avisos/IntervencionAviso/MostrarInterv
 import Users from "../pages/User/Users/Users";
 import Items from "../pages/Items/Items";
 import Certificaciones from "../pages/Certificaciones/Certificaciones";
+import EditUser from "../pages/User/Users/EditUser/EditUser";
 
 
 const routes = [
@@ -94,6 +95,10 @@ const routes = [
   {
     path: "/certificaciones",
     element: <Certificaciones />,
+  },
+  {
+    path: "/edit/user/:id",
+    element: <EditUser />,
   }
   
 ];

@@ -99,7 +99,7 @@ const deleteaviso = (e, aviso) => {
        </Grid>
        </Container> */}
        <div className='searchContainer'>
-         <SearchInput placeholder="Filtrar por trabajo o empresa" onChange={onInputChange} />
+         <SearchInput placeholder="Filtrar " onChange={onInputChange} />
       </div>
      
                 <Container>
