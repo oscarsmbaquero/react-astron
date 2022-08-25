@@ -88,7 +88,7 @@ const Users = () => {
               key={user._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-            <StyledTableCell component="th" scope="row">{user.name}</StyledTableCell>
+            <StyledTableCell align="left">{user.name}</StyledTableCell>
             <StyledTableCell align="left">{user.surname}</StyledTableCell>
             <StyledTableCell align="left">{user.email}</StyledTableCell>
             <StyledTableCell align="left">{user.account_type}</StyledTableCell>
@@ -100,9 +100,12 @@ const Users = () => {
                     ><Create />
                   </IconButton>
              </Link>
+             {userLogged.rol ==='Dispatch' || userLogged.rol ==='Admin' ?
              <IconButton  color="error" onClick={(e)=> deleteUser(e,user._id)} >
-                                  <DeleteOutlined/>
-                                </IconButton>
+                <DeleteOutlined/>
+              </IconButton>
+              :'' }
+             
             </StyledTableCell>
             </StyledTableRow>
           ))}
