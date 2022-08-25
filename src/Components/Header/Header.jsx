@@ -39,10 +39,10 @@ const Header = () => {
                   <NavLink className="header__a" to="/avisos/badajoz">Badajoz</NavLink>
                   :''}
                   {userLogged.id ?
-                  <NavLink className="header__a" to="/">Items</NavLink>
+                  <NavLink className="header__a" to="/items">Items</NavLink>
                   :''}
                   {userLogged.id ?
-                <NavLink className="header__a" to="/">Certificaciones</NavLink>
+                <NavLink className="header__a" to="/certificaciones">Certificaciones</NavLink>
                 :''}
                 {userLogged.id ?
                 <NavLink className="header__a" to="/users">Users</NavLink>

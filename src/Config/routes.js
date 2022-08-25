@@ -18,6 +18,8 @@ import PendientesCaceres from "../pages/Avisos/AvisosCaceres/PendientesCaceres";
 import ReselectUser from "../core/components/ReselectUser/ReselectUser";
 import MostrarIntervencion from "../pages/Avisos/IntervencionAviso/MostrarIntervencion";
 import Users from "../pages/User/Users/Users";
+import Items from "../pages/Items/Items";
+import Certificaciones from "../pages/Certificaciones/Certificaciones";
 
 
 const routes = [
@@ -84,6 +86,14 @@ const routes = [
   {
     path: "/users",
     element: <Users />,
+  },
+  {
+    path: "/items",
+    element: <Items />,
+  },
+  {
+    path: "/certificaciones",
+    element: <Certificaciones />,
   }
   
 ];
