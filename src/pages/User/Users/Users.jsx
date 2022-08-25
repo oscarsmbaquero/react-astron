@@ -38,7 +38,7 @@ const Users = () => {
       }, []);
    console.log(users);
   return (
-    <Container>
+    <Container sx={{padding:4}}>
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>

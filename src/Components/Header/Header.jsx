@@ -6,7 +6,7 @@ import { FaUserTie, FaUserCircle } from "react-icons/fa";
 import "./Header.scss";
 import Navbar from "react-bootstrap/Navbar";
 import { logout, useDispatchAuth, useGetAuth } from "../../context";
-import logo4 from "../../assets/images/logo.jpg"
+import logo4 from "../../assets/images/logo.jpg";
 const Header = () => {
 
   const userLogged = useGetAuth();
@@ -18,8 +18,8 @@ const Header = () => {
   };
 
   return (
-    <>
-      <Navbar className="header" expand="md">
+    <header>
+      <Navbar className="header" expand="xl" >
         <div>
           <NavLink className="header__a" to="/">
             <img src={logo4} alt="logo" className="header__logo"></img>
@@ -70,7 +70,7 @@ const Header = () => {
           </Navbar.Collapse>
         </div>
       </Navbar>
-    </>
+    </header>
   );
 };
 export default Header;

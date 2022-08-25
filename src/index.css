@@ -1,11 +1,14 @@
 
-
+header{
+  background-color: whitesmoke;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
 
 
 body {
   margin: 0;
   min-height: 650px;
-  background-color: beige;
+  background-color: whitesmoke;
   
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
