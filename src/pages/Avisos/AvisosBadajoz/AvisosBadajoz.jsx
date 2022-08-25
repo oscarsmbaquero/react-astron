@@ -39,7 +39,7 @@ const avisosBadajoz = avisos.filter((avisos)=> avisos.provincia === 'Badajoz');
 console.log(avisosBadajoz,58);
  
 useEffect(() => {
-  fetch('http://localhost:5000/users')
+  fetch(`${BASE_URL}/users`)
     .then(response => response.json())
     .then(data => SetUsers(data))
 }, []);
@@ -64,7 +64,7 @@ const deleteaviso = (e, aviso) => {
   // const thisClicked = e.currentTarget;
   // thisClicked.innerText ="Borrando"  ;
 
-  fetch(`http://localhost:5000/avisos/${aviso}`,{
+  fetch(`${BASE_URL}/avisos/${aviso}`,{
    method: 'DELETE',
    headers: {
     //'Content-Type': 'multipart/form-data',
@@ -74,7 +74,7 @@ const deleteaviso = (e, aviso) => {
      if(res.status === 200){
       console.log('Borrado');
     Swal.fire("Eliminado", res.message,"success");
-    fetch('http://localhost:5000/avisos')
+    fetch(`${BASE_URL}/avisos`)
     .then(response => response.json())
     .then(data => SetAvisos(data))
     

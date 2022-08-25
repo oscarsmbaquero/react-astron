@@ -1,8 +1,11 @@
 import React, { useReducer } from "react"
-import { AuthReducer, initialState } from "./reducer";
+import { AuthReducer, initialState} from "./reducer";
+
 
 const AuthState = React.createContext();
 const AuthDispatch = React.createContext();
+
+
 
 //Use Context Variable
 export const useGetAuth = () => {

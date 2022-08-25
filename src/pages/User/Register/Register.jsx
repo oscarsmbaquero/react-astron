@@ -54,7 +54,6 @@ const Register = () => {
                         <option value="DEFAULT" disabled >Select user type</option>
                         <option >Tecnico</option>
                         <option >Dispatch</option>
-                        <option >Admin</option>
                     </select>
                     <label className="register__label" htmlFor="name">Name</label>
                     <input

@@ -21,7 +21,7 @@ const IntercencionAviso = () => {
     }, [id])
     
     const onSubmit = async (formData) => {
-        console.log(formData,'datos');
+        //console.log(formData,'datos');
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
@@ -33,6 +33,7 @@ const IntercencionAviso = () => {
                 })
                 console.log(formData,33);
                 const resData = await result.json();
+                
                 navigate("/avisos/caceres");
                 console.log(resData);
                 

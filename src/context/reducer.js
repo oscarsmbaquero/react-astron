@@ -9,15 +9,19 @@ const tokenStored = localStorage.getItem("currentUser")
 const rolStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).rol
     : undefined;
-    const emailStored = localStorage.getItem("currentUser")
+const emailStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).email
     : undefined;
+const nameStored = localStorage.getItem("currentUser")
+    ? JSON.parse(localStorage.getItem("currentUser")).name
+    : undefined;    
 
 export const initialState = {
     id: idStored,
     token: tokenStored,
     rol: rolStored,
     email: emailStored,
+    name: nameStored,
     loading: false,
     errorMessage: null
 };
@@ -42,6 +46,7 @@ export const AuthReducer = (initialState, action) => {
                 token: action.payload.token,
                 rol: action.payload.rol,
                 email: action.payload.email,
+                name: action.payload.name,
                 loading: false
             };
         case "LOGIN_FAIL":

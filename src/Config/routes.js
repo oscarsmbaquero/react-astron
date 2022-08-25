@@ -17,6 +17,7 @@ import Register from "../pages/User/Register/Register";
 import PendientesCaceres from "../pages/Avisos/AvisosCaceres/PendientesCaceres";
 import ReselectUser from "../core/components/ReselectUser/ReselectUser";
 import MostrarIntervencion from "../pages/Avisos/IntervencionAviso/MostrarIntervencion";
+import Users from "../pages/User/Users/Users";
 
 
 const routes = [
@@ -79,6 +80,10 @@ const routes = [
   {
     path: "/mostrar/intervencion/:id",
     element: <MostrarIntervencion />,
+  },
+  {
+    path: "/users",
+    element: <Users />,
   }
   
 ];

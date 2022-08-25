@@ -32,7 +32,6 @@ const Header = () => {
               <div className="header__menu">
               {userLogged.id ?
               <>
-                <NavLink className="header__a" to="/avisos">Avisos</NavLink>
                 <NavLink className="header__a" to="/avisos/caceres">Cáceres</NavLink>
                 </>
                 :''}
@@ -46,9 +45,12 @@ const Header = () => {
                 <NavLink className="header__a" to="/">Certificaciones</NavLink>
                 :''}
                 {userLogged.id ?
+                <NavLink className="header__a" to="/users">Users</NavLink>
+                :''}
+                {userLogged.id ?
                 <NavLink className="header__a" to="/formContact">Contacto</NavLink>
                 :''}
-                {userLogged.id && userLogged.rol === 'Dispatch' ?
+                { userLogged.rol === 'Dispatch' || userLogged.rol === 'Admin' ?
                 <NavLink className="header__a" to="/anadir/avisos">Añadir Aviso
                 </NavLink>
                 :''}
@@ -56,15 +58,14 @@ const Header = () => {
                 <NavLink className="header__a" to="users/login">Login</NavLink> 
                 :
                  <>
-                  <AiOutlineLogout onClick={handleLogout} className="header__a" />
-                  <NavLink className="header__a" to="/formContact">
-                  <span className="span1">{userLogged.email}</span>
-                  <span className="span2">
-                  </span>
-                </NavLink>
+                  <NavLink className="header__a" to="/" onClick={handleLogout}>Logout</NavLink>
+                
                 </>
                 }
               </div>
+            </ul>
+            <ul className="header__user">
+            {userLogged.name}
             </ul>
           </Navbar.Collapse>
         </div>

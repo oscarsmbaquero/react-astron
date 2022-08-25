@@ -116,7 +116,11 @@ const deleteaviso = (e, aviso) => {
                               flexWrap:'wrap',
                             }}
                             >
-                        <CardHeader
+                        <CardHeader  
+                           sx={{
+                            color: 'error.main',
+                            background: 'whitesmoke'
+                           }}
                           action={
                             <>
                                 <IconButton  color="error" onClick={(e)=> deleteaviso(e,aviso._id)} >

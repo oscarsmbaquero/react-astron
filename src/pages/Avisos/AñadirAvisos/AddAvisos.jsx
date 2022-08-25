@@ -33,7 +33,7 @@ const AddAvisos = () => {
                 icon: 'success',
                 confirmButtonText: 'Ok'
               })
-            navigate("/");
+            navigate("/avisos/caceres");
             console.log(resData);
             
             
@@ -46,8 +46,8 @@ const AddAvisos = () => {
   return (
   
     <form onSubmit={handleSubmit(onSubmit)} className="form">
-     <Container maxWidth="ls">
-            <Grid>
+     <Container >
+            <Grid xs={12} md={6} lg={4}>
                 <FormControl>
                     <InputLabel htmlFor="n_incidecia">Nº Incidencia </InputLabel>
                         <Input id="incidencia"                         
@@ -55,7 +55,7 @@ const AddAvisos = () => {
                         aria-describedby='incidencia-helper'
                         {...register('n_incidencia')} 
                         />
-                        <FormHelperText id="incidencia-helper">Incidencia</FormHelperText>
+                        {/* <FormHelperText id="incidencia-helper">Incidencia</FormHelperText> */}
                 </FormControl>
                 <br/>
                 <FormControl>
@@ -65,7 +65,7 @@ const AddAvisos = () => {
                         aria-describedby='centro-helper'
                         {...register('centro')}
                         />
-                        <FormHelperText id="centro-helper">Centro</FormHelperText>
+                        {/* <FormHelperText id="centro-helper">Centro</FormHelperText> */}
                 </FormControl>
                 <br/>
                 <FormControl>
@@ -75,7 +75,7 @@ const AddAvisos = () => {
                         aria-describedby='localidad-helper'
                         {...register('localidad')}   
                         />
-                        <FormHelperText id="localidad-helper">Localidad</FormHelperText>
+                        {/* <FormHelperText id="localidad-helper">Localidad</FormHelperText> */}
                 </FormControl>
                 <br/>
                 <FormControl>
@@ -85,7 +85,7 @@ const AddAvisos = () => {
                         aria-describedby='provincia-helper'
                         {...register('provincia')}   
                         />
-                        <FormHelperText id="provincia-helper">Provincia</FormHelperText>
+                        {/* <FormHelperText id="provincia-helper">Provincia</FormHelperText> */}
                 </FormControl>
                 <br/>
                 <FormControl>
@@ -95,7 +95,7 @@ const AddAvisos = () => {
                         aria-describedby='averia-helper'
                         {...register('averia')}   
                         />
-                        <FormHelperText id="incidencia-helper">Avería</FormHelperText>
+                        {/* <FormHelperText id="incidencia-helper">Avería</FormHelperText> */}
                 </FormControl>
                 <br/>
                 <FormControl>
@@ -105,7 +105,7 @@ const AddAvisos = () => {
                         aria-describedby='prioridad-helper'
                         {...register('prioridad')}   
                         />
-                        <FormHelperText id="incidencia-helper">Prioridad</FormHelperText>
+                        {/* <FormHelperText id="incidencia-helper">Prioridad</FormHelperText> */}
                 </FormControl>
                 <br/>
                 <FormControl>
@@ -115,11 +115,14 @@ const AddAvisos = () => {
                         aria-describedby='estado-helper'
                         {...register('estado')}   
                         />
-                        <FormHelperText id="estado-helper">Estado</FormHelperText>
+                        {/* <FormHelperText id="estado-helper">Estado</FormHelperText> */}
                 </FormControl>
                 <br/>
-                <button className="buttonForm"disabled={!isValid}>Send</button>
-                <Button variant="contained" endIcon={<SendIcon />}>
+                <br/>
+                <br/>
+                
+                {/* <button className="buttonForm" disabled={!isValid}>Send</button> */}
+                <Button variant="contained" type='submit' disabled={!isValid} endIcon={<SendIcon />}>
                 Enviar
                 </Button>
             </Grid>
