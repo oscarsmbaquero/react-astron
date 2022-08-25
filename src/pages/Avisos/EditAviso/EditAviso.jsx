@@ -26,7 +26,7 @@ const EditAviso = () => {
         // console.log(formData,'datos');
             try {
     
-                const result = await fetch(`http://localhost:5000/avisos/${id}` ,{//modifico url 24/06/2022
+                const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
                     method: "PUT",
                     headers: {
                             'Content-Type': 'application/json'

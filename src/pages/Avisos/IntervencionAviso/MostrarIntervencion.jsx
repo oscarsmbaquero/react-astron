@@ -8,6 +8,7 @@ import { BASE_URL } from "../../../assets/ApiRoutes";
 const MostrarIntervencion = () => {
 
     const [intervencion, setIntervencion] = useState();
+    const [intervencionTabla, setIntervencionTabla] = useState();
     const { id } =useParams();
 
     useEffect(() => {
@@ -16,30 +17,28 @@ const MostrarIntervencion = () => {
         .then(data => setIntervencion(data))
     
     }, [id])
-
-    
- 
-   
-    //console.log(intervencion.km,'intervenciones');
+     console.log(intervencion,'intervenciones');
   return (
     <>
-    {!intervencion?<p>Cargando</p>
+    {!intervencion?(<p>Cargando</p>
+    )
     :
    <div>
-            {intervencion.intervencion.map((aviso)=>(
-            <div>
-                {aviso}
+   <h2>Intervenciones</h2>
+            { intervencion.intervencion.map((aviso)=>(
+           
+            <div  key={intervencion._id} >
+            
+              {aviso}
             </div>
+            
             ))}
+            
+            
     </div>
-    }
-    {/* {intervencion.intervencion.map((inter,index)=>(
-    <div>{inter}</div>
-
-    ))} */}
+   
     
-    
-    <div>MostrarIntervencion</div>
+    }    
     </>
   )
   }

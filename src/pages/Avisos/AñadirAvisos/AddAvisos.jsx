@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form'
 import {  useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../../assets/ApiRoutes";
 import './AddAvisos.scss';
 import Swal from 'sweetalert2'// hay que probarlo
 import { Button, Container, FormControl, FormHelperText, Grid, Input, InputLabel,  } from '@mui/material';
@@ -18,7 +19,7 @@ const AddAvisos = () => {
         console.log(formData,15);
         try {
 
-            const result = await fetch("http://localhost:5000/avisos" ,{
+            const result = await fetch(`${BASE_URL}/avisos` ,{
                 method: "POST",
                 headers: {
                         'Content-Type': 'application/json'
