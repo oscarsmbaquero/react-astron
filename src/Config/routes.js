@@ -35,7 +35,7 @@ const routes = [
     element: <FormContact />,
   },
   {
-    path: "users/login",
+    path: "user/login",
     element: <SignIn />,
   },
   {

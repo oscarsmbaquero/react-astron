@@ -58,45 +58,83 @@ const Header = () => {
                 <NavLink
                 to="/avisos/caceres"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    // background: isActive ? '#A3D4F7' : '#fff',
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
+                
+                
                 >
                 Cáceres
                 </NavLink>
                 <NavLink
                 to="/avisos/badajoz"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    // background: isActive ? '#A3D4F7' : '#fff',
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
                 >
                 Badajoz
                 </NavLink>
                 <NavLink
                 to="/items"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    // background: isActive ? '#A3D4F7' : '#fff',
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
                 >
                 Items
                 </NavLink>
                 <NavLink
                 to="/certificaciones"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    // background: isActive ? '#A3D4F7' : '#fff',
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
                 >
                 Certificaciones
                 </NavLink>
                 <NavLink
                 to="/users"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    // background: isActive ? '#A3D4F7' : '#fff',
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
                 >
                 Usuarios
                 </NavLink>
                 <NavLink
                 to="/anadir/avisos"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    // 
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
                 >
                 Añadir Aviso
                 </NavLink>
                 <NavLink
-                to="/users/login"
+                to="/user/login"
                 className="nav-item align-self-center shadowLink nav-link active"
+                style={({ isActive }) => ({
+                    color: isActive ? '#000305' : '#000305',
+                    background: isActive ? '#A3D4F7' : '#fff',
+                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                })}
                 >
-                Log In
+                Login
                 </NavLink>
+                
             </ul>
             </div>
             <button
