@@ -17,6 +17,7 @@ const Header = () => {
     const dispatch = useDispatchAuth();
     const navigate = useNavigate();
     const handleLogout = () => {
+        ('entro')
       logout(dispatch)
       navigate('/users/login')
     };
@@ -32,7 +33,7 @@ const Header = () => {
             >
             <a
                 className="navbar-brand d-flex justify-content-center"
-                href="/home"
+                href="/"
                 alt=""
             >
                 {" "}
@@ -44,7 +45,7 @@ const Header = () => {
             </a>
             <a
                 className="navbar-brand d-flex justify-content-center"
-                href="/home"
+                href="/"
                 alt=""
             >
                 {" "}
@@ -55,99 +56,120 @@ const Header = () => {
                 />
             </a>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
+
+            {userLogged.id?
+            (<>
                 <NavLink
-                to="/avisos/caceres"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    // background: isActive ? '#A3D4F7' : '#fff',
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
-                
-                
+                    to="/avisos/caceres"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                        color: isActive ? '#000305' : '#000305',
+                        // background: isActive ? '#A3D4F7' : '#fff',
+                        borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                    })}
                 >
                 Cáceres
                 </NavLink>
                 <NavLink
-                to="/avisos/badajoz"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    // background: isActive ? '#A3D4F7' : '#fff',
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
-                >
-                Badajoz
+                    to="/avisos/badajoz"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                        color: isActive ? '#000305' : '#000305',
+                        // background: isActive ? '#A3D4F7' : '#fff',
+                        borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                    })}
+                    >
+                    Badajoz
                 </NavLink>
                 <NavLink
-                to="/items"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    // background: isActive ? '#A3D4F7' : '#fff',
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
-                >
-                Items
+                    to="/items"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                        color: isActive ? '#000305' : '#000305',
+                        // background: isActive ? '#A3D4F7' : '#fff',
+                        borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                    })}
+                    >
+                    Items
                 </NavLink>
                 <NavLink
-                to="/certificaciones"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    // background: isActive ? '#A3D4F7' : '#fff',
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
-                >
-                Certificaciones
+                    to="/certificaciones"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                        color: isActive ? '#000305' : '#000305',
+                        // background: isActive ? '#A3D4F7' : '#fff',
+                        borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                    })}
+                    >
+                    Certificaciones
                 </NavLink>
                 <NavLink
-                to="/users"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    // background: isActive ? '#A3D4F7' : '#fff',
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
-                >
-                Usuarios
+                        to="/users"
+                        className="nav-item align-self-center shadowLink nav-link active"
+                        style={({ isActive }) => ({
+                            color: isActive ? '#000305' : '#000305',
+                            // background: isActive ? '#A3D4F7' : '#fff',
+                            borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                        })}
+                        >
+                        Usuarios
                 </NavLink>
-                <NavLink
-                to="/anadir/avisos"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    // 
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
+                </>)
+                :''}
+                
+                    {userLogged.rol ==='Dispatch' || userLogged.rol ==='Admin' ? (
+                        <NavLink
+                    to="/anadir/avisos"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                        color: isActive ? '#000305' : '#000305',
+                        // 
+                        borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                    })}
                 >
                 Añadir Aviso
                 </NavLink>
-                <NavLink
-                to="/user/login"
-                className="nav-item align-self-center shadowLink nav-link active"
-                style={({ isActive }) => ({
-                    color: isActive ? '#000305' : '#000305',
-                    background: isActive ? '#A3D4F7' : '#fff',
-                    borderBottom: isActive ? '4px solid red':'4px solid transparent'
-                })}
-                >
-                Login
-                </NavLink>
+                 )
+                :''}
+                {!userLogged.id ? 
+                (<NavLink
+                        to="/user/login"
+                        className="nav-item align-self-center shadowLink nav-link active"
+                        style={({ isActive }) => ({
+                            color: isActive ? '#000305' : '#000305',
+                            // background: isActive ? '#A3D4F7' : '#fff',
+                            borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                        })}
+                        >
+                        Login
+                </NavLink>)
+                :
+                (
+                    <NavLink  to="/" 
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    onClick={handleLogout}
+                    style={({ isActive }) => ({
+                            color: isActive ? '#000305' : '#000305',
+                            // background: isActive ? '#A3D4F7' : '#fff',
+                            borderBottom: isActive ? '4px solid red':'4px solid transparent'
+                    })}
+                    >Logout</NavLink>
+                )
+                }
                 
-            </ul>
-            </div>
-            <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            >
-            <span className="navbar-toggler-icon"></span>
-            </button>
+                </ul>
+                </div>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                    >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
         </div>
 
         </nav> 
