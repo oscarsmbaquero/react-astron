@@ -22,6 +22,7 @@ import Items from "../pages/Items/Items";
 import Certificaciones from "../pages/Certificaciones/Certificaciones";
 import EditUser from "../pages/User/Users/EditUser/EditUser";
 import SignIn from "../pages/User/Login/SignIn";
+import SignUp from "../pages/User/Register/SignUp";
 
 
 const routes = [
@@ -39,7 +40,7 @@ const routes = [
   },
   {
     path: "/users/register",
-    element: <Register />,
+    element: <SignUp />,
   },
   {
     path: "/avisos",

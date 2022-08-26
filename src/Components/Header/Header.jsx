@@ -1,14 +1,11 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { AiOutlineMail, AiOutlineUserAdd, AiOutlineLogout } from "react-icons/ai";
-import { BsFillChatDotsFill } from "react-icons/bs";
-import { FaUserTie, FaUserCircle } from "react-icons/fa";
 import "./Header.scss";
 import Navbar from "react-bootstrap/Navbar";
 import { logout, useDispatchAuth, useGetAuth } from "../../context";
-import logo4 from "../../assets/images/logo.jpg";
-import { Badge } from "@mui/material";
-import MailIcon from '@material-ui/icons/Mail';
+import logoAstron from "../../assets/images/logo.jpg";
+import logoOit from "../../assets/images/logoOit.jpeg";
+
 const Header = () => {
 
   const userLogged = useGetAuth();
@@ -22,12 +19,18 @@ const Header = () => {
   return (
     <header>
       <Navbar className="header" expand="xl" >
-        <div>
-          <NavLink className="header__a" to="/">
-            <img src={logo4} alt="logo" className="header__logo"></img>
-          </NavLink>
-        </div>
-        <div >        
+        
+          <div>
+            <NavLink className="header__a" to="/">
+               <img src={logoOit} alt="logo" className="header__logo"></img>
+            </NavLink>
+          </div>  
+          <div>
+            <NavLink className="header__a" to="/">
+            <img src={logoAstron} alt="logo" className="header__logo"></img>
+            </NavLink>
+          </div>
+          <div >        
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <ul className="header__ul">
@@ -57,7 +60,12 @@ const Header = () => {
                 </NavLink>
                 :''}
                 {!userLogged.id ?
-                <NavLink className="header__a" to="users/login">Login</NavLink> 
+                (
+                  <>
+                  <NavLink className="header__a" to="users/login">Login</NavLink> 
+                  <NavLink className="header__a" to="users/register">Register</NavLink>
+                  </>
+                )
                 :
                  <>
                   <NavLink className="header__a" to="/" onClick={handleLogout}>Logout</NavLink>
@@ -70,7 +78,8 @@ const Header = () => {
             {userLogged.name}
             </ul>
           </Navbar.Collapse>
-        </div>
+          </div>
+          
       </Navbar>
     </header>
   );
