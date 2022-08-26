@@ -21,6 +21,7 @@ import Users from "../pages/User/Users/Users";
 import Items from "../pages/Items/Items";
 import Certificaciones from "../pages/Certificaciones/Certificaciones";
 import EditUser from "../pages/User/Users/EditUser/EditUser";
+import SignIn from "../pages/User/Login/SignIn";
 
 
 const routes = [
@@ -34,7 +35,7 @@ const routes = [
   },
   {
     path: "users/login",
-    element: <Login />,
+    element: <SignIn />,
   },
   {
     path: "/users/register",

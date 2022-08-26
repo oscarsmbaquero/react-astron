@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { registerUser, useDispatchAuth } from '../../../context';
-import "./Register.scss"
+import "./Register.scss";
+import Button from '@mui/material/Button';
 
 const loginInitialState = {
     email: "",
@@ -37,7 +38,7 @@ const Register = () => {
 
     return (
         <section className="sectionRegister">
-                  <h1>Conecta y descubre nuestra comunidad</h1>
+                  
             <div className="register">
                 <form className="register__form" onSubmit={handleRegister}>
                 <label className="register__label" htmlFor="email">Email</label>
@@ -82,7 +83,19 @@ const Register = () => {
                         onChange={handleRegisterForm}
                         required
                     />
-                    <button className="register__button">Register</button>
+                    {/* <button className="register__button">Register</button> */}
+                    <Button  
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{maxWidth: '200px',
+                   maxHeight: '30px',
+                   margin:'20px 100px 100px 100px' 
+
+                   }}
+            >
+              Sign In
+            </Button>
                 </form>
                 <p>You already have an account. <Link to={"/users/login"}>Login</Link></p>
             </div>

@@ -122,10 +122,12 @@ const deleteaviso = (e, aviso) => {
                             background: 'whitesmoke'
                            }}
                           action={
-                            <>
-                                <IconButton  color="error" onClick={(e)=> deleteaviso(e,aviso._id)} >
+                            <>  {userLogged.rol ==='Tecnico'?''
+                                 :(<IconButton  color="error" onClick={(e)=> deleteaviso(e,aviso._id)} >
                                   <DeleteOutlined/>
-                                </IconButton>
+                                </IconButton>)
+                                }
+                                
                                 <Link to={`/edit/aviso/${aviso._id}`}>
                                       <IconButton  
                                         aria-label="delete" 

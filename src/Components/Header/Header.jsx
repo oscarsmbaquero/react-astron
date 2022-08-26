@@ -7,6 +7,8 @@ import "./Header.scss";
 import Navbar from "react-bootstrap/Navbar";
 import { logout, useDispatchAuth, useGetAuth } from "../../context";
 import logo4 from "../../assets/images/logo.jpg";
+import { Badge } from "@mui/material";
+import MailIcon from '@material-ui/icons/Mail';
 const Header = () => {
 
   const userLogged = useGetAuth();
