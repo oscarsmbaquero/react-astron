@@ -21,7 +21,7 @@ const IntercencionAviso = () => {
     }, [id])
     
     const onSubmit = async (formData) => {
-        //console.log(formData,'datos');
+        console.log(formData,'datos');
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
@@ -101,8 +101,12 @@ const IntercencionAviso = () => {
             <input class="input" {...setValue("km", aviso.km)} type="number" name="km" placeholder="Km"  {...register('km')}/>
         </label>
         <label>
+            <p>Tiempo Viaje</p>
+            <input class="input" {...setValue("viaje", aviso.viaje)} type="number" name="viaje" placeholder="tiempo desplazamiento"  {...register('viaje')}/>
+        </label>
+        <label>
             <p>Descripción Intervención</p>
-            <textarea class="textarea" {...setValue("intervencion", aviso.intervencion)} type="text" name="intervencion" placeholder="Intervencion"  {...register('intervencion')}/>
+            <textarea class="textarea"  type="text" name="intervencion" placeholder="Intervencion"  {...register('intervencion')}/>
         </label>
         <br></br>
         {aviso.estado === 'Cerrada'?

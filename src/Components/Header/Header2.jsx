@@ -106,6 +106,25 @@ const Header = () => {
                   >
                     Certificaciones
                   </NavLink>
+                  { userLogged.rol === 'Tecnico' || userLogged.rol ==='Admin' ?
+                  (
+                    <NavLink
+                    to="/us/asignados"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                      color: isActive ? "#000305" : "#000305",
+                      // background: isActive ? '#A3D4F7' : '#fff',
+                      borderBottom: isActive
+                        ? "4px solid red"
+                        : "4px solid transparent",
+                    })}
+                  >
+                    Asignados
+                  </NavLink>
+                  )
+                  :
+                  ('')
+                  }
                   <NavLink
                     to="/users"
                     className="nav-item align-self-center shadowLink nav-link active"

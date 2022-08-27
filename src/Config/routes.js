@@ -23,6 +23,7 @@ import Certificaciones from "../pages/Certificaciones/Certificaciones";
 import EditUser from "../pages/User/Users/EditUser/EditUser";
 import SignIn from "../pages/User/Login/SignIn";
 import SignUp from "../pages/User/Register/SignUp";
+import Asignados from "../pages/User/Users/Asignados";
 
 
 const routes = [
@@ -87,6 +88,10 @@ const routes = [
     element: <MostrarIntervencion />,
   },
   {
+    path: "/us/asignados",
+    element: <Asignados />,
+  },
+  {
     path: "/users",
     element: <Users />,
   },
@@ -101,7 +106,8 @@ const routes = [
   {
     path: "/edit/user/:id",
     element: <EditUser />,
-  }
+  },
+  
   
 ];
 

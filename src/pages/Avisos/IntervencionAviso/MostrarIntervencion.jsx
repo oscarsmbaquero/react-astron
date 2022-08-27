@@ -66,7 +66,7 @@ const MostrarIntervencion = () => {
       }
   
   }, [intervencion])
-
+console.log(intervencion,456987)
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
       backgroundColor: theme.palette.common.black,
@@ -108,7 +108,7 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="left">{aviso.fecha_fin}</StyledTableCell>
             <StyledTableCell align="left">{aviso.intervencion}</StyledTableCell>
             <StyledTableCell align="left">{aviso.km}</StyledTableCell>
-            <StyledTableCell align="left">
+            <StyledTableCell align="left">{aviso.viaje}</StyledTableCell>
             {/* <Link to={`/edit/user/${aviso._id}`}>
                   <IconButton  
                     aria-label="delete" 
@@ -122,7 +122,7 @@ const MostrarIntervencion = () => {
               </IconButton> */}
               {/* :'' } */}
              
-            </StyledTableCell>
+            {/* </StyledTableCell> */}
             </StyledTableRow>
           ))}
         </TableBody>    
