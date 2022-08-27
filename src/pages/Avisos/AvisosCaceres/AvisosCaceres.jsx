@@ -45,7 +45,7 @@ const AvisosCaceres = () => {
           .then(response => response.json())
           .then(data => SetAvisos(data))
       }, []);
-console.log(avisos,33);
+
 const avisosCaceres = avisos.filter((avisos)=> avisos.provincia === 'Caceres');
 
  
@@ -54,7 +54,6 @@ useEffect(() => {
     .then(response => response.json())
     .then(data => SetUsers(data))
 }, []);
-console.log(users);
 const onInputChange = (e) => {
   console.log('Entro');
   setKeyword(e.target.value.toLowerCase());

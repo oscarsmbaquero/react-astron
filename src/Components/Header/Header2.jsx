@@ -180,7 +180,7 @@ const Header = () => {
           <p className="p"><span2>{userLogged.name}</span2></p> 
           </div>
           <Stack direction="row" spacing={2}>
-              <Avatar alt="Remy Sharp" src={logoOit} />
+              <Avatar alt="Remy Sharp" src={''} />
           </Stack>
           
           <button

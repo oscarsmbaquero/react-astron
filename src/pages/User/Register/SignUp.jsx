@@ -26,7 +26,8 @@ const loginInitialState = {
   password: "",
   name: "",
   surname: "",
-  account_type: ""
+  account_type: "",
+  image:""
 };
 
 function Copyright(props) {
@@ -56,10 +57,12 @@ export default function SignUp() {
   const [registerForm, setRegisterForm] = useState(loginInitialState);
 
   const handleRegisterForm = (event) => {
+    console.log(event.target,'target');
     const { name, value } = event.target;
+    console.log(name,value,'name');
     setRegisterForm((prevState) => ({ ...prevState, [name]: value }));
   };
-
+   console.log(registerForm,'registerForm')
  
   //console.log(dispatch,22);
   //enviar login al server
@@ -68,8 +71,8 @@ export default function SignUp() {
     try {
         registerUser(dispatch, registerForm);
         setRegisterForm(loginInitialState);
-        registerForm.account_type === "User" ? navigate("/Jobs")
-            : navigate("/formCompanies");
+        registerForm.account_type === "Tecnico" ? navigate("/avisos/caceres")
+            : navigate("/");
     } catch (error) {
         console.log(error);
     }
@@ -146,8 +149,8 @@ export default function SignUp() {
                }}
               labelId="demo-simple-select-label"
               id="demo-simple-select"
-              value={'rol'}
-              label="Rol"
+              //value={'rol'}
+              label="account_type"
               name="account_type"
               onChange={handleRegisterForm}
             >
@@ -155,6 +158,17 @@ export default function SignUp() {
               <MenuItem value={'Dispatch'}>Dispatch</MenuItem>
               
             </Select>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="image"
+              label="image"
+              type="file"
+              id="image"
+              onChange={handleRegisterForm}
+            />
+            {/* <input type="file" alt="" name="image" className='edit__input'/> */}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
