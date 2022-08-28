@@ -40,12 +40,20 @@ const SelectUser = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          Swal.fire("aviso asignado correctamente", res.message, "success");
+          Swal.fire("Aviso asignado correctamente", res.message, "success");
           // setButtonState(true);
         }
       })
       .catch((error) => console.error(error));
   };
+
+console.log(users);
+
+  const filteredUser = users.filter((user) =>
+     user.account_type !=='Dispatch'
+     
+  );
+  //console.log(filteredUser,56);
 
   return (
     <div>
@@ -56,7 +64,7 @@ const SelectUser = () => {
         <option key={"default"} selected value={"default"}>
           Selecciona un usuario
         </option>
-        {users.map((option) => (
+        {filteredUser.map((option) => (
           <option key={option._id} value={option._id}>
             {option.name} {option.surname}
           </option>

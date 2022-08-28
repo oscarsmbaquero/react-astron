@@ -3,7 +3,7 @@ import {  useGetAuth } from "../../../context/context";
 import {  Link, Navigate } from 'react-router-dom';
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import { styled } from '@mui/material/styles';
-import { Container, Table, TableBody,  TableContainer, TableHead, TableRow } from '@mui/material';
+import { Avatar, Container, Table, TableBody,  TableContainer, TableHead, TableRow } from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
 import { Create, DeleteOutlined } from '@mui/icons-material';
@@ -43,7 +43,7 @@ const Users = () => {
           .then(response => response.json())
           .then(data => SetUsers(data))
       }, []);
-   console.log(users);
+   //console.log(users);
 
 
    const deleteUser = (e, user) => {
@@ -76,6 +76,7 @@ const Users = () => {
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
+            <StyledTableCell align="left">Imagen</StyledTableCell>
             <StyledTableCell align="left">Nombre</StyledTableCell>
             <StyledTableCell align="left">Apellidos</StyledTableCell>
             <StyledTableCell align="left">Email</StyledTableCell>
@@ -88,6 +89,9 @@ const Users = () => {
               key={user._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
+            <StyledTableCell>
+            <Avatar alt="Remy Sharp" src={user.image} />
+            </StyledTableCell>
             <StyledTableCell align="left">{user.name}</StyledTableCell>
             <StyledTableCell align="left">{user.surname}</StyledTableCell>
             <StyledTableCell align="left">{user.email}</StyledTableCell>

@@ -202,7 +202,7 @@ const Header = () => {
           { userLogged.id ?
             <Stack direction="row" spacing={2}>
           <p className="p"><span2>{userLogged.name}</span2></p> 
-              <Avatar alt="Remy Sharp" src={''} />
+              <Avatar alt="Remy Sharp" src={userLogged.image} />
           </Stack>
           :''
           }
