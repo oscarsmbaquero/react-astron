@@ -58,6 +58,8 @@ const onInputChange = (e) => {
   console.log('Entro');
   setKeyword(e.target.value.toLowerCase());
 };
+
+
 /*Con el valor introducido en el inpute del buscador filtramos los trabajos almacenaos en jobs,
 Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
 const filteredAvisos = avisosCaceres.filter((avisos) =>
@@ -105,7 +107,7 @@ const deleteaviso = (e, aviso) => {
                   <Grid  container  spacing={5}>
                   {filteredAvisos.map((aviso)=>(
                     <Grid item key={aviso._id} xs={12} md={6} lg={4}>
-                      
+                      {console.log(aviso)}
                       <Card elevation={5}
                             sx={{ 
                               borderRadius: '8px',
@@ -156,11 +158,13 @@ const deleteaviso = (e, aviso) => {
                               <Typography variant='h4' component={'div'}>
                                 {aviso.centro}
                               </Typography>
-                              <Typography sx={{ fontSize: 26 }} color="text.secondary" gutterBottom >
-                                ({aviso.localidad})
+                              <Typography sx={{ fontSize: 26 }} color="text.secondary" >
+                                {aviso.localidad}
                               </Typography>
                               <Typography variant='h6'>
-                                {aviso.estado}
+                                {aviso.estado} <span className='user_asigned'> {aviso.user_assigned?.name }</span> 
+                              </Typography>
+                              <Typography variant='h6'>
                               </Typography>
                               <Typography variant='body1' color="text.secondary" >
                                 {aviso.averia}

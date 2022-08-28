@@ -39,7 +39,7 @@ const Header = () => {
                 alt="logo"
               />
             </a>
-            <a
+            {/* <a
               className="navbar-brand d-flex justify-content-center"
               href="/"
               alt=""
@@ -50,7 +50,7 @@ const Header = () => {
                 src={logoAstron}
                 alt="logo"
               />
-            </a>
+            </a> */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
               {userLogged.id ? (
                 <>
@@ -201,7 +201,7 @@ const Header = () => {
               */}
           { userLogged.id ?
             <Stack direction="row" spacing={2}>
-          <p className="p"><span2>{userLogged.name}</span2></p> 
+              <p className="p"><span2>{userLogged.name}</span2></p> 
               <Avatar alt="Remy Sharp" src={userLogged.image} />
           </Stack>
           :''

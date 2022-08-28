@@ -24,6 +24,8 @@ const ReselectUser = () => {
     if (userId !== "default") fetchApi(userId);
   };
 
+  
+
   const fetchApi = (userId) => {
     fetch(`${BASE_URL}/users/reAssignAviso`, {
       method: "PUT",
@@ -46,6 +48,13 @@ const ReselectUser = () => {
       .catch((error) => console.error(error));
   };
 
+  const filteredUser = users.filter((user) =>
+  //  user.account_type !=='Dispatch'
+  user.account_type.toLowerCase().includes('tecnico')||
+  user.account_type.toLowerCase().includes('admin')
+   
+);
+
   return (
     <div>
       <p>Reasignar el aviso con número de incidencia {n_incidencia}</p>
@@ -55,7 +64,7 @@ const ReselectUser = () => {
         <option key={"default"} selected value={"default"}>
           Selecciona un usuario
         </option>
-        {users.map((option) => (
+        {filteredUser.map((option) => (
           <option key={option._id} value={option._id}>
             {option.name} {option.surname}
           </option>
