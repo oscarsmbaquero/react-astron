@@ -14,6 +14,9 @@ const emailStored = localStorage.getItem("currentUser")
     : undefined;
 const nameStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).name
+    : undefined;   
+const imageStored = localStorage.getItem("currentUser")
+    ? JSON.parse(localStorage.getItem("currentUser")).image
     : undefined;    
 
 export const initialState = {
@@ -22,6 +25,7 @@ export const initialState = {
     rol: rolStored,
     email: emailStored,
     name: nameStored,
+    image: imageStored,
     loading: false,
     errorMessage: null
 };
@@ -47,6 +51,7 @@ export const AuthReducer = (initialState, action) => {
                 rol: action.payload.rol,
                 email: action.payload.email,
                 name: action.payload.name,
+                image: action.payload.image,
                 loading: false
             };
         case "LOGIN_FAIL":

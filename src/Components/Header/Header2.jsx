@@ -195,12 +195,18 @@ const Header = () => {
              
           
           </div>
-          <div>
+          {/* <div>
+             <p className="p"><span2>{userLogged.name}</span2></p> 
+          </div>  
+              */}
+          { userLogged.id ?
+            <Stack direction="row" spacing={2}>
           <p className="p"><span2>{userLogged.name}</span2></p> 
-          </div>
-          <Stack direction="row" spacing={2}>
               <Avatar alt="Remy Sharp" src={''} />
           </Stack>
+          :''
+          }
+          
           
           <button
             className="navbar-toggler"
