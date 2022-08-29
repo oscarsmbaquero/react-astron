@@ -71,6 +71,7 @@ const filteredAvisos = avisosCaceres.filter((avisos) =>
 
 
 const deleteaviso = (e, aviso) => {
+  console.log(aviso);
   e.preventDefault();
   fetch(`${BASE_URL}/avisos/${aviso}`,{
    method: 'DELETE',
@@ -92,6 +93,7 @@ const deleteaviso = (e, aviso) => {
   })
 }
 
+
   return(
     <> 
        {/* <Container>
@@ -107,7 +109,6 @@ const deleteaviso = (e, aviso) => {
                   <Grid  container  spacing={5}>
                   {filteredAvisos.map((aviso)=>(
                     <Grid item key={aviso._id} xs={12} md={6} lg={4}>
-                      {console.log(aviso)}
                       <Card elevation={5}
                             sx={{ 
                               borderRadius: '8px',
@@ -175,7 +176,7 @@ const deleteaviso = (e, aviso) => {
                             }}>
                                 {aviso.estado === 'Asignado'?(
                                   <Button>
-                                    <Link to={`/avisos/reasignar/${aviso._id}/${aviso.n_incidencia}`}>Reasignar Aviso</Link>
+                                    <Link to={`/avisos/reasignar/${aviso._id}/${aviso.user_assigned?._id }`}>Reasignar Aviso</Link>
                                 </Button>
                                 ):
                                 <Button>

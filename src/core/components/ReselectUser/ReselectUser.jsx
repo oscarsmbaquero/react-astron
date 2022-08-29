@@ -7,10 +7,11 @@ const ReselectUser = () => {
   const [users, setUsers] = useState([]);
   const [selected, setSelected] = useState("default");
 
-  const { id, n_incidencia } = useParams();
+  const { id, idUserOld } = useParams();
 
-  console.log("ID", id);
-  console.log("N_INCIDENCIA", n_incidencia);
+  console.log("ID_incidencia", id);
+  // console.log("N_INCIDENCIA", n_incidencia);
+  console.log("user_old", idUserOld)
   useEffect(() => {
     fetch(`${BASE_URL}/users`)
       .then((response) => response.json())
@@ -36,7 +37,9 @@ const ReselectUser = () => {
       body: JSON.stringify({
         userId: userId,
         avisoId: id,
-        estado: 'Asignado'
+        estado: 'Asignado',
+        idUserOld: idUserOld
+       
       }),
     })
       .then((res) => {
@@ -57,7 +60,7 @@ const ReselectUser = () => {
 
   return (
     <div>
-      <p>Reasignar el aviso con número de incidencia {n_incidencia}</p>
+      <p>Reasignar el aviso con número de incidencia </p>
       {/* <select name="users"  className='select'> */}
       <select value={selected} onChange={handleChange}>
         {/* <option>Selecciona un usuario</option> */}

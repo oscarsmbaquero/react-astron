@@ -53,14 +53,14 @@ const MostrarIntervencion = () => {
     useEffect(() => {
       if (intervencion) {
         let tabla=[]
-        intervencion.intervencion.map( (aviso, index ) => {
+        intervencion.intervencion.map( (aviso, index ) => (
           tabla.push({
             intervencion:aviso,
             fecha_inicio: intervencion.fecha_inicio[index],
             fecha_fin:intervencion.fecha_fin[index] ,
             km: intervencion.km[index]
           })
-        })
+        ))
 
         setIntervencionTabla(tabla);
       }

@@ -72,7 +72,7 @@ const routes = [
     element: <SelectUser />,
   },
   {
-    path: "/avisos/reasignar/:id/:n_incidencia",
+    path: "/avisos/reasignar/:id/:idUserOld",
     element: <ReselectUser />,
   },
   {

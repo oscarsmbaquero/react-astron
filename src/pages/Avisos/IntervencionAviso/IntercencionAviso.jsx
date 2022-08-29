@@ -21,7 +21,12 @@ const IntercencionAviso = () => {
     }, [id])
     
     const onSubmit = async (formData) => {
-        console.log(formData,'datos');
+        
+        
+        const horas = formData.fecha_inicio
+
+        console.log(horas,'datos');
+        
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
