@@ -11,6 +11,8 @@ import AddIcon from '@mui/icons-material/Add';
 import { Create, DeleteOutlined } from '@mui/icons-material';
 import Swal from 'sweetalert2'// hay que probarlo
 import {  useGetAuth } from "../../../context/context";
+import IconoNuevoGasto from '../../../assets/images/nuevo-gasto.svg';
+
 // import SelectCompanies from '../../../core/components/SelectCompanies/SelectCompanies';
 // import SelectUser from '../../../core/components/SelectUsers/SelectUser';
 //import ButtonGroup from '@mui/material/ButtonGroup';
@@ -211,6 +213,23 @@ const deleteaviso = (e, aviso) => {
                     </Stack>
                   </Grid>
                 </Container>
+                {userLogged.id ?
+          <div className="nuevo-gasto">
+            <Link to={'/anadir/avisos'}>
+              <figure>
+                  <img 
+                              src={IconoNuevoGasto}
+                              alt="icono nuevo gasto"
+                              //onClick={handleNuevoGasto}
+                              
+                          />
+                          <figcaption>Añadir Aviso</figcaption>
+              </figure>
+            </Link>
+                
+          </div>
+
+        :''}
            
     </>
   )

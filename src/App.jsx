@@ -7,13 +7,12 @@ import Header2 from './Components/Header/Header2';
 import routes from "./Config/routes";
 import { AuthProvider } from "./context";
 import Button from '@mui/material/Button';
-import IconoNuevoGasto from '../src/assets/images/nuevo-gasto.svg';
-import {  useGetAuth } from "../../context";
+
 
 
 function App() {
 
-  const userLogged = useGetAuth();
+
   return (
     <div className="App">
     <AuthProvider> {/* provee el auth a la aplicación */}
@@ -30,23 +29,7 @@ function App() {
                     ))}
           </Routes>
         </div>
-        {userLogged._id ? 
-          <div className="nuevo-gasto">
-            <Link to={'/anadir/avisos'}>
-              <figure>
-                  <img 
-                              src={IconoNuevoGasto}
-                              alt="icono nuevo gasto"
-                              //onClick={handleNuevoGasto}
-                              
-                          />
-                          <figcaption>Añadir Aviso</figcaption>
-              </figure>
-            </Link>
-                
-          </div>
-
-        :''}
+        
         
         {/* <Footer/> */}
       </Router>
