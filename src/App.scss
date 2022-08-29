@@ -46,3 +46,27 @@
 .main{
   min-height: 500px;
 }
+
+.nuevo-gasto {
+  position: fixed;
+  bottom: 15rem;
+  right: 2rem;
+}
+
+.nuevo-gasto img {
+  width: 5rem;
+}
+.nuevo-gasto img:hover {
+  cursor: pointer;
+}
+figcaption {
+  display:none; 
+  transition: all .5s;
+}
+/* Visible texto */
+figure:hover > figcaption {
+  display:block;
+  transition: all .5s;
+  color:red;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
