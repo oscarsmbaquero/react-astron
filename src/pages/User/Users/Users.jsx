@@ -14,8 +14,8 @@ import Swal from 'sweetalert2'// hay que
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.text.primary,
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,

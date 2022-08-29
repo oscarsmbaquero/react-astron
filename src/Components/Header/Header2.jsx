@@ -61,7 +61,7 @@ const Header = () => {
                       color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "4px solid red"
+                        ? "3px solid red"
                         : "4px solid transparent",
                     })}
                   >
@@ -74,7 +74,7 @@ const Header = () => {
                       color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "4px solid red"
+                        ? "3px solid red"
                         : "4px solid transparent",
                     })}
                   >
@@ -87,7 +87,7 @@ const Header = () => {
                       color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "4px solid red"
+                        ? "3px solid red"
                         : "4px solid transparent",
                     })}
                   >
@@ -100,7 +100,7 @@ const Header = () => {
                       color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "4px solid red"
+                        ? "3px solid red"
                         : "4px solid transparent",
                     })}
                   >
@@ -115,7 +115,7 @@ const Header = () => {
                       color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "4px solid red"
+                        ? "3px solid red"
                         : "4px solid transparent",
                     })}
                   >
@@ -132,7 +132,7 @@ const Header = () => {
                       color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "4px solid red"
+                        ? "3px solid red"
                         : "4px solid transparent",
                     })}
                   >
@@ -151,7 +151,7 @@ const Header = () => {
                     color: isActive ? "#000305" : "#000305",
                     //
                     borderBottom: isActive
-                      ? "4px solid red"
+                      ? "3px solid red"
                       : "4px solid transparent",
                   })}
                 >
@@ -168,7 +168,7 @@ const Header = () => {
                     color: isActive ? "#000305" : "#000305",
                     // background: isActive ? '#A3D4F7' : '#fff',
                     borderBottom: isActive
-                      ? "4px solid red"
+                      ? "3px solid red"
                       : "4px solid transparent",
                   })}
                 >
@@ -183,7 +183,7 @@ const Header = () => {
                     color: isActive ? "#000305" : "#000305",
                     // background: isActive ? '#A3D4F7' : '#fff',
                     borderBottom: isActive
-                      ? "4px solid red"
+                      ? "3px solid red"
                       : "4px solid transparent",
                   })}
                 >

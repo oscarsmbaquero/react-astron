@@ -219,7 +219,7 @@ const deleteaviso = (e, aviso) => {
               <figure>
                   <img 
                               src={IconoNuevoGasto}
-                              alt="icono nuevo gasto"
+                              alt="icono nuevo aviso"
                               //onClick={handleNuevoGasto}
                               
                           />
