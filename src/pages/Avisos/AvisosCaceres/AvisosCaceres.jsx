@@ -177,18 +177,18 @@ const deleteaviso = (e, aviso) => {
                               justifyContent:'center'
                             }}>
                                 {aviso.estado === 'Asignado'?(
-                                  <Button>
-                                    <Link to={`/avisos/reasignar/${aviso._id}/${aviso.user_assigned?._id }`}>Reasignar Aviso</Link>
+                                  <Button variant='contained' color="error" size="small">
+                                    <Link to={`/avisos/reasignar/${aviso._id}/${aviso.user_assigned?._id }`}>Reasignar</Link>
                                 </Button>
                                 ):
-                                <Button>
-                                    <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>Asignar Aviso</Link>
+                                <Button variant='contained' size="small">
+                                    <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>Asignar</Link>
                                 </Button>
                                     }
-                                <Button>
+                                <Button variant='contained' color="warning" size="small">
                                     <Link to={`/avisos/intervencion/${aviso._id}`}>Añadir Int.</Link>
                                 </Button>
-                                <Button>
+                                <Button variant='contained'  color="success" size="small">
                                     <Link to={`/mostrar/intervencion/${aviso._id}`}>Mostrar Int.</Link>
                                 </Button>
                             </CardActions>
