@@ -47,7 +47,7 @@ const EditUser = () => {
    
    
     fetch(`${BASE_URL}/users/edit/`, {
-           method: 'PATCH',
+           method: 'PUT',
            headers: {
                   //'Content-Type': 'multipart/form-data',
                   Authorization: `Bearer ${userLogged.token}`
