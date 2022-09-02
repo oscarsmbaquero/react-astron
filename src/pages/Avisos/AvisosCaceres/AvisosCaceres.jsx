@@ -98,121 +98,116 @@ const deleteaviso = (e, aviso) => {
 
   return(
     <> 
-       {/* <Container>
-       <Grid alignItems={'center'}>
-       <SearchInput placeholder="Filtrar por trabajo o empresa" onChange={onInputChange} />
-       </Grid>
-       </Container> */}
        <div className='searchContainer'>
          <SearchInput placeholder="Filtrar " onChange={onInputChange} />
       </div>
-     
-                <Container>
-                  <Grid  container  spacing={5}>
-                  {filteredAvisos.map((aviso)=>(
-                    <Grid item key={aviso._id} xs={12} md={6} lg={4}>
-                      <Card elevation={5}
-                            sx={{ 
-                              borderRadius: '8px',
-                              justifyContent:'flex-start',
-                              flex: '1 0 auto',                    
-                              flexDirection: 'column' ,
-                              flexWrap:'wrap',
-                            }}
-                            >
-                        <CardHeader  
-                           sx={{
-                            color: 'error.main',
-                            background: 'whitesmoke'
-                           }}
-                          action={
-                            <>  {userLogged.rol ==='Tecnico'?''
-                                 :(<IconButton  color="error" onClick={(e)=> deleteaviso(e,aviso._id)} >
-                                  <DeleteOutlined/>
-                                </IconButton>)
-                                }
-                                
-                                <Link to={`/edit/aviso/${aviso._id}`}>
-                                      <IconButton  
-                                        aria-label="delete" 
-                                        color="secondary" 
-                                        ><Create />
-                                      </IconButton>
-                                </Link>
-                                 <Link to={`/avisos/details/${aviso._id}`}>
-                                      <IconButton  
-                                        aria-label="delete" 
-                                        color="success" 
-                                        ><AddIcon />
-                                      </IconButton>
-                                </Link>
-                                
-                            </>
-                          }
-                          title ={aviso.n_incidencia} 
-                          
-                          />
-                        <CardContent
-                            sx={{ flex: '1 0 auto' }}
-                            >
-                              {/* <Typography variant='body1' color='error'>
-                                {aviso.n_incidencia}
-                              </Typography> */}
-                              <Typography variant='h4' component={'div'}>
-                                {aviso.centro}
-                              </Typography>
-                              <Typography sx={{ fontSize: 26 }} color="text.secondary" >
-                                {aviso.localidad}
-                              </Typography>
-                              <Typography variant='h6'>
-                                {aviso.estado} <span className='user_asigned'> {aviso.user_assigned?.name }</span> 
-                              </Typography>
-                              <Typography variant='h6'>
-                              </Typography>
-                              <Typography variant='body1' color="text.secondary" >
-                                {aviso.averia}
-                              </Typography>
-                            </CardContent>
-                            <CardActions sx={{
-                              justifyContent:'center'
-                            }}>
-                                {aviso.estado === 'Asignado'?(
-                                  <Button variant='contained' color="error" size="small">
-                                    <Link to={`/avisos/reasignar/${aviso._id}/${aviso.user_assigned?._id }`}>Reasignar</Link>
-                                </Button>
-                                ):
-                                <Button variant='contained' size="small">
-                                    <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>Asignar</Link>
-                                </Button>
-                                    }
-                                <Button variant='contained' color="warning" size="small">
-                                    <Link to={`/avisos/intervencion/${aviso._id}`}>Añadir Int.</Link>
-                                </Button>
-                                <Button variant='contained'  color="success" size="small">
-                                    <Link to={`/mostrar/intervencion/${aviso._id}`}>Mostrar Int.</Link>
-                                </Button>
-                            </CardActions>
-                      </Card>
-                    </Grid>
-                    ))}
-                    <Stack 
-                            sx={{
-                                marginY: 5
-                            }}
-                            spacing={2}
-                            direction={'row'}
-                            justifyContent='center'
-                            alignItems='center'
+            <Container>
+              <Grid  container  spacing={5}>
+              {filteredAvisos.map((aviso)=>(
+                <Grid item key={aviso._id} xs={12} md={6} lg={4}>
+                  <Card elevation={5}
+                        sx={{ 
+                          borderRadius: '8px',
+                          justifyContent:'flex-start',
+                          flex: '1 0 auto',                    
+                          flexDirection: 'column' ,
+                          flexWrap:'wrap',
+                        }}
                         >
-                            {/* <Pagination 
-                                count={totalPaginas} 
-                                color="primary" 
-                                onChange={handleChangePagina}
-                                page={pagina}
-                            /> */}
-                    </Stack>
-                  </Grid>
-                </Container>
+                    <CardHeader  
+                        sx={{
+                        color: 'error.main',
+                        background: 'whitesmoke'
+                        }}
+                      action={
+                        <>  {userLogged.rol ==='Tecnico'?''
+                              :(<IconButton  color="error" onClick={(e)=> deleteaviso(e,aviso._id)} >
+                              <DeleteOutlined/>
+                            </IconButton>)
+                            }
+                            
+                            <Link to={`/edit/aviso/${aviso._id}`}>
+                                  <IconButton  
+                                    aria-label="delete" 
+                                    color="secondary" 
+                                    ><Create />
+                                  </IconButton>
+                            </Link>
+                              <Link to={`/avisos/details/${aviso._id}`}>
+                                  <IconButton  
+                                    aria-label="delete" 
+                                    color="success" 
+                                    ><AddIcon />
+                                  </IconButton>
+                            </Link>
+                            
+                        </>
+                      }
+                      title ={aviso.n_incidencia} 
+                      
+                      />
+                    <CardContent
+                        sx={{ flex: '1 0 auto' }}
+                        >
+                          {/* <Typography variant='body1' color='error'>
+                            {aviso.n_incidencia}
+                          </Typography> */}
+                          <Typography variant='h4' component={'div'}>
+                            {aviso.centro}
+                          </Typography>
+                          <Typography sx={{ fontSize: 26 }} color="text.secondary" >
+                            {aviso.localidad}
+                          </Typography>
+                          <Typography variant='h6'>
+                            {aviso.estado} <span className='user_asigned'> {aviso.user_assigned?.name }</span> 
+                          </Typography>
+                          <Typography variant='h6'>
+                          </Typography>
+                          <Typography variant='body1' color="text.secondary" >
+                            {aviso.averia}
+                          </Typography>
+                        </CardContent>
+                        <CardActions sx={{
+                          justifyContent:'center'
+                        }}>
+                            {
+                              aviso.estado === 'Asignado'?(
+                              <Button variant='contained' color="error" size="small">
+                                <Link to={`/avisos/reasignar/${aviso._id}/${aviso.user_assigned?._id }`}>Reasignar</Link>
+                            </Button>
+                            ):
+                            <Button variant='contained' size="small">
+                                <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>Asignar</Link>
+                            </Button>
+                                }
+                            <Button variant='contained' color="warning" size="small">
+                                <Link to={`/avisos/intervencion/${aviso._id}`}>Añadir Int.</Link>
+                            </Button>
+                            <Button variant='contained'  color="success" size="small">
+                                <Link to={`/mostrar/intervencion/${aviso._id}`}>Mostrar Int.</Link>
+                            </Button>
+                        </CardActions>
+                  </Card>
+                </Grid>
+                ))}
+                <Stack 
+                        sx={{
+                            marginY: 5
+                        }}
+                        spacing={2}
+                        direction={'row'}
+                        justifyContent='center'
+                        alignItems='center'
+                    >
+                        {/* <Pagination 
+                            count={totalPaginas} 
+                            color="primary" 
+                            onChange={handleChangePagina}
+                            page={pagina}
+                        /> */}
+                </Stack>
+              </Grid>
+            </Container>
                 {userLogged.id ?
           <div className="nuevo-gasto">
             <Link to={'/anadir/avisos'}>

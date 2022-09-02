@@ -69,7 +69,7 @@ const Users = () => {
     })
   }
 
-
+  console.log(userLogged.id,72);
 
   return (
     <Container sx={{padding:4}}>
@@ -97,6 +97,8 @@ const Users = () => {
             <StyledTableCell align="left">{user.email}</StyledTableCell>
             <StyledTableCell align="left">{user.account_type}</StyledTableCell>
             <StyledTableCell align="left">
+
+            {userLogged.id === user._id  || userLogged.rol === 'Admin' ?
             <Link to={`/edit/user/${user._id}`}>
                   <IconButton  
                     aria-label="delete" 
@@ -104,6 +106,7 @@ const Users = () => {
                     ><Create />
                   </IconButton>
              </Link>
+              :''}
              {userLogged.rol ==='Dispatch' || userLogged.rol ==='Admin' ?
              <IconButton  color="error" onClick={(e)=> deleteUser(e,user._id)} >
                 <DeleteOutlined/>

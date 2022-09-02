@@ -27,7 +27,7 @@ const Header = () => {
             className="collapse navbar-collapse fw-bold"
             id="navbarSupportedContent"
           >
-            <a
+            {/* <a
               className="navbar-brand d-flex justify-content-center"
               href="/"
               alt=""
@@ -38,8 +38,8 @@ const Header = () => {
                 src={logoOit}
                 alt="logo"
               />
-            </a>
-            {/* <a
+            </a> */}
+            <a
               className="navbar-brand d-flex justify-content-center"
               href="/"
               alt=""
@@ -50,7 +50,7 @@ const Header = () => {
                 src={logoAstron}
                 alt="logo"
               />
-            </a> */}
+            </a>
             <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
               {userLogged.id ? (
                 <>

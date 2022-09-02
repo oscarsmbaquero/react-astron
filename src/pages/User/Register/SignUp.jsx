@@ -158,16 +158,6 @@ export default function SignUp() {
               <MenuItem value={'Dispatch'}>Dispatch</MenuItem>
               
             </Select>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="image"
-              label="image"
-              type="file"
-              id="image"
-              onChange={handleRegisterForm}
-            />
             {/* <input type="file" alt="" name="image" className='edit__input'/> */}
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -188,8 +178,8 @@ export default function SignUp() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/users/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link href="/user/login" variant="body2">
+                  {"Ya tienes cuenta? LogIn"}
                 </Link>
               </Grid>
             </Grid>
