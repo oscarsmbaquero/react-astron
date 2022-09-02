@@ -47,7 +47,7 @@ const EditUser = () => {
    
    
     fetch(`${BASE_URL}/users/edit/`, {
-           method: 'PUT',
+           method: 'PATCH',
            headers: {
                   //'Content-Type': 'multipart/form-data',
                   Authorization: `Bearer ${userLogged.token}`
@@ -57,7 +57,7 @@ const EditUser = () => {
     }).then(res => {
            if (res.status === 200) {
                   Swal.fire("Modificado correctamente", res.message, "success");
-                  //getProfile();
+                  getProfile();
            }
     }).catch()
 }
