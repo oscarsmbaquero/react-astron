@@ -1,36 +1,63 @@
-.input {
-    align-items: center;  
-    background-color: whitesmoke;
-    border: 2px solid black;
-    border-radius: 8px;
-    padding: 16px;
-    width: 245px;
-    height: 5px;
-    outline: none;
-    margin-bottom: 10px;
-    margin-left: 10px;
+//Falta separar el margen inferior entre le "form" y el "login"
+
+.sectionEdit{
+
+  @media screen and(min-width:810px) {
+      background-color: var(--extra-blue-light);
+      padding: 1em;
   }
-  .select {
-     align-items: center;  
-    // background-color: whitesmoke;
-     border: 2px solid black;
-     border-radius: 8px;
-     padding: 16px;
-     width: 245px;
-     //height: 20px;
-    outline: none;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    color:black
+}
+.edit{
+  margin: 1em auto;
+  max-width: 70%;
+  background-color: white;
+  color:var(--primary-color);
+  @media screen and(min-width:810px) {
+      width: 1000px;
+      border-radius: 18px;
+      color:black;
+      padding: 1em;
   }
-  .textarea {
-    align-items: center;  
-    background-color: whitesmoke;
-    border: 2px solid black;
-    border-radius: 8px;
-    padding: 16px;
-    width: 475px;
-    height: 130px;
-    outline: none;
-    margin-bottom: 10px;
+  &__form{
+      display: flex;
+      flex-direction: column;
+      margin: 1em auto;
+      @media screen and(min-width:810px) {
+          width: 90%;
+          margin-bottom: 2em;
+
+      }
   }
+  &__label{
+      text-align:center;
+      font-weight: bold;
+      font-family: Georgia, Cambria, Times, "Times New Roman";
+      @media screen and(min-width:810px) {
+          text-align:left;
+      }
+  }
+  
+  &__text-area{
+    margin:1em auto;
+    height: 100px;
+    width: 70%;
+    border: 1px solid rgba(0, 0, 0, 0.616);
+    border-radius: 10px;
+    @media screen and(min-width:810px) {
+        width: 100%;
+    }
+}
+  // &__input:hover{
+
+  // }
+  &__button{
+      margin: 1em auto;
+      width: 100%;
+      border-radius: 15px;
+      background-color: var(--secondary-color);
+      color: white;
+      @media screen and(min-width:810px) {
+          width: 70%;
+      }
+  }
+}

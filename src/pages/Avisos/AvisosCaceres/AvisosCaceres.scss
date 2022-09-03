@@ -125,3 +125,19 @@
     background-color: whitesmoke;
 
 }
+
+.details{
+    color:azure;
+    height: 100vh;
+    width: 100vw;
+   &__text{
+    
+        .urgente{
+            color:red;
+        }
+        .normal{
+            color:greenyellow
+        }
+   }
+   
+}

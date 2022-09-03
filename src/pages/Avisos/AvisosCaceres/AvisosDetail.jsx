@@ -1,6 +1,7 @@
 import React,{ useState, useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import { BASE_URL } from "../../../assets/ApiRoutes";
+import './AvisosCaceres.scss';
 
 const AvisosDetail = () => {
   const { id } = useParams();
@@ -21,10 +22,12 @@ const AvisosDetail = () => {
   { !avisos ? <p>Cargando...</p> : <>
     <div className="details">
       <div className="details__text">      
-          <h1> Nº incidencia: {avisos.n_incidencia}</h1>
-          <h2> Localidad:{avisos.localidad}</h2>          
-          <h2> Centro:{avisos.centro}</h2>
-          <p>  Averia:{avisos.averia}</p>          
+          <h1>{avisos.n_incidencia}</h1>
+          <h2>{avisos.localidad}</h2>          
+          <h2>{avisos.centro}</h2>
+          {avisos.prioridad === 'Urgente' ? <h3 className='urgente'>{avisos.prioridad}</h3> : <h3 className='normal'>{avisos.prioridad}</h3> }
+          
+          <p>{avisos.averia}</p>          
        </div>
     </div>
   </>}

@@ -1,6 +1,6 @@
-import { CropLandscapeOutlined } from '@mui/icons-material';
-import React, { useEffect, useState, useMemo } from 'react';
-import {  Link, Navigate } from 'react-router-dom';
+
+import React, { useEffect, useState} from 'react';
+// import {  Link, Navigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { BASE_URL } from "../../../assets/ApiRoutes";
 // import Table from "../../../Components/Table/Table.jsx"
@@ -8,8 +8,6 @@ import { BASE_URL } from "../../../assets/ApiRoutes";
 import { Container, Table, TableBody,  TableContainer, TableHead, TableRow } from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
-import { Create, DeleteOutlined } from '@mui/icons-material';
-import IconButton from '@mui/material/IconButton';
 import { styled } from '@mui/material/styles';
 
 
@@ -66,11 +64,11 @@ const MostrarIntervencion = () => {
       }
   
   }, [intervencion])
-console.log(intervencion,456987)
+
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.text.primary,
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,

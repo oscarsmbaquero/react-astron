@@ -1,31 +1,70 @@
-.form{
-    height: 500px;
-    width: 500px;
-    margin: 50px auto;
-    display: flex;
-    justify-content: center;
-    
-    & p{
-        
-        font-family: Rockwell,"Times New Roman",serif;
-        font-size: 20px;
-    }
+//Falta separar el margen inferior entre le "form" y el "login"
+
+.sectionEdit{
+
+  @media screen and(min-width:810px) {
+      background-color: var(--extra-blue-light);
+      padding: 1em;
   }
-  .input{
-    width: 300px;
-    height: 25px;
-    border-radius: 8px;
-    border-color: black;
+}
+.edit{
+  margin: 1em auto;
+  max-width: 70%;
+  background-color: white;
+  color:var(--primary-color);
+  @media screen and(min-width:810px) {
+      width: 1000px;
+      border-radius: 18px;
+      color:black;
+      padding: 1em;
   }
-  
-  .buttonForm{
-    width: 90px;
-    height: 30px;
-    margin: 20px 0 0 100px;
-    border-color:none;
-    border-radius: 8px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color:black;
-    background-color:whitesmoke;    
+  &__form{
+      display: flex;
+      flex-direction: column;
+      margin: 1em auto;
+      @media screen and(min-width:810px) {
+          width: 90%;
+          margin-bottom: 2em;
+
+      }
   }
-  
+  &__label{
+      text-align:center;
+      font-weight: bold;
+      font-family: Georgia, Cambria, Times, "Times New Roman";
+      @media screen and(min-width:810px) {
+          text-align:left;
+      }
+  }
+  &__input{
+      margin:0.5em auto;
+      width: 70%;
+      border: 1px solid rgba(0, 0, 0, 0.616);
+      border-radius: 10px;
+      @media screen and(min-width:810px) {
+          width: 100%;
+      }
+  }
+  // &__input:hover{
+
+  // }
+  &__button{
+      margin: 1em auto;
+      width: 100%;
+      border-radius: 15px;
+      background-color: var(--secondary-color);
+      color: white;
+      @media screen and(min-width:810px) {
+          width: 70%;
+      }
+  }
+  &__select{
+    margin:0.5em auto;
+      width: 70%;
+      border: 1px solid rgba(0, 0, 0, 0.616);
+      border-radius: 10px;
+      @media screen and(min-width:810px) {
+          width: 100%;
+      }
+}
+}

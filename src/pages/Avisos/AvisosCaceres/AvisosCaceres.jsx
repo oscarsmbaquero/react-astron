@@ -48,7 +48,7 @@ const AvisosCaceres = () => {
           .then(data => SetAvisos(data))
       }, []);
 
-const avisosCaceres = avisos.filter((avisos)=> avisos.provincia === 'Caceres');
+const avisosCaceres = avisos.filter((avisos)=> avisos.provincia === 'Cáceres');
 
  
 useEffect(() => {

@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import {  useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import './AddAvisos.scss';
+import Loader from '../../../core/components/Loader/Loader';
 import Swal from 'sweetalert2'// hay que probarlo
 import { Button, Container, FormControl, FormHelperText, Grid, Input, InputLabel,  } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
@@ -44,126 +45,46 @@ const AddAvisos = () => {
         
     }
   return (
-  
-    <form onSubmit={handleSubmit(onSubmit)} className="form">
-     <Container >
-            <Grid xs={12} md={6} lg={4}>
-                <FormControl>
-                    <InputLabel htmlFor="n_incidecia">Nº Incidencia </InputLabel>
-                        <Input id="incidencia"                         
-                        type="text" 
-                        aria-describedby='incidencia-helper'
-                        {...register('n_incidencia')} 
-                        />
-                        {/* <FormHelperText id="incidencia-helper">Incidencia</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <FormControl>
-                    <InputLabel htmlFor="centro">Centro</InputLabel>
-                        <Input id="centro"                          
-                        type="text" 
-                        aria-describedby='centro-helper'
-                        {...register('centro')}
-                        />
-                        {/* <FormHelperText id="centro-helper">Centro</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <FormControl>
-                    <InputLabel htmlFor="localidad">Localidad</InputLabel>
-                        <Input id="localidad" 
-                        type="text" 
-                        aria-describedby='localidad-helper'
-                        {...register('localidad')}   
-                        />
-                        {/* <FormHelperText id="localidad-helper">Localidad</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <FormControl>
-                    <InputLabel htmlFor="`provincia">Provincia</InputLabel>
-                        <Input id="provincia" 
-                        type="text" 
-                        aria-describedby='provincia-helper'
-                        {...register('provincia')}   
-                        />
-                        {/* <FormHelperText id="provincia-helper">Provincia</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <FormControl>
-                    <InputLabel htmlFor="averia">Averia</InputLabel>
-                        <Input id="averia" 
-                        type="text" 
-                        aria-describedby='averia-helper'
-                        {...register('averia')}   
-                        />
-                        {/* <FormHelperText id="incidencia-helper">Avería</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <FormControl>
-                    <InputLabel htmlFor="prioridad">Prioridad</InputLabel>
-                        <Input id="prioridad" 
-                        type="text" 
-                        aria-describedby='prioridad-helper'
-                        {...register('prioridad')}   
-                        />
-                        {/* <FormHelperText id="incidencia-helper">Prioridad</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <FormControl>
-                    <InputLabel htmlFor="estado">Estado</InputLabel>
-                        <Input id="estado" 
-                        type="text" 
-                        aria-describedby='estado-helper'
-                        {...register('estado')}   
-                        />
-                        {/* <FormHelperText id="estado-helper">Estado</FormHelperText> */}
-                </FormControl>
-                <br/>
-                <br/>
-                <br/>
-                
-                {/* <button className="buttonForm" disabled={!isValid}>Send</button> */}
-                <Button variant="contained" type='submit' disabled={!isValid} endIcon={<SendIcon />}>
-                Enviar
-                </Button>
-            </Grid>
-    </Container>
-        {/* <label>
-            <p>Nº Incidencia</p>
-            <input className="input" type="text" name="n_incidencia" placeholder="Nº Incidencia" {...register('n_incidencia', {
-                required: 'Name is required',
-               
-            })}/>
-            {errors.n_incidencia && errors.n_incidencia.type === 'required' && <p>{errors.n_incidencia.message}</p>}
-        </label>
-        <label>
-            <p>Centro</p>
-            <input className="input" type="text" name="centro" placeholder="Centro"  {...register('centro')}/>
-        </label>
-        <label>
-            <p>Localidad</p>
-            <input className="input" type="text" name="localidad" placeholder="Localidad"  {...register('localidad')}/>
-        </label>
-        <label>
-            <p>Provincia</p>
-            <input className="input" type="text" name="provincia" placeholder="Provincia"  {...register('provincia')}/>
-        </label>
-        <label>
-            <p>Averia</p>
-            <input className="input" type="text" name="averia" placeholder="Descripciòn averia"  {...register('averia')}/>
-        </label>
-        <label>
-            <p>Prioridad</p>
-            <input className="input" type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>
-        </label>
-        <label>
-            <p>Estado</p>
-            <input className="input" type="text" name="estado" placeholder="Estado"  {...register('estado')}/>
-        </label>
-        <br></br> */}
+    <section className="sectionEdit">
+    <div className="edit">
+    <form onSubmit={handleSubmit(onSubmit)} className="edit__form">
+    
+        <label className="edit__label">Incidencia</label>
+            <input className="edit__input" type="text" name="n_incidencia" placeholder="Nº Incidencia" {...register('n_incidencia')}/>
+        <label className="edit__label">Centro</label>
+            <input className="edit__input" type="text" name="centro" placeholder="Centro"  {...register('centro')}/>
+        <label className="edit__label">Localidad</label>
+            <input className="edit__input" type="text" name="localidad" placeholder="Localidad"  {...register('localidad')}/>
+        <label className="edit__label">Prioridad</label>
+                <select  {...register("provincia")} className='edit__select'>
+                    <option value="Cáceres">Cáceres</option>
+                    <option value="Badajoz">Badajoz</option>
+                </select>
+
+        {/* <label className="edit__label">Provincia</label>
+            <input className="edit__input" type="text" name="provincia" placeholder="Provincia"  {...register('provincia')}/> */}
+        <label className="edit__label">Averia</label>
+            <textarea className='edit__text-area' type="text" name="averia" placeholder="Descripciòn averia"  {...register('averia')}/>
+        <label className="edit__label">Prioridad</label>
+                <select  {...register("prioridad")} className='edit__select'>
+                    <option value="Urgente">Urgente</option>
+                    <option value="Normal">Normal</option>
+                </select>
+         <label className="edit__label">Estado</label>
+                <select  {...register("estado")}  className='edit__select'>
+                    <option value="Abierta" selected>Abierto</option>
+                    {/* <option value="Asignado">Asignado</option>
+                    <option value="Cerrado">Cerrado</option> */}
+                </select>
+        <br></br>
+        <Button variant="contained" type='submit'  endIcon={<SendIcon />} >
+            Enviar
+        </Button>
         
         
     </form>
-    
+    </div>
+    </section>
   )
   
 }
