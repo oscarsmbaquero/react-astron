@@ -11,6 +11,7 @@ import SendIcon from '@mui/icons-material/Send';
 const IntercencionAviso = () => {
 
     let [aviso, SetAviso] =useState();
+    const [users, setUsers] = useState([]);
     const { id } =useParams();
 
     const { register, handleSubmit, formState: {errors, isValid}, setValue, } = useForm({mode: "onChange"});
@@ -22,6 +23,14 @@ const IntercencionAviso = () => {
         .then(data => SetAviso(data))
     
     }, [id])
+
+    useEffect(() => {
+        fetch(`${BASE_URL}/users`)
+        .then(response => response.json())
+        .then(data => setUsers(data))
+      
+        
+      }, [])
     
     const onSubmit = async (formData) => {
         
@@ -59,22 +68,32 @@ const IntercencionAviso = () => {
     <div className="edit">
         <form onSubmit={handleSubmit(onSubmit)} class="edit__form">
             <label className="edit__label">Nº Incidencia</label>
-                <input className='edit__input' {...setValue("n_incidencia", aviso.n_incidencia)} type="text" name="name" placeholder="Nº Incidencia"  {...register('n_incidencia', )}/>
+                <input className='edit__input' readOnly {...setValue("n_incidencia", aviso.n_incidencia)} type="text" name="name" placeholder="Nº Incidencia"  {...register('n_incidencia', )}/>
+            <label className="edit__label">Centro</label>
+                <input className='edit__input' readOnly {...setValue("centro", aviso.centro)} type="text" name="centro" placeholder="Centro"  {...register('centro')}/>
             <label className="edit__label">Localidad</label>
-                <input className='edit__input' {...setValue("localidad", aviso.localidad)} type="text" name="localidad" placeholder="Localidad"   {...register('localidad')}/>            
-            <label className="edit__label">Centro</label>
-                <input className='edit__input' {...setValue("centro", aviso.centro)} type="text" name="centro" placeholder="Centro"  {...register('centro')}/>
+                <input className='edit__input' readOnly {...setValue("localidad", aviso.localidad)} type="text" name="localidad" placeholder="Localidad"   {...register('localidad')}/>                        
+            <label className="edit__label">Localidad</label>
+                <input className='edit__input' readOnly {...setValue("provincia", aviso.provincia)} type="text" name="localidad" placeholder="Provincia"   {...register('provincia')}/>                        
             <label className="edit__label">Averia</label>
-                <textarea class="input" {...setValue("averia", aviso.averia)} type="text" name="averia" placeholder="Averia"  {...register('averia')}/>
-            <label className="edit__label">Centro</label>
-                <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>            
-            <label className="edit__label">Estado</label>
-                <select className='edit__input' {...setValue("estado", aviso.estado)} type="text" name="estado" placeholder="Estado"  {...register('estado')}>
+                <textarea class="input" readOnly {...setValue("averia", aviso.averia)} type="text" name="averia" placeholder="Averia"  {...register('averia')}/>
+            {/* <label className="edit__label">Centro</label>
+                <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>             */}
+            <label className="edit__label" >Estado</label>
+                <select className='edit__input'  {...setValue("estado", aviso.estado)} type="text" name="estado" placeholder="Estado"  {...register('estado')}>
                         <option value="Abierta">Abierta</option>
                         <option value="Asignada">Asignada</option>
-                        <option value="Pendiente">Pendiente</option>
+                        {/* <option value="Pendiente">Pendiente</option> */}
                         <option value="Cerrada">Cerrada</option>
                 </select>
+            <label className="edit__label">Técnico</label>
+                <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>                        
+                        <option selected >Selecciona Técnico</option>
+                        {users.map((user) => (
+                        <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
+                    ))}
+                </select>
+                
             <label className="edit__label">Fecha Inicio</label>
                 <input className='edit__input'  type="datetime-local" name="fecha_inicio" placeholder="Inicio"  {...register('fecha_inicio')}/>
             <label className="edit__label">Fecha Fin</label>

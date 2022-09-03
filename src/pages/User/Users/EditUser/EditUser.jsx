@@ -35,7 +35,7 @@ const EditUser = () => {
     e.preventDefault();
 
            let target = e.target;
-           console.log(e.target.name.value,32);
+           console.log(e.target.image.files[0],32);
            const data = new FormData();
 
     

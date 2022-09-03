@@ -56,7 +56,9 @@ const MostrarIntervencion = () => {
             intervencion:aviso,
             fecha_inicio: intervencion.fecha_inicio[index],
             fecha_fin:intervencion.fecha_fin[index] ,
-            km: intervencion.km[index]
+            km: intervencion.km[index],
+            viaje: intervencion.viaje[index],
+            tecnico: intervencion.tecnicoIntervencion[index],
           })
         ))
 
@@ -94,7 +96,8 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="center">Fecha Fin</StyledTableCell>
             <StyledTableCell align="center">Descripción</StyledTableCell>
             <StyledTableCell align="center">km</StyledTableCell>
-            <StyledTableCell align="center">Total horas</StyledTableCell>
+            <StyledTableCell align="center">T desplazamiento</StyledTableCell>
+            <StyledTableCell align="center">Técnico</StyledTableCell>
         </TableHead>
         <TableBody>
           {intervencionTabla.map((aviso) => (
@@ -107,6 +110,7 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="left">{aviso.intervencion}</StyledTableCell>
             <StyledTableCell align="left">{aviso.km}</StyledTableCell>
             <StyledTableCell align="left">{aviso.viaje}</StyledTableCell>
+            <StyledTableCell align="left">{aviso.tecnico}</StyledTableCell>
             {/* <Link to={`/edit/user/${aviso._id}`}>
                   <IconButton  
                     aria-label="delete" 
