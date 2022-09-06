@@ -27,7 +27,8 @@
     "react-swipeable": "^7.0.0",
     "react-table": "^7.8.0",
     "sweetalert2": "^11.4.24",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "emailjs": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

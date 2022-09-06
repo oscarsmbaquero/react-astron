@@ -34,11 +34,20 @@ const IntercencionAviso = () => {
     
     const onSubmit = async (formData) => {
         
-        
-        const horas = formData.fecha_inicio
+        // const hora_fin = formData.fecha_fin;
+        // const hora_inicio = formData.fecha_inicio;
+        // console.log(hora_inicio,hora_fin,39);
+        // const elemInicio = hora_inicio.toString().slice(11,16);
+        // const elemFinal = hora_fin.toString().slice(11,16);
+        // console.log(elemInicio,elemFinal,41);
+        // const horas =elemFinal-elemInicio;
+        // const prueba = parseInt(elemInicio,10)
+        // const hora_ini = new Date();
+        //  const hora =hora_ini.getHours()
+        //  console.log(hora);
+      
 
-        console.log(horas,'datos');
-        
+           
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
@@ -73,10 +82,10 @@ const IntercencionAviso = () => {
                 <input className='edit__input' readOnly {...setValue("centro", aviso.centro)} type="text" name="centro" placeholder="Centro"  {...register('centro')}/>
             <label className="edit__label">Localidad</label>
                 <input className='edit__input' readOnly {...setValue("localidad", aviso.localidad)} type="text" name="localidad" placeholder="Localidad"   {...register('localidad')}/>                        
-            <label className="edit__label">Localidad</label>
+            <label className="edit__label">Provincia</label>
                 <input className='edit__input' readOnly {...setValue("provincia", aviso.provincia)} type="text" name="localidad" placeholder="Provincia"   {...register('provincia')}/>                        
             <label className="edit__label">Averia</label>
-                <textarea class="input" readOnly {...setValue("averia", aviso.averia)} type="text" name="averia" placeholder="Averia"  {...register('averia')}/>
+                <textarea class="textarea" readOnly {...setValue("averia", aviso.averia)} type="text" name="averia" placeholder="Averia"  {...register('averia')}/>
             {/* <label className="edit__label">Centro</label>
                 <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>             */}
             <label className="edit__label" >Estado</label>

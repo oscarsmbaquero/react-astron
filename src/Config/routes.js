@@ -68,7 +68,7 @@ const routes = [
     element: <EditAviso />,
   },
   {
-    path: "/avisos/asignar/:id/:n_incidencia",
+    path: "/avisos/asignar/:id/:n_incidencia/:centro",
     element: <SelectUser />,
   },
   {

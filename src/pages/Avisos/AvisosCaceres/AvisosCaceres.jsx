@@ -177,7 +177,7 @@ const deleteaviso = (e, aviso) => {
                             </Button>
                             ):
                             <Button variant='contained' size="small">
-                                <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}`}>Asignar</Link>
+                                <Link to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}/${aviso.centro}`}>Asignar</Link>
                             </Button>
                                 }
                             <Button variant='contained' color="warning" size="small">
