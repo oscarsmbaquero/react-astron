@@ -55,7 +55,7 @@ const AddAvisos = () => {
             <input className="edit__input" type="text" name="centro" placeholder="Centro"  {...register('centro')}/>
         <label className="edit__label">Localidad</label>
             <input className="edit__input" type="text" name="localidad" placeholder="Localidad"  {...register('localidad')}/>
-        <label className="edit__label">Prioridad</label>
+        <label className="edit__label">Provincia</label>
                 <select  {...register("provincia")} className='edit__select'>
                     <option value="Cáceres">Cáceres</option>
                     <option value="Badajoz">Badajoz</option>
