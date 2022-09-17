@@ -12,6 +12,7 @@ import { Create, DeleteOutlined } from '@mui/icons-material';
 import Swal from 'sweetalert2'// hay que probarlo
 import {  useGetAuth } from "../../../context/context";
 import IconoNuevoGasto from '../../../assets/images/nuevo-gasto.svg';
+import Badge from 'react-bootstrap/Badge';
 
 
 // import SelectCompanies from '../../../core/components/SelectCompanies/SelectCompanies';
@@ -105,7 +106,7 @@ const deleteaviso = (e, aviso) => {
             <Container>
               <Grid  container  spacing={5}>
               {filteredAvisos.map((aviso)=>(
-                <Grid item key={aviso._id} xs={12} md={6} lg={4}>
+                <Grid item key={aviso._id} xs={12} md={6} lg={6}>
                   <Card elevation={5}
                         sx={{ 
                           borderRadius: '16px',
@@ -144,15 +145,17 @@ const deleteaviso = (e, aviso) => {
                             
                         </>
                       }
-                      title ={aviso.n_incidencia} 
+                      
+                      //title ={aviso.n_incidencia} 
                       
                       />
                     <CardContent
                         sx={{ flex: '1 0 auto' }}
                         >
-                          {/* <Typography variant='body1' color='error'>
-                            {aviso.n_incidencia}
-                          </Typography> */}
+                          <Typography variant='body1' color='error'>
+                          <Badge  bg="danger">{aviso.n_incidencia}</Badge>
+                            
+                          </Typography>
                           <Typography variant='h4' component={'div'}>
                             {aviso.centro}
                           </Typography>
