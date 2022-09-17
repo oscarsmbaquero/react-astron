@@ -119,13 +119,14 @@ const deleteaviso = (e, aviso) => {
                     <CardHeader  
                         sx={{
                         color: 'error.main',
-                        background: 'whitesmoke'
+                        background: 'whitesmoke',
+                        justifyContent: 'space-between' 
                         }}
                       action={
                         <>  {userLogged.rol ==='Tecnico'?''
                               :(<IconButton  color="error" onClick={(e)=> deleteaviso(e,aviso._id)} >
                               <DeleteOutlined/>
-                            </IconButton>)
+                               </IconButton>)
                             }
                             
                             <Link to={`/edit/aviso/${aviso._id}`}>
@@ -152,9 +153,8 @@ const deleteaviso = (e, aviso) => {
                     <CardContent
                         sx={{ flex: '1 0 auto' }}
                         >
-                          <Typography variant='body1' color='error'>
+                          <Typography variant='body1' color='error' sx={{ fontSize: 26 }}>
                           <Badge  bg="danger">{aviso.n_incidencia}</Badge>
-                            
                           </Typography>
                           <Typography variant='h4' component={'div'}>
                             {aviso.centro}
@@ -163,7 +163,12 @@ const deleteaviso = (e, aviso) => {
                             {aviso.localidad}
                           </Typography>
                           <Typography variant='h6'>
-                            {aviso.estado} <span className='user_asigned'> {aviso.user_assigned?.name }</span> 
+                            {aviso.estado === 'Abierta'?//primera condicion
+                            <Badge  bg="success"> {aviso.estado}</Badge>
+                            :aviso.estado === 'Pendiente' ?//segunda condicion
+                            <Badge  bg="warning"> {aviso.estado}</Badge>
+                            :<Badge  bg="primary" > {aviso.estado}:&nbsp;{aviso.user_assigned?.name }</Badge>//si no cumple tercera condicion
+                            }
                           </Typography>
                           <Typography variant='h6'>
                           </Typography>
