@@ -219,7 +219,6 @@ const deleteaviso = (e, aviso) => {
                               //onClick={handleNuevoGasto}
                               
                           />
-                          <figcaption>Añadir Aviso</figcaption>
               </figure>
             </Link>
                 
