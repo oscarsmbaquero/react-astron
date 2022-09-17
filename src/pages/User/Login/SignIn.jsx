@@ -98,7 +98,7 @@ export default function SignIn() {
         > 
           <Avatar alt="Remy Sharp" src={logo4}  />
           <Typography component="h1" variant="h5">
-            Login
+            
           </Typography>
           <Box component="form" onSubmit={handleLogin} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -141,9 +141,9 @@ export default function SignIn() {
                   Forgot password?
                 </Link>
               </Grid>
-              <Grid item>
+              <Grid item xs>
                 <Link href="/users/register" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {"No tienes cuanta? Registrate"}
                 </Link>
               </Grid>
             </Grid>

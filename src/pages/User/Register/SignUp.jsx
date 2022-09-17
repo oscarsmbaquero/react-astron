@@ -174,7 +174,7 @@ export default function SignUp() {
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">
-                  Forgot password?
+                  Olvidaste contraseña?
                 </Link>
               </Grid>
               <Grid item>

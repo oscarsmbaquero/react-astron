@@ -50,3 +50,9 @@ a {
   display:flex;
   justify-content: flex-end;
 }
+p{
+  color:white;
+}
+h2{
+  color:red;
+}

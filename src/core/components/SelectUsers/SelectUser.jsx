@@ -54,7 +54,7 @@ const SelectUser = () => {
 
       Swal.fire({
         title: 'Éxito!',
-        text: 'Enviado solicitud correctamente',
+        text: 'Enviada notificación correctamente',
         icon: 'success',
         confirmButtonText: 'Ok'
       })
@@ -98,7 +98,8 @@ console.log(users);
 
   return (
     <div>
-      <p>Asignar el aviso con número de incidencia {n_incidencia}</p>
+      <p>Asignar el aviso con número de incidencia</p>
+      <h2>{n_incidencia}</h2>
       {/* <select name="users"  className='select'> */}
       <select value={selected} onChange={handleChange}>
         {/* <option>Selecciona un usuario</option> */}

@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'// hay que probarlo
 import {  useGetAuth } from "../../../context/context";
 import IconoNuevoGasto from '../../../assets/images/nuevo-gasto.svg';
 
+
 // import SelectCompanies from '../../../core/components/SelectCompanies/SelectCompanies';
 // import SelectUser from '../../../core/components/SelectUsers/SelectUser';
 //import ButtonGroup from '@mui/material/ButtonGroup';
@@ -107,7 +108,7 @@ const deleteaviso = (e, aviso) => {
                 <Grid item key={aviso._id} xs={12} md={6} lg={4}>
                   <Card elevation={5}
                         sx={{ 
-                          borderRadius: '8px',
+                          borderRadius: '16px',
                           justifyContent:'flex-start',
                           flex: '1 0 auto',                    
                           flexDirection: 'column' ,
