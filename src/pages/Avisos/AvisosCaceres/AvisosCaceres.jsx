@@ -112,7 +112,8 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
   return (
     <>
       <div className="searchContainer">
-        <SearchInput placeholder="Filtrar " onChange={onInputChange} />
+      
+        <SearchInput  placeholder="Buscar por centro, averia... " onChange={onInputChange} />
       </div>
       <Container>
         <Grid container spacing={5}>
@@ -121,7 +122,7 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
               <Card
                 elevation={5}
                 sx={{
-                  borderRadius: "16px",
+                  borderRadius: "8px",
                   justifyContent: "flex-start",
                   flex: "1 0 auto",
                   flexDirection: "column",
@@ -135,9 +136,10 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                   sx={{
                     color: "error.main",
                     background: "whitesmoke",
-                    justifyContent: "center",
+                    justifyContent: "space-between",
                   }}
                   title ={aviso.centro}
+                  titleStyle={{textAlign: 'center'}}
                   action={
                     <>
                       {" "}
@@ -166,7 +168,7 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                   // title ={aviso.n_incidencia}
                    
                 />
-                <CardContent sx={{ flex: "1 0 auto" }}>
+                <CardContent sx={{ flex: "2 0 auto" }}>
                   <Typography
                     variant="body1"
                     color="error"

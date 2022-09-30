@@ -41,14 +41,18 @@ const Header = () => {
                 </>
                 :''}
                 {userLogged.id ?
-                  <NavLink className="header__a" to="/avisos/badajoz">Badajoz</NavLink>
-                  :''}
-                  {userLogged.id ?
-                  <NavLink className="header__a" to="/items">Items</NavLink>
-                  :''}
-                  {userLogged.id ?
+                <NavLink className="header__a" to="/avisos/badajoz">Badajoz</NavLink>
+                :''}
+                {userLogged.id ?
+                <NavLink className="header__a" to="/items">Items</NavLink>
+                :''}
+                {userLogged.id ?
                 <NavLink className="header__a" to="/certificaciones">Certificaciones</NavLink>
                 :''}
+                {userLogged.id?
+                <NavLink className="header__a" to="/material">Material</NavLink>
+                :''
+                }
                 {userLogged.id ?
                 <NavLink className="header__a" to="/users">Users</NavLink>
                 :''}
@@ -75,7 +79,7 @@ const Header = () => {
               </div>
             </ul>
             <ul className="header__user">
-            {userLogged.name}
+            <p>{userLogged.name}</p>            
             </ul>
           </Navbar.Collapse>
           </div>

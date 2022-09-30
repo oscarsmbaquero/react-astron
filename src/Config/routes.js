@@ -24,6 +24,7 @@ import EditUser from "../pages/User/Users/EditUser/EditUser";
 import SignIn from "../pages/User/Login/SignIn";
 import SignUp from "../pages/User/Register/SignUp";
 import Asignados from "../pages/User/Users/Asignados";
+import Material from "../pages/Material/Material";
 
 
 const routes = [
@@ -102,6 +103,10 @@ const routes = [
   {
     path: "/edit/user/:id",
     element: <EditUser />,
+  },
+  {
+    path: "/material",
+    element: <Material />,
   },
   
   
