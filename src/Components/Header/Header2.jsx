@@ -94,6 +94,19 @@ const Header = () => {
                     Items
                   </NavLink>
                   <NavLink
+                    to="/material"
+                    className="nav-item align-self-center shadowLink nav-link active"
+                    style={({ isActive }) => ({
+                      color: isActive ? "#000305" : "#000305",
+                      // background: isActive ? '#A3D4F7' : '#fff',
+                      borderBottom: isActive
+                        ? "3px solid red"
+                        : "4px solid transparent",
+                    })}
+                  >
+                    Material
+                  </NavLink>
+                  <NavLink
                     to="/certificaciones"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
