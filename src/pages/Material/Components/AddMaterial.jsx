@@ -1,48 +1,40 @@
-
 import React from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../assets/ApiRoutes";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 import SendIcon from "@mui/icons-material/Send";
 import { Button } from "@mui/material";
-import Swal from 'sweetalert2'// hay que probarlo
+import Swal from "sweetalert2"; // hay que probarlo
 
+const AddMaterial = ({ usersFiltered }) => {
 
-const AddMaterial = () => {
-
-  const {register, handleSubmit, formState: {errors, isValid}} = useForm({mode: "onChange"});
+  const {register, handleSubmit, formState: { errors, isValid }, } = useForm({ mode: "onChange" });
   let navigate = useNavigate();
 
   const onSubmit = async (formData) => {
-    console.log(formData,15);
+    console.log(formData, 15);
     try {
-
-        const result = await fetch(`${BASE_URL}/material` ,{
-            method: "POST",
-            headers: {
-                    'Content-Type': 'application/json'
-           },
-           body: JSON.stringify(formData),
-        })
-        const resData = await result.json();
-        Swal.fire({
-            title: 'Success!',
-            text: 'Material Añadido Correctamente',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
-        navigate("/avisos/caceres");
-        console.log(resData);
-        
-        
-        
+      const result = await fetch(`${BASE_URL}/material`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const resData = await result.json();
+      Swal.fire({
+        title: "Success!",
+        text: "Material Añadido Correctamente",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+      navigate("/avisos/caceres");
+      console.log(resData);
     } catch (error) {
-       console.log(error); 
+      console.log(error);
     }
-    
-}
-
+  };
 
   return (
     <section className="sectionEdit">
@@ -57,21 +49,30 @@ const AddMaterial = () => {
             {...register("descripcion")}
           />
           <label className="edit__label">Estado</label>
-          <input
-            className="edit__input"
-            type="text"
-            name="estado"
-            placeholder="Estado"
-            {...register("estado")}
-          />
+          <select {...register("estado")} className="edit__select">
+            <option value="Operativo">Operativo</option>
+            <option value="Averiado">Averiado</option>
+          </select>
           <label className="edit__label">Almacén</label>
-          <input
+
+          <select {...register("almacen")} className="edit__select">
+            {/* <option>Selecciona un usuario</option> */}
+            <option key={"default"} selected value={"default"}>
+              Selecciona un usuario
+            </option>
+            {usersFiltered.map((option) => (
+              <option key={option._id} value={option._id}>
+                {option.name} {option.surname}
+              </option>
+            ))}
+          </select>
+          {/* <input
             className="edit__input"
             type="text"
             name="almacen"
             placeholder="Almacén"
             {...register("almacen")}
-          />
+          /> */}
 
           <label className="edit__label">Unidades</label>
           <input

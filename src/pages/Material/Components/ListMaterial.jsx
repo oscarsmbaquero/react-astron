@@ -31,7 +31,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const ListMaterial = ({material}) => {
-    console.log(material,33);
     const userLogged = useGetAuth();  
   return (
     <Container sx={{padding:4}}>

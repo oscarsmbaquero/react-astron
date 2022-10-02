@@ -41,7 +41,7 @@ const AvisosCaceres = () => {
 
 
 
-  console.log(avisos.length, "legth");
+  console.log(avisos.length, "length");
   let [page, setPage] = useState(1);
   const PER_PAGE = 4;
 
