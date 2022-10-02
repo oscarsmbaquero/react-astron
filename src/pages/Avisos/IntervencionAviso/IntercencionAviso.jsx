@@ -32,6 +32,8 @@ const IntercencionAviso = () => {
         
       }, [])
     
+
+      console.log(users,'users')
     const onSubmit = async (formData) => {
         
         // const hora_fin = formData.fecha_fin;
@@ -98,6 +100,13 @@ const IntercencionAviso = () => {
             <label className="edit__label">Técnico</label>
                 <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>                        
                         <option selected >Selecciona Técnico</option>
+                        {users.map((user) => (
+                        <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
+                    ))}
+                </select>
+                <label className="edit__label">Consumo Material</label>
+                <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>                        
+                        <option selected >Consumir Material</option>
                         {users.map((user) => (
                         <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
                     ))}

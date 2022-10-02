@@ -53,7 +53,7 @@ const Material = () => {
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
-  console.log(users, "users");
+  //console.log(users, "users");
 
   const usersFiltered = users.filter(
     (user) => user.account_type === "Tecnico" || user.account_type === "Admin"
@@ -74,6 +74,8 @@ const Material = () => {
       });
   }, [loggedUser.token]);
 
+console.log(materialById,'materialById');
+
   const [tabs, dispatch] = useReducer(tabsReducer, tabsInitState);
 
   const AddTab = () => dispatch({ type: "ADD", payload: tabsInitState });
@@ -84,6 +86,7 @@ const Material = () => {
 
   console.log(loggedUser, 76);
   const percentage = 66;
+  const porcentage = 88;
   //console.log(usersFiltered,'userFiltered');
 
   return (
@@ -100,8 +103,8 @@ const Material = () => {
           <h1>{loggedUser.name}</h1>
           <h2>{loggedUser.email}</h2>
         </div>        
-        <div style={{ width: "12%" }}>
-        <p>Material Averiado</p>
+        <div style={{ width: "15%" }}>
+        <h1>Material Averiado</h1>
         <CircularProgressbar
                     styles={buildStyles({
                         pathColor: percentage > 100 ? '#DC2626' : '#3B82F6',
@@ -110,6 +113,18 @@ const Material = () => {
                     })}
                     value={percentage}
                     text={`${percentage} % `}
+                />
+        </div>
+        <div style={{ width: "15%" }}>
+        <h1>Material Operativo</h1>
+        <CircularProgressbar
+                    styles={buildStyles({
+                        pathColor: porcentage > 65 ? '#DC2626' : '#3B82F6',
+                        trailColor: '#F5F5F5',
+                        textColor: porcentage > 100 ? '#DC2626' : '#3B82F6',
+                    })}
+                    value={porcentage}
+                    text={`${porcentage} % `}
                 />
         </div>
       </div>
@@ -125,7 +140,7 @@ const Material = () => {
               <BsFillSignpost2Fill/>
             </Button>
             <Button variant="contained"  onClick={TecnicoTab}>
-               Material Técnico
+               Material {loggedUser.name}
                <Fingerprint />
             </Button>
           </ul>

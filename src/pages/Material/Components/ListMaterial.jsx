@@ -43,7 +43,7 @@ const ListMaterial = ({material}) => {
            <StyledTableCell align="left">Unidades</StyledTableCell>
            <StyledTableCell align="left">Estado</StyledTableCell>
            <StyledTableCell align="left">Incidencia</StyledTableCell>
-           {/* <StyledTableCell align="left">Acciones</StyledTableCell> */}
+           <StyledTableCell align="left">Acciones</StyledTableCell>
        </TableHead>
        <TableBody>
          {material.map((mat) => (
@@ -59,22 +59,15 @@ const ListMaterial = ({material}) => {
            <StyledTableCell align="left">{mat.unidades}</StyledTableCell>
            <StyledTableCell align="left">{mat.estado}</StyledTableCell>
            <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
-            {/* <StyledTableCell align="left">
-           <Link >
-                 <IconButton  
+             <StyledTableCell align="left">
+              { userLogged.id === mat.almacen && 
+                <IconButton  
                    aria-label="delete" 
                    color="secondary" 
                    ><Create />
-                 </IconButton>
-            </Link>
-            
-           
-            <IconButton  color="error" >
-               <DeleteOutlined/>
-             </IconButton>
-           
-            
-           </StyledTableCell>  */}
+                 </IconButton>              
+              }
+           </StyledTableCell>  
            </StyledTableRow>
          ))}
        </TableBody>    

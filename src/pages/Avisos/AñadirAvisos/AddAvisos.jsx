@@ -77,7 +77,7 @@ const AddAvisos = () => {
                         <option value="Cerrado">Cerrado</option> */}
                     </select>
                 <br></br>
-                <Button variant="contained" type='submit'  endIcon={<SendIcon />} >
+                <Button variant="contained" type='submit'  sendIcon={<SendIcon />} >
                     Enviar
                 </Button>
             </form>
