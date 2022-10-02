@@ -26,7 +26,7 @@ const Material = () => {
   const loggedUser = useGetAuth();
   const [material, setMaterial] = useState({});
   const [users, setUsers] = useState([]);
-  const [materialById, setMaterialById] = useState({});
+  const [materialById, setMaterialById] = useState([]);
   const [value, setValue] = React.useState(0);
 
   // const handleChange = (event, newValue) => {
@@ -76,6 +76,19 @@ const Material = () => {
 
 console.log(materialById,'materialById');
 
+
+
+const estadoOperativo = materialById.filter(
+  (user) => user.estado === "Operativo" 
+);
+console.log(estadoOperativo,'estadoOperativo')
+
+const estadoAveriado = materialById.filter(
+  (user) => user.estado === "Averiado" 
+);
+console.log(estadoAveriado,'estadoAveriado')
+
+
   const [tabs, dispatch] = useReducer(tabsReducer, tabsInitState);
 
   const AddTab = () => dispatch({ type: "ADD", payload: tabsInitState });
@@ -119,9 +132,9 @@ console.log(materialById,'materialById');
         <h1>Material Operativo</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: porcentage > 65 ? '#DC2626' : '#3B82F6',
+                        pathColor: porcentage < 100 ? '#DC2626' : '#3B82F6',
                         trailColor: '#F5F5F5',
-                        textColor: porcentage > 100 ? '#DC2626' : '#3B82F6',
+                        textColor: porcentage < 100 ? '#DC2626' : '#3B82F6',
                     })}
                     value={porcentage}
                     text={`${porcentage} % `}
