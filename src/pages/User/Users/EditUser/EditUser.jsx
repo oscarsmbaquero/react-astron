@@ -68,6 +68,7 @@ const EditUser = () => {
     
     :
     <div className="edit">
+    <h3>Editar Perfil</h3>
            <form onSubmit={e => editUser(e, editUser._id)} className="edit__form" >
                   <label className="edit__label" htmlFor="name">Name</label>
                   <input type="text" name="name" className='edit__input' defaultValue={profile.name}/>
