@@ -58,10 +58,10 @@ const Header = () => {
                     to="/avisos/caceres"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "3px solid blue"
+                        ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -71,10 +71,10 @@ const Header = () => {
                     to="/avisos/badajoz"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "3px solid blue"
+                      ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -84,10 +84,10 @@ const Header = () => {
                     to="/items"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "3px solid blue"
+                      ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -97,10 +97,10 @@ const Header = () => {
                     to="/material"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "3px solid blue"
+                      ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -110,10 +110,10 @@ const Header = () => {
                     to="/certificaciones"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "3px solid blue"
+                      ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -125,10 +125,10 @@ const Header = () => {
                     to="/us/asignados"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       borderBottom: isActive
-                        ? "3px solid blue"
+                      ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -142,11 +142,11 @@ const Header = () => {
                     to="/users"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({
-                      color: isActive ? "blue" : "#000305",
+                      color: isActive ? "#000305" : "#000305",
                       // background: isActive ? '#A3D4F7' : '#fff',
                       
                       borderBottom: isActive
-                        ? "3px solid blue"
+                      ? "2px solid #15F6F3"
                         : "4px solid transparent",
                     })}
                   >
@@ -165,7 +165,7 @@ const Header = () => {
                     color: isActive ? "#000305" : "#000305",
                     //
                     borderBottom: isActive
-                      ? "3px solid blue"
+                    ? "2px solid #15F6F3"
                       : "4px solid transparent",
                   })}
                 >
@@ -182,7 +182,7 @@ const Header = () => {
                     color: isActive ? "#000305" : "#000305",
                     // background: isActive ? '#A3D4F7' : '#fff',
                     borderBottom: isActive
-                      ? "3px solid blue"
+                    ? "2px solid #15F6F3"
                       : "4px solid transparent",
                   })}
                 >
@@ -197,7 +197,7 @@ const Header = () => {
                     color: isActive ? "#000305" : "#000305",
                     // background: isActive ? '#A3D4F7' : '#fff',
                     borderBottom: isActive
-                      ? "3px solid blue"
+                    ? "2px solid #15F6F3"
                       : "4px solid transparent",
                   })}
                 >

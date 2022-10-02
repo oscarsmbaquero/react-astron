@@ -101,7 +101,7 @@ console.log(materialById,'materialById');
         </div> */}
         <div className="profile__personal">
           <h1>{loggedUser.name}</h1>
-          <h2>{loggedUser.email}</h2>
+          <h3>{loggedUser.email}</h3>
         </div>        
         <div style={{ width: "15%" }}>
         <h1>Material Averiado</h1>

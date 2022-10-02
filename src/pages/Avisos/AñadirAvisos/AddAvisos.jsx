@@ -47,6 +47,7 @@ const AddAvisos = () => {
   return (
     <section className="sectionEdit">
         <div className="edit">
+        <h3>Nuevo Aviso</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="edit__form">
             
                 <label className="edit__label">Incidencia</label>
@@ -77,7 +78,7 @@ const AddAvisos = () => {
                         <option value="Cerrado">Cerrado</option> */}
                     </select>
                 <br></br>
-                <Button variant="contained" type='submit'  sendIcon={<SendIcon />} >
+                <Button variant="contained" type='submit' endIcon={<SendIcon />} >
                     Enviar
                 </Button>
             </form>

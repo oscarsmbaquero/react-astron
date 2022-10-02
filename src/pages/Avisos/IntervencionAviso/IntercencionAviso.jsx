@@ -77,6 +77,7 @@ const IntercencionAviso = () => {
     <section className="sectionEdit">
     { !aviso ? <Loader/> : 
     <div className="edit">
+    <h3>Añadir Intervención</h3>
         <form onSubmit={handleSubmit(onSubmit)} class="edit__form">
             <label className="edit__label">Nº Incidencia</label>
                 <input className='edit__input' readOnly {...setValue("n_incidencia", aviso.n_incidencia)} type="text" name="name" placeholder="Nº Incidencia"  {...register('n_incidencia', )}/>
@@ -127,7 +128,7 @@ const IntercencionAviso = () => {
             {aviso.estado === 'Cerrada'?
             <p>Averia Cerrada</p>
             :
-            <Button variant="contained" type='submit'  endIcon={<SendIcon />} >
+            <Button variant="contained" type='submit' endIcon={<SendIcon />} >
                 Enviar
             </Button>
             }

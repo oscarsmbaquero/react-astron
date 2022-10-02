@@ -39,6 +39,7 @@ const AddMaterial = ({ usersFiltered }) => {
   return (
     <section className="sectionEdit">
       <div className="edit">
+      <h3>Alta de Material</h3>
         <form onSubmit={handleSubmit(onSubmit)} className="edit__form">
           <label className="edit__label">Descripción</label>
           <textarea
