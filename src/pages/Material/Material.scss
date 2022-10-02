@@ -1,0 +1,38 @@
+
+
+.profile{
+ 
+  margin: 50px 50px 30px 20px;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+ 
+ @media screen  and (max-width: 766px) {
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+   
+  img{
+    
+    width: 80px;
+  }
+  }
+
+  &__photo{
+    // width: 200px;
+    // height: 100px;
+
+    &__img{
+       width: 100px; 
+       height: 300px;
+       border-radius: 22px;
+    }
+  }
+
+  &__personal{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+ 
+
+
+}
