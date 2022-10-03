@@ -13,7 +13,7 @@ import {  Link, Navigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: '#9BE2E1',
     color: theme.palette.text.primary,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -30,6 +30,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     border: 0,
   },
 }));
+
+
 const ListMaterial = ({material}) => {
     const userLogged = useGetAuth();  
   return (
@@ -70,7 +72,8 @@ const ListMaterial = ({material}) => {
            </StyledTableCell>  
            </StyledTableRow>
          ))}
-       </TableBody>    
+       </TableBody>
+           
      </Table>
     </TableContainer>
    </Container>

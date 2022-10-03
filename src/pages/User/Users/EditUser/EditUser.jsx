@@ -35,7 +35,6 @@ const EditUser = () => {
     e.preventDefault();
 
            let target = e.target;
-           console.log(e.target.image.files[0],32);
            const data = new FormData();
 
     
@@ -79,8 +78,8 @@ const EditUser = () => {
                   <label className="edit__label" htmlFor="image">Image</label>
                   <input type="file" alt="" name="image" className='edit__input' />
                   <Button variant="contained" type='submit'  endIcon={<SendIcon />}>
-                Enviar
-                </Button>
+                     Enviar
+                  </Button>
                   {/* <button className='edit__button' >Actualizar</button> */}
            </form>
     </div>

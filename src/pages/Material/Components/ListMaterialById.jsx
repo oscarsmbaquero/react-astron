@@ -12,7 +12,7 @@ import {  Link, Navigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: '#9BE2E1',
     color: theme.palette.text.primary,
   },
   [`&.${tableCellClasses.body}`]: {
