@@ -84,15 +84,17 @@ console.log(reducetotal,'reduce');
 
 
 const estadoOperativo = materialById.filter((user) => user.estado === "Operativo");
-const materialOperativo = estadoOperativo.length;
-console.log(materialOperativo,'materialOperativo')
+const totalOperativo = estadoOperativo.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
+console.log(totalOperativo,'total OPerativo')
+// const materialOperativo = estadoOperativo.length;
+// console.log(materialOperativo,'materialOperativo')
 
 const estadoAveriado = materialById.filter((user) => user.estado === "Averiado");
-const materialAveriado= estadoAveriado.length;
-console.log(materialAveriado,'materialAveriado')
+const totalAveriado = estadoAveriado.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
+console.log(totalAveriado,'totalAveriado')
 
-const porcentajeAveriado = (reducetotal + materialAveriado) /2;
-const porcentajeOperativo = (reducetotal + materialOperativo) /2;
+const porcentajeAveriado = (reducetotal + totalAveriado) /2;
+const porcentajeOperativo = (reducetotal + totalOperativo) /2;
 console.log(porcentajeAveriado,'porcentajeAveriado');
 console.log(porcentajeOperativo,'porcentajeOperativo');
 
@@ -124,18 +126,18 @@ console.log(porcentajeOperativo,'porcentajeOperativo');
           <h1>{loggedUser.name}</h1>
           <h3>{loggedUser.email}</h3>
         </div>
-        <div>
+        {/* <div>
           <h1>Material </h1>
           <h3>Averiado:&nbsp;{materialAveriado}</h3>
           <h3>Operativo:&nbsp;{materialOperativo}</h3>
-        </div>
+        </div> */}
         <div style={{ width: "15%" }}>
         <h1>Material Averiado</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: porcentajeAveriado > 100 ? '#DC2626' : '#3B82F6',
+                        pathColor: porcentajeAveriado > 70 ? '#DC2626' : '#3B82F6',
                         trailColor: '#F5F5F5',
-                        textColor: porcentajeAveriado > 100 ? '#DC2626' : '#3B82F6',
+                        textColor: porcentajeAveriado > 70 ? '#DC2626' : '#3B82F6',
                     })}
                     value={porcentajeAveriado}
                     text={`${porcentajeAveriado} % `}
@@ -145,9 +147,9 @@ console.log(porcentajeOperativo,'porcentajeOperativo');
         <h1>Material Operativo</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: porcentajeOperativo > 100 ? '#DC2626' : '#3B82F6',
+                        pathColor: porcentajeOperativo > 70 ? '#DC2626' : '#3B82F6',
                         trailColor: '#F5F5F5',
-                        textColor: porcentajeOperativo > 100 ? '#DC2626' : '#3B82F6',
+                        textColor: porcentajeOperativo > 70 ? '#DC2626' : '#3B82F6',
                     })}
                     value={porcentajeOperativo}
                     text={`${porcentajeOperativo} % `}
