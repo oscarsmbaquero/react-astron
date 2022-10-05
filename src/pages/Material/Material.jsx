@@ -76,17 +76,25 @@ const Material = () => {
 
 console.log(materialById,'materialById');
 
+//let total = JSON.parse(materialById);
+//console.log(total);
+let reducetotal = materialById.reduce((acumulador, actual) => acumulador + actual.unidades, 0);
+
+console.log(reducetotal,'reduce');
 
 
-const estadoOperativo = materialById.filter(
-  (user) => user.estado === "Operativo" 
-);
-console.log(estadoOperativo,'estadoOperativo')
+const estadoOperativo = materialById.filter((user) => user.estado === "Operativo");
+const materialOperativo = estadoOperativo.length;
+console.log(materialOperativo,'materialOperativo')
 
-const estadoAveriado = materialById.filter(
-  (user) => user.estado === "Averiado" 
-);
-console.log(estadoAveriado,'estadoAveriado')
+const estadoAveriado = materialById.filter((user) => user.estado === "Averiado");
+const materialAveriado= estadoAveriado.length;
+console.log(materialAveriado,'materialAveriado')
+
+const porcentajeAveriado = (reducetotal + materialAveriado) /2;
+const porcentajeOperativo = (reducetotal + materialOperativo) /2;
+console.log(porcentajeAveriado,'porcentajeAveriado');
+console.log(porcentajeOperativo,'porcentajeOperativo');
 
 
   const [tabs, dispatch] = useReducer(tabsReducer, tabsInitState);
@@ -97,7 +105,7 @@ console.log(estadoAveriado,'estadoAveriado')
 
   const navigate = useNavigate();
 
-  console.log(loggedUser, 76);
+  //console.log(loggedUser, 76);
   const percentage = 66;
   const porcentage = 88;
   //console.log(usersFiltered,'userFiltered');
@@ -115,29 +123,34 @@ console.log(estadoAveriado,'estadoAveriado')
         <div className="profile__personal">
           <h1>{loggedUser.name}</h1>
           <h3>{loggedUser.email}</h3>
-        </div>        
+        </div>
+        <div>
+          <h1>Material </h1>
+          <h3>Averiado:&nbsp;{materialAveriado}</h3>
+          <h3>Operativo:&nbsp;{materialOperativo}</h3>
+        </div>
         <div style={{ width: "15%" }}>
         <h1>Material Averiado</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: percentage > 100 ? '#DC2626' : '#3B82F6',
+                        pathColor: porcentajeAveriado > 100 ? '#DC2626' : '#3B82F6',
                         trailColor: '#F5F5F5',
-                        textColor: percentage > 100 ? '#DC2626' : '#3B82F6',
+                        textColor: porcentajeAveriado > 100 ? '#DC2626' : '#3B82F6',
                     })}
-                    value={percentage}
-                    text={`${percentage} % `}
+                    value={porcentajeAveriado}
+                    text={`${porcentajeAveriado} % `}
                 />
         </div>
         <div style={{ width: "15%" }}>
         <h1>Material Operativo</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: porcentage < 100 ? '#DC2626' : '#3B82F6',
+                        pathColor: porcentajeOperativo > 100 ? '#DC2626' : '#3B82F6',
                         trailColor: '#F5F5F5',
-                        textColor: porcentage < 100 ? '#DC2626' : '#3B82F6',
+                        textColor: porcentajeOperativo > 100 ? '#DC2626' : '#3B82F6',
                     })}
-                    value={porcentage}
-                    text={`${porcentage} % `}
+                    value={porcentajeOperativo}
+                    text={`${porcentajeOperativo} % `}
                 />
         </div>
       </div>

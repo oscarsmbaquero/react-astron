@@ -6,7 +6,7 @@ const SearchInput = ({ ...rest }) => {
   return (
     <div className={styles.wrapper}>
 
-      <input {...rest} className={styles.input} />
+      <input {...rest} className={styles.input}  placeholder='Filtrar...'/>
 
     </div>
   );

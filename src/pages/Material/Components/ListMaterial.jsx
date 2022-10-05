@@ -2,18 +2,19 @@ import React, { useEffect, useState } from 'react';
 import {  useGetAuth } from "../../../context/context";
 
 import { styled } from '@mui/material/styles';
-import { Avatar, Container, Table, TableBody,  TableContainer, TableHead, TableRow } from '@mui/material';
+import { Avatar, Container, Table, TableBody,  TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
 import { Create, DeleteOutlined } from '@mui/icons-material';
 import IconButton from '@mui/material/IconButton';
 import Swal from 'sweetalert2'
 import {  Link, Navigate } from 'react-router-dom';
+import { TablePagination } from '@material-ui/core';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#9BE2E1',
+    backgroundColor: '#8CEFEE',
     color: theme.palette.text.primary,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -67,13 +68,12 @@ const ListMaterial = ({material}) => {
                    aria-label="delete" 
                    color="secondary" 
                    ><Create />
-                 </IconButton>              
+                 </IconButton>
               }
-           </StyledTableCell>  
+           </StyledTableCell>
            </StyledTableRow>
          ))}
        </TableBody>
-           
      </Table>
     </TableContainer>
    </Container>
