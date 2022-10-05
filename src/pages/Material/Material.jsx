@@ -118,11 +118,11 @@ const resultadoOperativo= porcentajeOperativo.toFixed(2);
           <h1>{loggedUser.name}</h1>
           <h3>{loggedUser.email}</h3>
         </div>
-        {/* <div>
-          <h1>Material </h1>
-          <h3>Averiado:&nbsp;{materialAveriado}</h3>
-          <h3>Operativo:&nbsp;{materialOperativo}</h3>
-        </div> */}
+        
+        <div className="pizarra"> 
+          <h3>Averiado:&nbsp;{totalAveriado}</h3>
+          <h3>Operativo:&nbsp;{totalOperativo}</h3>
+        </div>
         <div style={{ width: "15%" }}>
         <h1>Material Averiado</h1>
         <CircularProgressbar
@@ -139,9 +139,9 @@ const resultadoOperativo= porcentajeOperativo.toFixed(2);
         <h1>Material Operativo</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: resultadoOperativo > 60 ? '#DC2626' :resultadoAveriado < 60 && resultadoAveriado > 40 ? '#d8f007': '#35DE0B',
+                        pathColor: resultadoOperativo > 60 ? '#DC2626' :resultadoOperativo < 60 && resultadoOperativo > 40 ? '#d8f007': '#35DE0B',
                         trailColor: '#F5F5F5',
-                        textColor: resultadoOperativo > 60 ? '#DC2626' :resultadoAveriado < 60 && resultadoAveriado > 40 ? '#d8f007': '#35DE0B',
+                        textColor: resultadoOperativo > 60 ? '#DC2626' :resultadoOperativo < 60 && resultadoOperativo > 40 ? '#d8f007': '#35DE0B',
                     })}
                     value={resultadoOperativo}
                     text={`${resultadoOperativo} % `}
