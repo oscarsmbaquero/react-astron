@@ -7,9 +7,11 @@ import { BASE_URL } from "../../../assets/ApiRoutes";
 import Loader from '../../../core/components/Loader/Loader';
 import { Button  } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import { useGetAuth } from "../../../context/context";
 
 const IntercencionAviso = () => {
-
+    const userLogged = useGetAuth();
+    console.log(userLogged.rol,'userLogged')
     let [aviso, SetAviso] =useState();
     const [users, setUsers] = useState([]);
     const { id } =useParams();
@@ -33,7 +35,13 @@ const IntercencionAviso = () => {
       }, [])
     
 
-      console.log(users,'users')
+      //console.log(users,'users');
+
+      const tecnicos = users.filter(
+        (user) => user.account_type === "Tecnico" || user.account_type === 'Admin'
+      );
+      //console.log(tecnicos,'tecnicos');
+    
     const onSubmit = async (formData) => {
         
         // const hora_fin = formData.fecha_fin;
@@ -98,13 +106,13 @@ const IntercencionAviso = () => {
                         {/* <option value="Pendiente">Pendiente</option> */}
                         <option value="Cerrada">Cerrada</option>
                 </select>
-            <label className="edit__label">Técnico</label>
-                <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>                        
+                <label className="edit__label">Técnico</label>
+                 <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>                        
                         <option selected >Selecciona Técnico</option>
-                        {users.map((user) => (
+                        {tecnicos.map((user) => (
                         <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
                     ))}
-                </select>
+                 </select>                
                 <label className="edit__label">Consumo Material</label>
                 <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>                        
                         <option selected >Consumir Material</option>

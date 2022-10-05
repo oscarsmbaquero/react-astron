@@ -78,26 +78,20 @@ console.log(materialById,'materialById');
 
 //let total = JSON.parse(materialById);
 //console.log(total);
+
+//sacamos el nuero total de articulos por inventario
 let reducetotal = materialById.reduce((acumulador, actual) => acumulador + actual.unidades, 0);
-
-console.log(reducetotal,'reduce');
-
-
+//sacamos total de articulos Operativos
 const estadoOperativo = materialById.filter((user) => user.estado === "Operativo");
 const totalOperativo = estadoOperativo.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
-console.log(totalOperativo,'total OPerativo')
-// const materialOperativo = estadoOperativo.length;
-// console.log(materialOperativo,'materialOperativo')
-
+//sacamos total de articulos Averiado
 const estadoAveriado = materialById.filter((user) => user.estado === "Averiado");
 const totalAveriado = estadoAveriado.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
-console.log(totalAveriado,'totalAveriado')
-
-const porcentajeAveriado = (reducetotal + totalAveriado) /2;
-const porcentajeOperativo = (100 - porcentajeAveriado);
-console.log(porcentajeAveriado,'porcentajeAveriado');
-console.log(porcentajeOperativo,'porcentajeOperativo');
-
+//sacamos los porcentajes y les quitamos decimales
+const porcentajeAveriado = (totalAveriado * 100) /reducetotal;
+const porcentajeOperativo = (totalOperativo *100) /reducetotal;
+const resultadoAveriado= porcentajeAveriado.toFixed(2);
+const resultadoOperativo= porcentajeOperativo.toFixed(2);
 
   const [tabs, dispatch] = useReducer(tabsReducer, tabsInitState);
 
@@ -107,10 +101,8 @@ console.log(porcentajeOperativo,'porcentajeOperativo');
 
   const navigate = useNavigate();
 
-  //console.log(loggedUser, 76);
-  const percentage = 66;
-  const porcentage = 88;
-  //console.log(usersFiltered,'userFiltered');
+  
+  
 
   return (
     <section>
@@ -135,24 +127,24 @@ console.log(porcentajeOperativo,'porcentajeOperativo');
         <h1>Material Averiado</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: porcentajeAveriado > 70 ? '#DC2626' : '#3B82F6',
+                        pathColor: resultadoAveriado > 90 ? '#DC2626' :resultadoAveriado < 90 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
                         trailColor: '#F5F5F5',
-                        textColor: porcentajeAveriado > 70 ? '#DC2626' : '#3B82F6',
+                        textColor: resultadoAveriado > 90 ? '#DC2626' :resultadoAveriado < 90 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
                     })}
-                    value={porcentajeAveriado}
-                    text={`${porcentajeAveriado} % `}
+                    value={resultadoAveriado}
+                    text={`${resultadoAveriado} % `}
                 />
         </div>
         <div style={{ width: "15%" }}>
         <h1>Material Operativo</h1>
         <CircularProgressbar
                     styles={buildStyles({
-                        pathColor: porcentajeOperativo > 70 ? '#DC2626' : '#3B82F6',
+                        pathColor: resultadoOperativo > 60 ? '#DC2626' :resultadoAveriado < 60 && resultadoAveriado > 40 ? '#d8f007': '#35DE0B',
                         trailColor: '#F5F5F5',
-                        textColor: porcentajeOperativo > 70 ? '#DC2626' : '#3B82F6',
+                        textColor: resultadoOperativo > 60 ? '#DC2626' :resultadoAveriado < 60 && resultadoAveriado > 40 ? '#d8f007': '#35DE0B',
                     })}
-                    value={porcentajeOperativo}
-                    text={`${porcentajeOperativo} % `}
+                    value={resultadoOperativo}
+                    text={`${resultadoOperativo} % `}
                 />
         </div>
       </div>
