@@ -94,7 +94,7 @@ const totalAveriado = estadoAveriado.reduce((acumulador, operativo) => acumulado
 console.log(totalAveriado,'totalAveriado')
 
 const porcentajeAveriado = (reducetotal + totalAveriado) /2;
-const porcentajeOperativo = (reducetotal + totalOperativo) /2;
+const porcentajeOperativo = (100 - porcentajeAveriado);
 console.log(porcentajeAveriado,'porcentajeAveriado');
 console.log(porcentajeOperativo,'porcentajeOperativo');
 
