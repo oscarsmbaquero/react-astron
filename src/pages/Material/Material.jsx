@@ -92,6 +92,22 @@ const porcentajeAveriado = (totalAveriado * 100) /reducetotal;
 const porcentajeOperativo = (totalOperativo *100) /reducetotal;
 const resultadoAveriado= porcentajeAveriado.toFixed(2);
 const resultadoOperativo= porcentajeOperativo.toFixed(2);
+//calculamos consumible  de material Averiado
+const averiadoConsumible = materialById.filter((user) => user.tipo === "Consumible");
+const resultadoAveriadoConsumible = averiadoConsumible.length;
+//calculamos reparable de material Operativo
+const averiadoReparable = materialById.filter((user) => user.tipo === "Reparable");
+const resultadoAveriadoReparable = averiadoReparable.length;
+
+//calculamos consumible  de material Operativo
+// const operativoConsumible = materialById.filter((user) => user.tipo === "Consumible");
+// const resultadoOperativoConsumible = operativoConsumible.length;
+// //calculamos reparable de material Operativo
+// const operativoReparable = materialById.filter((user) => user.tipo === "Consumible");
+// const resultadoOperativoConsumible = operativoConsumible.length;
+// //calculamos reparable de material Operativo
+
+
 
   const [tabs, dispatch] = useReducer(tabsReducer, tabsInitState);
 
@@ -114,38 +130,53 @@ const resultadoOperativo= porcentajeOperativo.toFixed(2);
             className="profile__photo__img"
           />
         </div> */}
-        <div className="profile__personal">
+        {/* <div className="profile__personal">
           <h1>{loggedUser.name}</h1>
           <h3>{loggedUser.email}</h3>
-        </div>
+        </div> */}
         
-        <div className="pizarra"> 
-          <h3>Averiado:&nbsp;{totalAveriado}</h3>
-          <h3>Operativo:&nbsp;{totalOperativo}</h3>
+        <div className="pizarra">
+        {/* <Avatar
+            alt="Remy Sharp"
+            src={loggedUser.image}
+            className="profile__photo__img"
+          /> */}
+          <h1>Averiado:&nbsp;{totalAveriado}</h1>
+          <p>Consumible:&nbsp;{resultadoAveriadoConsumible}</p>
+          <p>Reparable:&nbsp;{resultadoAveriadoReparable}</p>
+          <h1>Operativo:&nbsp;{totalOperativo}</h1>
+          {/* <p>Consumible:&nbsp;{resultadoOperativoConsumible}</p>
+          <p>Reparable:&nbsp;{resultadoOperativoReparable}</p>
+           */}
         </div>
-        <div style={{ width: "15%" }}>
-        <h1>Material Averiado</h1>
-        <CircularProgressbar
-                    styles={buildStyles({
-                        pathColor: resultadoAveriado > 90 ? '#DC2626' :resultadoAveriado < 90 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
-                        trailColor: '#F5F5F5',
-                        textColor: resultadoAveriado > 90 ? '#DC2626' :resultadoAveriado < 90 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
-                    })}
-                    value={resultadoAveriado}
-                    text={`${resultadoAveriado} % `}
-                />
-        </div>
-        <div style={{ width: "15%" }}>
-        <h1>Material Operativo</h1>
-        <CircularProgressbar
-                    styles={buildStyles({
-                        pathColor: resultadoOperativo > 60 ? '#DC2626' :resultadoOperativo < 60 && resultadoOperativo > 40 ? '#d8f007': '#35DE0B',
-                        trailColor: '#F5F5F5',
-                        textColor: resultadoOperativo > 60 ? '#DC2626' :resultadoOperativo < 60 && resultadoOperativo > 40 ? '#d8f007': '#35DE0B',
-                    })}
-                    value={resultadoOperativo}
-                    text={`${resultadoOperativo} % `}
-                />
+        <div className="graficas_container">
+          <div className="graficas">
+            <h1>Averiado</h1>
+            <h2>{totalAveriado}&nbsp;ud.</h2>
+            <CircularProgressbar
+                        styles={buildStyles({
+                            pathColor: resultadoAveriado > 90 ? '#DC2626' :resultadoAveriado < 90 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
+                            trailColor: '#F5F5F5',
+                            textColor: 'black',
+                        })}
+                        value={resultadoAveriado}
+                        text={`${resultadoAveriado} % `}
+                    />
+          </div>
+          <div  className="graficas">
+            <h1>Operativo</h1>
+            <h2>{totalOperativo}&nbsp;ud.</h2>
+            <CircularProgressbar
+                        styles={buildStyles({
+                            pathColor: resultadoOperativo > 60 ? '#DC2626' :resultadoOperativo < 60 && resultadoOperativo > 40 ? '#d8f007': '#35DE0B',
+                            trailColor: '#F5F5F5',
+                            //textColor: resultadoOperativo > 60 ? '#DC2626' :resultadoOperativo < 60 && resultadoOperativo > 40 ? '#d8f007': '#35DE0B',
+                            textColor: 'black',
+                        })}
+                        value={resultadoOperativo}
+                        text={`${resultadoOperativo} % `}
+                    />
+          </div>
         </div>
       </div>
       <div>

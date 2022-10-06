@@ -46,6 +46,7 @@ const ListMaterial = ({material}) => {
            <StyledTableCell align="left">Unidades</StyledTableCell>
            <StyledTableCell align="left">Estado</StyledTableCell>
            <StyledTableCell align="left">Incidencia</StyledTableCell>
+           <StyledTableCell align="left">Tipo de Material</StyledTableCell>
            <StyledTableCell align="left">Acciones</StyledTableCell>
        </TableHead>
        <TableBody>
@@ -62,6 +63,7 @@ const ListMaterial = ({material}) => {
            <StyledTableCell align="left">{mat.unidades}</StyledTableCell>
            <StyledTableCell align="left">{mat.estado}</StyledTableCell>
            <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
+           <StyledTableCell align="left">{mat.tipo}</StyledTableCell>
              <StyledTableCell align="left">
               { userLogged.id === mat.almacen && 
                 <IconButton  

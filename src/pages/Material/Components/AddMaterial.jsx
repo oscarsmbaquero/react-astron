@@ -67,14 +67,11 @@ const AddMaterial = ({ usersFiltered }) => {
               </option>
             ))}
           </select>
-          {/* <input
-            className="edit__input"
-            type="text"
-            name="almacen"
-            placeholder="Almacén"
-            {...register("almacen")}
-          /> */}
-
+          <label className="edit__label">Típo Artículo</label>
+          <select {...register("tipo")} className="edit__select">
+            <option value="Consumible">Consumible</option>
+            <option value="Raparable">Reparable</option>
+          </select>
           <label className="edit__label">Unidades</label>
           <input
             className="edit__input"

@@ -31,7 +31,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 const ListMaterialById = ({materialById}) => {
 
-console.log(materialById,'materialById');
+console.log(materialById,'ehhhhhhhhhhhhhhh');
 
 
     
@@ -45,6 +45,7 @@ console.log(materialById,'materialById');
            <StyledTableCell align="left">Unidades</StyledTableCell>
            <StyledTableCell align="left">Estado</StyledTableCell>
            <StyledTableCell align="left">Incidencia</StyledTableCell>
+           <StyledTableCell align="left">Tipo</StyledTableCell>
            {/* <StyledTableCell align="left">Acciones</StyledTableCell> */}
        </TableHead>
        <TableBody>
@@ -60,6 +61,7 @@ console.log(materialById,'materialById');
            <StyledTableCell align="left">{mat.unidades}</StyledTableCell>
            <StyledTableCell align="left">{mat.estado}</StyledTableCell>
            <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
+           <StyledTableCell align="left">{mat.tipo}</StyledTableCell>
             {/* <StyledTableCell align="left">
            <Link >
                  <IconButton  

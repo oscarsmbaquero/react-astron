@@ -10,7 +10,7 @@
  @media screen  and (max-width: 766px) {
   flex-direction: column;
   align-items: center;
-  justify-content:center;
+  //justify-content:center;
    
   img{
     
@@ -37,8 +37,26 @@
 
 }
 .pizarra{
-  background-color: white;
-  padding: 10px;
+  background-color: #de6800;
+background-image: url("https://www.transparenttextures.com/patterns/dark-brick-wall.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  //background-color: white;
+  padding: 100px;
   border: 1px solid  blue;
   border-radius: 8px;
+}
+
+.graficas_container{
+  display: flex;
+  @media screen  and (max-width: 766px) {
+    flex-direction: column;
+   
+  
+}
+}
+.graficas{
+  padding: 15px;
+  width: 200px;
+  align-items: center;
+  margin: 10px auto;
 }
