@@ -15,6 +15,8 @@ const IntercencionAviso = () => {
     let [aviso, SetAviso] =useState();
     const [users, setUsers] = useState([]);
     const { id } =useParams();
+    const [material, setMaterial] = useState([]);
+    const [materialById, setMaterialById] = useState([]);
 
     const { register, handleSubmit, formState: {errors, isValid}, setValue, } = useForm({mode: "onChange"});
     let navigate = useNavigate();
@@ -34,16 +36,47 @@ const IntercencionAviso = () => {
         
       }, [])
     
+      useEffect(() => {
+        fetch(`${BASE_URL}/material`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // Authorization: `Bearer ${loggedUser.token}`
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setMaterial(data);
+          });
+      }, [userLogged.token]);
+      console.log(material,'material')
+      useEffect(() => {
+        fetch(`${BASE_URL}/material/${userLogged.id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            //Authorization: `Bearer ${loggedUser.token}`
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setMaterialById(data);
+          });
+      }, [userLogged.token]);
 
-      //console.log(users,'users');
+      console.log(materialById,'materialById');
 
       const tecnicos = users.filter(
         (user) => user.account_type === "Tecnico" || user.account_type === 'Admin'
       );
-      //console.log(tecnicos,'tecnicos');
+     
+      const materialFiltrado = material.filter(
+        (mater)=> mater.almacen === userLogged.name
+      );
+      console.log(materialFiltrado,'material por usuario')
     
     const onSubmit = async (formData) => {
-        
+        console.log(formData.tecnicoIntervencion,'formData')
         // const hora_fin = formData.fecha_fin;
         // const hora_inicio = formData.fecha_inicio;
         // console.log(hora_inicio,hora_fin,39);
@@ -83,7 +116,7 @@ const IntercencionAviso = () => {
 
   return (
     <section className="sectionEdit">
-    { !aviso ? <Loader/> : 
+    { !aviso  || !material || !users? <Loader/> : 
     <div className="edit">
     <h3>Añadir Intervención</h3>
         <form onSubmit={handleSubmit(onSubmit)} class="edit__form">
@@ -107,20 +140,33 @@ const IntercencionAviso = () => {
                         <option value="Cerrada">Cerrada</option>
                 </select>
                 <label className="edit__label">Técnico</label>
-                 <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>                        
-                        <option selected >Selecciona Técnico</option>
+                 <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>
+                        <option selected>Selecciona Técnico</option>
                         {tecnicos.map((user) => (
                         <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
-                    ))}
-                 </select>                
-                <label className="edit__label">Consumo Material</label>
-                <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>                        
+                    ))}                   
+                 </select> 
+                 {userLogged.rol === 'Dispatch'?
+                 <>
+                 <label className="edit__label">Consumo Material</label>
+                <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>
                         <option selected >Consumir Material</option>
-                        {users.map((user) => (
-                        <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
+                        {material.map((el) => (
+                        <option key={el._id} value={el.id}>{el.descripcion}&nbsp;&nbsp;{el.almacen}</option>
                     ))}
                 </select>
+                 </>:<>
+                 <label className="edit__label">Consumo Material</label>
+                <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>
+                        <option selected >Consumir Material</option>
+                        {materialFiltrado.map((el) => (
+                        <option key={el._id} value={el.id}>{el.descripcion}</option>
+                    ))}
+                </select>
+                 </>}
                 
+                {/* </>
+                 } */}
             <label className="edit__label">Fecha Inicio</label>
                 <input className='edit__input'  type="datetime-local" name="fecha_inicio" placeholder="Inicio"  {...register('fecha_inicio')}/>
             <label className="edit__label">Fecha Fin</label>

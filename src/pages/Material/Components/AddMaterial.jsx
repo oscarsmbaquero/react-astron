@@ -29,7 +29,7 @@ const AddMaterial = ({ usersFiltered }) => {
         icon: "success",
         confirmButtonText: "Ok",
       });
-      navigate("/avisos/caceres");
+      navigate("/material");
       console.log(resData);
     } catch (error) {
       console.log(error);
@@ -62,7 +62,7 @@ const AddMaterial = ({ usersFiltered }) => {
               Selecciona un usuario
             </option>
             {usersFiltered.map((option) => (
-              <option key={option._id} value={option._id}>
+              <option key={option._id} value={option.name}>
                 {option.name} {option.surname}
               </option>
             ))}
