@@ -30,8 +30,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 const ListMaterialById = ({materialById}) => {
-
-console.log(materialById,'ehhhhhhhhhhhhhhh');
+console.log(materialById,'materialId')
 
 
     

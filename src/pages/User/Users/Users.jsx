@@ -78,7 +78,6 @@ const Users = () => {
         <TableHead>
             <StyledTableCell align="left">Imagen</StyledTableCell>
             <StyledTableCell align="left">Nombre</StyledTableCell>
-            <StyledTableCell align="left">Apellidos</StyledTableCell>
             <StyledTableCell align="left">Email</StyledTableCell>
             <StyledTableCell align="left">Rol</StyledTableCell>
             <StyledTableCell align="left">Acciones</StyledTableCell>
@@ -93,7 +92,6 @@ const Users = () => {
             <Avatar alt="Remy Sharp" src={user.image} />
             </StyledTableCell>
             <StyledTableCell align="left">{user.name}</StyledTableCell>
-            <StyledTableCell align="left">{user.surname}</StyledTableCell>
             <StyledTableCell align="left">{user.email}</StyledTableCell>
             <StyledTableCell align="left">{user.account_type}</StyledTableCell>
             <StyledTableCell align="left">

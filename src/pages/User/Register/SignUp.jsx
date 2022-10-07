@@ -25,7 +25,7 @@ const loginInitialState = {
   email: "",
   password: "",
   name: "",
-  surname: "",
+  // surname: "",
   account_type: "",
   image:""
 };
@@ -71,7 +71,7 @@ export default function SignUp() {
     try {
         registerUser(dispatch, registerForm);
         setRegisterForm(loginInitialState);
-        registerForm.account_type === "Tecnico" ? navigate("/avisos/caceres")
+        registerForm.account_type === "Tecnico" ? navigate("/")
             : navigate("/");
     } catch (error) {
         console.log(error);
@@ -116,13 +116,13 @@ export default function SignUp() {
               required
               fullWidth
               name="name"
-              label="Name"
+              label="Name & Surname"
               type="name"
               id="name"
               onChange={handleRegisterForm}
               
             />
-            <TextField
+            {/* <TextField
               margin="normal"
               required
               fullWidth
@@ -131,7 +131,7 @@ export default function SignUp() {
               type="surname"
               id="surname"
               onChange={handleRegisterForm}
-            />
+            /> */}
             <TextField
               margin="normal"
               required

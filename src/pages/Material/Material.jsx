@@ -32,6 +32,7 @@ const Material = () => {
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
   // };
+  console.log(loggedUser.name,'nameLoggedUser')
   useEffect(() => {
     fetch(`${BASE_URL}/material`, {
       method: "GET",
@@ -61,7 +62,7 @@ const Material = () => {
   //console.log(usersFiltered,'userFiltered')
 
   useEffect(() => {
-    fetch(`${BASE_URL}/material/${loggedUser.id}`, {
+    fetch(`${BASE_URL}/material/${loggedUser.name}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

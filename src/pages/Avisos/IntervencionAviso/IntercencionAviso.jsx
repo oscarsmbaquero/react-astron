@@ -51,7 +51,7 @@ const IntercencionAviso = () => {
       }, [userLogged.token]);
       console.log(material,'material')
       useEffect(() => {
-        fetch(`${BASE_URL}/material/${userLogged.id}`, {
+        fetch(`${BASE_URL}/material/${userLogged.name}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -70,13 +70,13 @@ const IntercencionAviso = () => {
         (user) => user.account_type === "Tecnico" || user.account_type === 'Admin'
       );
      
-      const materialFiltrado = material.filter(
-        (mater)=> mater.almacen === userLogged.name
-      );
-      console.log(materialFiltrado,'material por usuario')
+      // const materialFiltrado = material.filter(
+      //   (mater)=> mater.almacen === userLogged.id
+      // );
+      //console.log(materialFiltrado,'material por usuario')
     
     const onSubmit = async (formData) => {
-        console.log(formData.tecnicoIntervencion,'formData')
+        //console.log(formData.tecnicoIntervencion,'formData')
         // const hora_fin = formData.fecha_fin;
         // const hora_inicio = formData.fecha_inicio;
         // console.log(hora_inicio,hora_fin,39);
@@ -104,10 +104,7 @@ const IntercencionAviso = () => {
                 const resData = await result.json();
                 
                 navigate("/avisos/caceres");
-                console.log(resData);
-                
-                
-                
+                console.log(resData);                
             } catch (error) {
                console.log(error); 
             }
@@ -118,7 +115,7 @@ const IntercencionAviso = () => {
     <section className="sectionEdit">
     { !aviso  || !material || !users? <Loader/> : 
     <div className="edit">
-    <h3>Añadir Intervención</h3>
+    <h3>Añadir Intervención</h3><h2>{aviso.n_incidencia}</h2>
         <form onSubmit={handleSubmit(onSubmit)} class="edit__form">
             <label className="edit__label">Nº Incidencia</label>
                 <input className='edit__input' readOnly {...setValue("n_incidencia", aviso.n_incidencia)} type="text" name="name" placeholder="Nº Incidencia"  {...register('n_incidencia', )}/>
@@ -139,18 +136,27 @@ const IntercencionAviso = () => {
                         {/* <option value="Pendiente">Pendiente</option> */}
                         <option value="Cerrada">Cerrada</option>
                 </select>
-                <label className="edit__label">Técnico</label>
+                {userLogged.rol === 'Dispatch'?
+                 <>
+                 <label className="edit__label">Técnico</label>
                  <select name="jobs"  className='edit__input' {...register('tecnicoIntervencion')}>
                         <option selected>Selecciona Técnico</option>
                         {tecnicos.map((user) => (
                         <option key={user._id} value={user.id}>{user.name} {user.surname}</option>
                     ))}                   
                  </select> 
+                 </>:
+                 <>
+                 <label className="edit__label">Técnico</label>
+                <input className='edit__input' readOnly {...setValue("tecnicoIntervencion", userLogged.name)} type="text" name="tecnicoIntervencion" placeholder="Tecnico Intervencion"   {...register('tecnicoIntervencion')}/>
+                 </>
+                }
                  {userLogged.rol === 'Dispatch'?
                  <>
                  <label className="edit__label">Consumo Material</label>
                 <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>
-                        <option selected >Consumir Material</option>
+                        {/* <option selected >Consumir Material</option> */}
+                        <option selected value="Sin Material">Sin Material</option>
                         {material.map((el) => (
                         <option key={el._id} value={el.id}>{el.descripcion}&nbsp;&nbsp;{el.almacen}</option>
                     ))}
@@ -158,9 +164,9 @@ const IntercencionAviso = () => {
                  </>:<>
                  <label className="edit__label">Consumo Material</label>
                 <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>
-                        <option selected >Consumir Material</option>
-                        {materialFiltrado.map((el) => (
-                        <option key={el._id} value={el.id}>{el.descripcion}</option>
+                        <option selected value="No hay consumo" class="bold-option">No hay consumo</option>
+                        {materialById.map((el) => (
+                        <option key={el._id} value={el.id}>{el.descripcion}&nbsp;Ud.&nbsp;{el.unidades}</option>
                     ))}
                 </select>
                  </>}

@@ -47,7 +47,7 @@ const MostrarIntervencion = () => {
         .then(data => setIntervencion(data))
     
     }, [id])
-
+    console.log(intervencion,'intervencion')
     useEffect(() => {
       if (intervencion) {
         let tabla=[]
@@ -59,6 +59,7 @@ const MostrarIntervencion = () => {
             km: intervencion.km[index],
             viaje: intervencion.viaje[index],
             tecnico: intervencion.tecnicoIntervencion[index],
+            material: intervencion.materialIntervencion[index],
           })
         ))
 
@@ -98,6 +99,7 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="center">km</StyledTableCell>
             <StyledTableCell align="center">T desplazamiento</StyledTableCell>
             <StyledTableCell align="center">Técnico</StyledTableCell>
+            <StyledTableCell align="center">Material</StyledTableCell>
         </TableHead>
         <TableBody>
           {intervencionTabla.map((aviso) => (
@@ -111,6 +113,7 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="left">{aviso.km}</StyledTableCell>
             <StyledTableCell align="left">{aviso.viaje}</StyledTableCell>
             <StyledTableCell align="left">{aviso.tecnico}</StyledTableCell>
+            <StyledTableCell align="left">{aviso.material}</StyledTableCell>
             {/* <Link to={`/edit/user/${aviso._id}`}>
                   <IconButton  
                     aria-label="delete" 
