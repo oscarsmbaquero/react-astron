@@ -2,10 +2,11 @@
 
 .profile{
  
-  margin: 50px 50px 30px 20px;
+ margin: 20px 20px 20px 20px;
  display: flex;
- justify-content: space-around;
+ justify-content: space-evenly;
  align-items: center;
+ 
  
  @media screen  and (max-width: 766px) {
   flex-direction: column;
@@ -37,13 +38,31 @@
 
 }
 .pizarra{
-  background-color: #de6800;
-background-image: url("https://www.transparenttextures.com/patterns/dark-brick-wall.png");
+  background-color: #234206;
+  background-image: url("https://www.transparenttextures.com/patterns/az-subtle.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   //background-color: white;
-  padding: 100px;
+  padding: 50px;
   border: 1px solid  blue;
   border-radius: 8px;
+  width: 40%;
+  border: 8px solid #202020;
+  
+  @media screen  and (max-width: 766px) {
+    padding: 0px;
+  }
+
+  &__h1{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    font-family:cursive;
+  }
+  &__p{
+    color:white;
+    font-family: 'Roboto', sans-serif;
+    font-family:cursive;
+  }
 }
 
 .graficas_container{

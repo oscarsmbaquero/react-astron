@@ -91,14 +91,22 @@ const totalAveriado = estadoAveriado.reduce((acumulador, operativo) => acumulado
 //sacamos los porcentajes y les quitamos decimales
 const porcentajeAveriado = (totalAveriado * 100) /reducetotal;
 const porcentajeOperativo = (totalOperativo *100) /reducetotal;
-const resultadoAveriado= porcentajeAveriado.toFixed(2);
-const resultadoOperativo= porcentajeOperativo.toFixed(2);
+const resultadoAveriado= porcentajeAveriado.toFixed(1);
+const resultadoOperativo= porcentajeOperativo.toFixed(1);
 //calculamos consumible  de material Averiado
-const averiadoConsumible = materialById.filter((user) => user.tipo === "Consumible");
-const resultadoAveriadoConsumible = averiadoConsumible.length;
+const averiadoConsumible = materialById.filter((user) => user.tipo === "Consumible" && user.estado ==='Averiado') ;
+const totalAveriadoConsumible = averiadoConsumible.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
 //calculamos reparable de material Operativo
-const averiadoReparable = materialById.filter((user) => user.tipo === "Reparable");
-const resultadoAveriadoReparable = averiadoReparable.length;
+const averiadoReparable = materialById.filter((user) => user.tipo === "Reparable" && user.estado ==='Averiado');
+const totalAveriadoReparable = averiadoReparable.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
+//calculo consumible material Operativo
+const operativoConsumible = materialById.filter((user)=> user.tipo === "Consumible" && user.estado ==='Operativo');
+const totalOperativoConsumible = operativoConsumible.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
+//calculo reparable material Operativo
+const operativoReparable = materialById.filter((user)=> user.tipo === "Reparable" && user.estado ==='Operativo');
+const totalOperativoReparable = operativoReparable.reduce((acumulador, operativo) => acumulador + operativo.unidades,0);
+
+
 
 //calculamos consumible  de material Operativo
 // const operativoConsumible = materialById.filter((user) => user.tipo === "Consumible");
@@ -115,6 +123,7 @@ const resultadoAveriadoReparable = averiadoReparable.length;
   const AddTab = () => dispatch({ type: "ADD", payload: tabsInitState });
   const ListTab = () => dispatch({ type: "LIST" });
   const TecnicoTab = () => dispatch({ type: "TECNICO" });
+
 
   const navigate = useNavigate();
 
@@ -142,13 +151,13 @@ const resultadoAveriadoReparable = averiadoReparable.length;
             src={loggedUser.image}
             className="profile__photo__img"
           /> */}
-          <h1>Averiado:&nbsp;{totalAveriado}</h1>
-          <p>Consumible:&nbsp;{resultadoAveriadoConsumible}</p>
-          <p>Reparable:&nbsp;{resultadoAveriadoReparable}</p>
-          <h1>Operativo:&nbsp;{totalOperativo}</h1>
-          {/* <p>Consumible:&nbsp;{resultadoOperativoConsumible}</p>
-          <p>Reparable:&nbsp;{resultadoOperativoReparable}</p>
-           */}
+          <h1 class="pizarra__h1">Averiado</h1>
+          <p class="pizarra__p">Consumible:&nbsp;{totalAveriadoConsumible}</p>
+          <p class="pizarra__p">Reparable:&nbsp;{totalAveriadoReparable}</p>
+          <h1 class="pizarra__h1">Operativo</h1>
+          <p class="pizarra__p">Consumible:&nbsp;{totalOperativoConsumible}</p>
+          <p class="pizarra__p">Reparable:&nbsp;{totalOperativoReparable}</p>
+           
         </div>
         <div className="graficas_container">
           <div className="graficas">

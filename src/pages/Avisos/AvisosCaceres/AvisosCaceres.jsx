@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SearchInput from "../../../core/components/SearchInput/SearchInput";
 import Loader from "../../../core/components/Loader/Loader";
 import "./AvisosCaceres.scss";
@@ -38,6 +38,7 @@ const AvisosCaceres = () => {
   let [users, SetUsers] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [isLoaded, setIsLoaded] = useState(false);
+  const navigate = useNavigate();
 
 
 
@@ -104,7 +105,7 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
           .then((response) => response.json())
           .then((data) => SetAvisos(data));
 
-        //navigate("/avisos/caceres")
+        navigate("/avisos/caceres")
       }
     });
   };

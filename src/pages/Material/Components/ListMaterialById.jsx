@@ -6,6 +6,7 @@ import { Avatar, Container, Table, TableBody,  TableContainer, TableHead, TableR
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
 import { Create, DeleteOutlined } from '@mui/icons-material';
+import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import Swal from 'sweetalert2'
 import {  Link, Navigate } from 'react-router-dom';
@@ -45,7 +46,7 @@ console.log(materialById,'materialId')
            <StyledTableCell align="left">Estado</StyledTableCell>
            <StyledTableCell align="left">Incidencia</StyledTableCell>
            <StyledTableCell align="left">Tipo</StyledTableCell>
-           {/* <StyledTableCell align="left">Acciones</StyledTableCell> */}
+           <StyledTableCell align="left">Acciones</StyledTableCell>
        </TableHead>
        <TableBody>
          {materialById.map((mat) => (
@@ -61,22 +62,29 @@ console.log(materialById,'materialId')
            <StyledTableCell align="left">{mat.estado}</StyledTableCell>
            <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
            <StyledTableCell align="left">{mat.tipo}</StyledTableCell>
-            {/* <StyledTableCell align="left">
-           <Link >
+           <StyledTableCell align="left">
+           
+           {mat.tipo ==='Reparable' && mat.estado ==='Averiado'?
+           <>
+           {/* <Link > */}
                  <IconButton  
                    aria-label="delete" 
-                   color="secondary" 
-                   ><Create />
+                   color="primary" 
+                   ><SendIcon />
                  </IconButton>
-            </Link>
+            {/* </Link> */}
+            </>:''}
+            {mat.tipo ==='Consumible' && mat.estado ==='Averiado'?
             
-           
             <IconButton  color="error" >
                <DeleteOutlined/>
              </IconButton>
+            :''
+            }           
+            
            
             
-           </StyledTableCell>  */}
+           </StyledTableCell> 
            </StyledTableRow>
          ))}
        </TableBody>    

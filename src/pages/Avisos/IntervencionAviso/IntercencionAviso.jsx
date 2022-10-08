@@ -69,6 +69,10 @@ const IntercencionAviso = () => {
       const tecnicos = users.filter(
         (user) => user.account_type === "Tecnico" || user.account_type === 'Admin'
       );
+      const materialOperativo = materialById.filter(
+        (material) => material.estado === "Operativo" 
+      );
+      
      
       // const materialFiltrado = material.filter(
       //   (mater)=> mater.almacen === userLogged.id
@@ -76,6 +80,7 @@ const IntercencionAviso = () => {
       //console.log(materialFiltrado,'material por usuario')
     
     const onSubmit = async (formData) => {
+      console.log(formData.materialIntervencion,'materialIntervencion')
         //console.log(formData.tecnicoIntervencion,'formData')
         // const hora_fin = formData.fecha_fin;
         // const hora_inicio = formData.fecha_inicio;
@@ -165,8 +170,8 @@ const IntercencionAviso = () => {
                  <label className="edit__label">Consumo Material</label>
                 <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>
                         <option selected value="No hay consumo" class="bold-option">No hay consumo</option>
-                        {materialById.map((el) => (
-                        <option key={el._id} value={el.id}>{el.descripcion}&nbsp;Ud.&nbsp;{el.unidades}</option>
+                        {materialOperativo.map((el) => (
+                        <option key={el._id} value={el._id}>{el.descripcion}</option>
                     ))}
                 </select>
                  </>}

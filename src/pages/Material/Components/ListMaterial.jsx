@@ -65,7 +65,7 @@ const ListMaterial = ({material}) => {
            <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
            <StyledTableCell align="left">{mat.tipo}</StyledTableCell>
              <StyledTableCell align="left">
-              { userLogged.id === mat.almacen && 
+              { userLogged.name === mat.almacen && 
                 <IconButton  
                    aria-label="delete" 
                    color="secondary" 
