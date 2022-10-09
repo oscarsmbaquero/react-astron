@@ -5,7 +5,6 @@ import Loader from "../../../core/components/Loader/Loader";
 import "./AvisosCaceres.scss";
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import IconButton from "@mui/material/IconButton";
-//import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from "@mui/icons-material/Add";
 import { Create, DeleteOutlined } from "@mui/icons-material";
 import Swal from "sweetalert2"; // hay que probarlo
@@ -13,12 +12,7 @@ import { useGetAuth } from "../../../context/context";
 import IconoNuevoGasto from "../../../assets/images/nuevo-gasto.svg";
 import Badge from "react-bootstrap/Badge";
 import usePagination from "../../../core/components/Pagination/Pagination";
-
-// import SelectCompanies from '../../../core/components/SelectCompanies/SelectCompanies';
-// import SelectUser from '../../../core/components/SelectUsers/SelectUser';
-//import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from "@mui/material/Button";
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -113,7 +107,6 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
   return (
     <>
       <div className="searchContainer">
-      
         <SearchInput  placeholder="Buscar por centro, averia... " onChange={onInputChange} />
       </div>
       <Container>
@@ -175,7 +168,13 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                     color="error"
                     sx={{ fontSize: 26 }}
                   >
-                  <Badge bg="danger">{aviso.n_incidencia}</Badge>
+                  <Badge bg="danger">{aviso.n_incidencia}</Badge><br/>
+                  {aviso.prioridad === 'Urgente' ?
+                  <Badge bg="warning">{aviso.prioridad}</Badge>
+                  :
+                  <Badge bg="success">{aviso.prioridad}</Badge>
+                  }
+                  
                   </Typography>
                   <Typography variant="h4" component={"div"}>
                     {aviso.localidad}
@@ -225,11 +224,13 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                       </Link>
                     </Button>
                   )}
+                  {aviso.user_assigned?.name === userLogged.name &&
                   <Button variant="contained" color="warning" size="small">
                     <Link to={`/avisos/intervencion/${aviso._id}`}>
                       Añadir Int.
                     </Link>
                   </Button>
+                  }
                   <Button variant="contained" color="success" size="small">
                     <Link to={`/mostrar/intervencion/${aviso._id}`}>
                       Mostrar Int.

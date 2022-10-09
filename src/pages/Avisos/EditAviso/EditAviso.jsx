@@ -55,6 +55,7 @@ const EditAviso = () => {
     <section className="sectionEdit">
         { !aviso ?<Loader/> :
         <div className="edit">
+        <h3>Editar Aviso</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="edit__form">
                
                     <label className="edit__label">Incidencia</label>
@@ -77,11 +78,11 @@ const EditAviso = () => {
                         <option value="Urgente">Urgente</option>
                         <option value="Normal">Normal</option>
                     </select>
-
+                    <br/>
                         {/* <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/> */}
                     
-                    <label className="edit__label">Estado</label>
-                        <input className='edit__input' {...setValue("estado", aviso.estado)} type="text" name="estado" placeholder="Estado"  {...register('estado')}/>
+                    {/* <label className="edit__label">Estado</label>
+                        <input className='edit__input' {...setValue("estado", aviso.estado)} type="text" name="estado" placeholder="Estado"  {...register('estado')}/> */}
                     <Button variant="contained" type='submit'  endIcon={<SendIcon />} >
                         Enviar
                     </Button>

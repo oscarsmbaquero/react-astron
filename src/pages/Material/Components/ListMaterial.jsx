@@ -68,7 +68,7 @@ const ListMaterial = ({material}) => {
               { userLogged.name === mat.almacen && 
                 <IconButton  
                    aria-label="delete" 
-                   color="secondary" 
+                   color="primary" 
                    ><Create />
                  </IconButton>
               }

@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <header className="header">
       <nav className="navbar navbar-expand-lg navbar-light bgNavbar ">
-        <div className="container-fluid d-flex flex-row">
+        <div className="container-fluid d-flex flex-row justify-content-around">
         
           <div
             className="collapse navbar-collapse fw-bold"
@@ -121,7 +121,7 @@ const Header = () => {
                   </NavLink>
                   { userLogged.rol === 'Tecnico' || userLogged.rol ==='Admin' ?
                   (
-                    <NavLink
+                  <NavLink
                     to="/us/asignados"
                     className="nav-item align-self-center shadowLink nav-link active"
                     style={({ isActive }) => ({

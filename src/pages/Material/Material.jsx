@@ -12,7 +12,7 @@ import ListMaterialById from "./Components/ListMaterialById";
 
 import { tabsInitState, tabsReducer } from "../../utils/MaterialReducer";
 import { Avatar } from "@mui/material";
-import { Button } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 
 import Fingerprint from '@mui/icons-material/Fingerprint';
 import { BsFillBrushFill } from "react-icons/bs";
@@ -165,7 +165,7 @@ const totalOperativoReparable = operativoReparable.reduce((acumulador, operativo
             <h2>{totalAveriado}&nbsp;ud.</h2>
             <CircularProgressbar
                         styles={buildStyles({
-                            pathColor: resultadoAveriado > 90 ? '#DC2626' :resultadoAveriado < 90 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
+                            pathColor: resultadoAveriado > 80 ? '#DC2626' :resultadoAveriado < 80 && resultadoAveriado > 50 ? '#d8f007': '#35de0b',
                             trailColor: '#F5F5F5',
                             textColor: 'black',
                         })}
@@ -191,20 +191,22 @@ const totalOperativoReparable = operativoReparable.reduce((acumulador, operativo
       </div>
       <div>
         <div>
-          <ul className="ul">
-            <Button variant="contained" onClick={AddTab}  >
+          <Box >
+            <Button variant="contained" color="primary" onClick={AddTab}>
               Añadir Material 
               <BsFillBrushFill />
             </Button>
-            <Button variant="contained"  onClick={ListTab}>
+            <Button variant="contained" color="primary" onClick={ListTab}>
               Total Msterial
               <BsFillSignpost2Fill/>
             </Button>
-            <Button variant="contained"  onClick={TecnicoTab}>
+            <Button variant="contained" color="primary" onClick={TecnicoTab}>
                Material {loggedUser.name}
                <Fingerprint />
             </Button>
-          </ul>
+            </Box>
+          
+          
           {tabs.addMaterial && (
             <>
               <AddMaterial usersFiltered={usersFiltered} />
