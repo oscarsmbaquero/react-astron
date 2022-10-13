@@ -112,11 +112,11 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
       <Container>
         <Grid container spacing={5}>
           {filteredAvisos.map((aviso) => (
-            <Grid item key={aviso._id} xs={12} md={12} lg={12}>
+            <Grid item key={aviso._id} xs={12} md={12} lg={6}>
               <Card
                 elevation={5}
                 sx={{
-                  borderRadius: "8px",
+                  borderRadius: "4px",
                   justifyContent: "flex-start",
                   flex: "1 0 auto",
                   flexDirection: "column",
@@ -179,9 +179,9 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                   <Typography variant="h4" component={"div"}>
                     {aviso.localidad}
                   </Typography>
-                  {/* <Typography sx={{ fontSize: 26 }} color="text.secondary">
+                  <Typography sx={{ fontSize: 26 }} color="text.secondary">
                     {aviso.centro}
-                  </Typography> */}
+                  </Typography>
                   <Typography variant="h6">
                     {
                       aviso.estado === "Abierta" ? ( //primera condicion

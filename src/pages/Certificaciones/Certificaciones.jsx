@@ -2,7 +2,9 @@ import React from 'react'
 
 const Certificaciones = () => {
   return (
-    <div>En Construcción</div>
+    <div>
+      <h1>En Construcción</h1>
+    </div>
   )
 }
 

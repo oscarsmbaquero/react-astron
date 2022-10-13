@@ -46,12 +46,12 @@ const ListMaterialById = ({materialById}) => {
   },
      }).then(res=>{
        if(res.status === 200){
-        console.log('Borrado');
+        //console.log('Borrado');
       Swal.fire("Material eliminado", res.message,"success");
       navigate("/material")
       
       
-      //navigate("/avisos/caceres")
+      navigate("/material")
       
     }
     })
@@ -101,10 +101,7 @@ const ListMaterialById = ({materialById}) => {
                <DeleteOutlined/>
              </IconButton>
             :''
-            }           
-            
-           
-            
+            }
            </StyledTableCell> 
            </StyledTableRow>
          ))}

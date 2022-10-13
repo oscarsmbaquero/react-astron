@@ -23,10 +23,7 @@ const Header = () => {
       <nav className="navbar navbar-expand-lg navbar-light bgNavbar ">
         <div className="container-fluid d-flex flex-row justify-content-around">
         
-          <div
-            className="collapse navbar-collapse fw-bold"
-            id="navbarSupportedContent"
-          >
+          <div  className="collapse navbar-collapse fw-bold" id="navbarSupportedContent">
             {/* <a
               className="navbar-brand d-flex justify-content-center"
               href="/"
