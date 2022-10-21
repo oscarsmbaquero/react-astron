@@ -1,11 +1,9 @@
 const idStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).id
     : undefined;
-
 const tokenStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).token
     : undefined;
-
 const rolStored = localStorage.getItem("currentUser")
     ? JSON.parse(localStorage.getItem("currentUser")).rol
     : undefined;

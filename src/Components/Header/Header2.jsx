@@ -43,7 +43,7 @@ const Header = () => {
             >
               {" "}
               <img
-                className="img-fluid w-25 align-content-center"
+                className="img-fluid w-15 align-content-left"
                 src={logoAstron}
                 alt="logo"
               />
