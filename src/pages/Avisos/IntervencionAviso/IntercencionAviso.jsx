@@ -103,8 +103,7 @@ const IntercencionAviso = () => {
         }).then((result) => {
             if (result.value) {
                 console.log("Result: " + result.value);
-                const motivo=result.value
-                console.log(motivo,'motivo');
+                const motivo=result.value;
                  formData ={...formData,motivo};
                 console.log(formData,'formData')
 
