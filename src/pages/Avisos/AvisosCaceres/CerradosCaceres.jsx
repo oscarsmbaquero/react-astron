@@ -26,7 +26,7 @@ import Pagination from "../../../core/components/Pagination/PaginationAvisos";
 //import PaginationAvisos from '../../../core/components/Pagination/PaginationAvisos';
 //import Link from '@mui/material/Link';
 
-const PendientesCaceres = () => {
+const CerradosCaceres = () => {
   const userLogged = useGetAuth();
   let [avisos, SetAvisos] = useState([]);
   let [users, SetUsers] = useState([]);
@@ -59,8 +59,8 @@ const PendientesCaceres = () => {
       .then((data) => SetAvisos(data));
   }, []);
 
-  const pendientesCaceres = avisos.filter(
-    (avisos) => avisos.provincia === "Cáceres" && avisos.estado ==='Pendiente'
+  const cerradosCaceres = avisos.filter(
+    (avisos) => avisos.provincia === "Cáceres" && avisos.estado ==='Cerrada'
   );
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const PendientesCaceres = () => {
 
   /*Con el valor introducido en el inpute del buscador filtramos los trabajos almacenaos en jobs,
 Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
-  const filteredAvisos = pendientesCaceres.filter(
+  const filteredAvisos = cerradosCaceres.filter(
     (avisos) =>
       avisos.centro.toLowerCase().includes(keyword) ||
       avisos.n_incidencia.toLowerCase().includes(keyword) ||
@@ -362,4 +362,4 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
   // )
 };
 
-export default PendientesCaceres;
+export default CerradosCaceres;

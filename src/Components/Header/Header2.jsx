@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <nav className="navbar navbar-expand-lg navbar-light bgNavbar ">
+      <nav className="navbar  fixed-top navbar-expand-lg navbar-light bgNavbar ">
         <div className="container-fluid d-flex flex-row justify-content-around">
         
           <div  className="collapse navbar-collapse fw-bold" id="navbarSupportedContent">

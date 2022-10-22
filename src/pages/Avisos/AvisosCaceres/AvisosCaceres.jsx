@@ -60,7 +60,7 @@ const AvisosCaceres = () => {
   }, []);
 
   const avisosCaceres = avisos.filter(
-    (avisos) => avisos.provincia === "Cáceres"
+    (avisos) => avisos.provincia === "Cáceres" && (avisos.estado === 'Abierta' || avisos.estado ==='Asignado')
   );
 
   useEffect(() => {
@@ -128,8 +128,8 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
               >
                 <CardHeader
                   sx={{
-                    color: "error.main",
-                    background: "whitesmoke",
+                    //color: "white.main",
+                    background: "grey",
                     justifyContent: "space-between",
                   }}
                   title ={aviso.centro}

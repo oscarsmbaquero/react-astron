@@ -25,6 +25,7 @@ import SignIn from "../pages/User/Login/SignIn";
 import SignUp from "../pages/User/Register/SignUp";
 import Asignados from "../pages/User/Users/Asignados";
 import Material from "../pages/Material/Material";
+import CerradosCaceres from "../pages/Avisos/AvisosCaceres/CerradosCaceres";
 
 
 const routes = [
@@ -49,8 +50,12 @@ const routes = [
     element: <AvisosCaceres />,
   },
   {
-    path: "/avisos/caceres/pendientes",
+    path: "/pendientes/caceres",
     element: <PendientesCaceres />,
+  },
+  {
+    path: "/cerrados/caceres",
+    element: <CerradosCaceres />,
   },
   {
     path: "/avisos/badajoz",
