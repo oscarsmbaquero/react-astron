@@ -39,9 +39,9 @@ const SelectUser = () => {
   user._id === selected
   
   );
-  console.log(selectedUser,42);
+  //console.log(selectedUser,42);
    const userEmail = selectedUser[0]?.email;
-   console.log(userEmail,'userMail')
+//console.log(userEmail,'userMail')
 
   const sendMail = (e) => {
     e.preventDefault();
@@ -88,7 +88,7 @@ const SelectUser = () => {
       .catch((error) => console.error(error));
   };
 
-console.log(users);
+//console.log(users);
 
   const filteredUser = users.filter((user) =>
      user.account_type !=='Dispatch'

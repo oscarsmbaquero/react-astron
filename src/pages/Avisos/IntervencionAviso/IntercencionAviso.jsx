@@ -8,6 +8,7 @@ import Loader from '../../../core/components/Loader/Loader';
 import { Button  } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useGetAuth } from "../../../context/context";
+import Swal from "sweetalert2";
 
 const IntercencionAviso = () => {
     const userLogged = useGetAuth();
@@ -80,7 +81,7 @@ const IntercencionAviso = () => {
       //console.log(materialFiltrado,'material por usuario')
     
     const onSubmit = async (formData) => {
-      console.log(formData.materialIntervencion,'materialIntervencion')
+      console.log(formData.estado,'materialIntervencion')
         //console.log(formData.tecnicoIntervencion,'formData')
         // const hora_fin = formData.fecha_fin;
         // const hora_inicio = formData.fecha_inicio;
@@ -93,7 +94,24 @@ const IntercencionAviso = () => {
         // const hora_ini = new Date();
         //  const hora =hora_ini.getHours()
         //  console.log(hora);
-      
+        if(formData.estado === 'Pendiente'){
+          Swal.fire({
+            title: "Motivo de aviso Pendiente",
+            text: "Especifica motivo de aviso Pendiente",
+            input: 'text',
+            showCancelButton: true        
+        }).then((result) => {
+            if (result.value) {
+                console.log("Result: " + result.value);
+                const motivo=result.value
+                console.log(motivo,'motivo');
+                 formData ={...formData,motivo};
+                console.log(formData,'formData')
+
+            }
+        });
+        }
+        
 
            
             try {
@@ -105,7 +123,7 @@ const IntercencionAviso = () => {
                    },
                    body: JSON.stringify(formData),
                 })
-                console.log(formData,33);
+                console.log(formData.motivo,33);
                 const resData = await result.json();
                 
                 navigate("/avisos/caceres");
@@ -136,9 +154,9 @@ const IntercencionAviso = () => {
                 <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>             */}
             <label className="edit__label" >Estado</label>
                 <select className='edit__input'  {...setValue("estado", aviso.estado)} type="text" name="estado" placeholder="Estado"  {...register('estado')}>
-                        <option value="Abierta">Abierta</option>
-                        <option value="Asignada">Asignada</option>
-                        {/* <option value="Pendiente">Pendiente</option> */}
+                        {/* <option value="Abierta">Abierta</option>
+                        <option value="Asignada">Asignada</option> */}
+                        <option value="Pendiente">Pendiente</option>
                         <option value="Cerrada">Cerrada</option>
                 </select>
                 {userLogged.rol === 'Dispatch'?
