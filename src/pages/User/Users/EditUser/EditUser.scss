@@ -36,6 +36,15 @@
             text-align:left;
         }
     }
+    &__label--motivo{
+        color:red;
+        text-align:center;
+        font-weight: bold;
+        font-family: Georgia, Cambria, Times, "Times New Roman";
+        @media screen and(min-width:810px) {
+            text-align:left;
+        }
+    }
     &__input{
         margin:0.5em auto;
         width: 70%;

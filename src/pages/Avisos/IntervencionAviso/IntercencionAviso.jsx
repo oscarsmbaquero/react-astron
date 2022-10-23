@@ -9,16 +9,21 @@ import { Button  } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import { useGetAuth } from "../../../context/context";
 import Swal from "sweetalert2";
+import dayjs from "dayjs";
+import { BsChevronDoubleLeft } from 'react-icons/bs';
 
 const IntercencionAviso = () => {
     const userLogged = useGetAuth();
-    console.log(userLogged.rol,'userLogged')
     let [aviso, SetAviso] =useState();
     const [users, setUsers] = useState([]);
     const { id } =useParams();
     const [material, setMaterial] = useState([]);
     const [materialById, setMaterialById] = useState([]);
     const [visible,setVisible]=useState('Cerrada')
+    const [fechaInicio,setFechaInicio]=useState()
+    const [fechaFinal,setFechaFinal]=useState()
+    const [tiempoViaje,setTiempoViaje]=useState()
+
 
     const { register, handleSubmit, formState: {errors, isValid}, setValue, } = useForm({mode: "onChange"});
     let navigate = useNavigate();
@@ -69,9 +74,28 @@ const IntercencionAviso = () => {
       //funcion que determina el estado de la intervencin, si esta Pendiente habilita el select de motivo de pendiente
       const captureType = (e) => {
         setVisible(e.target.value);
-    }
+      }
+      const fechaIni = (e) =>{
+        setFechaInicio(e.target.value)
+      }      
+      const fechaFin = (e) =>{
+        setFechaFinal(e.target.value)
+      }
+      const horasViaje = (e) =>{
+        setTiempoViaje(e.target.value)
+      }
+    let fechaInicial = new Date(fechaInicio).getTime();
+    let fechafinal = new Date(fechaFinal).getTime();
+    const horasIntervencion = ((fechafinal-fechaInicial)/60/60/1000).toFixed(2);
     
-    console.log(visible,'visible');
+    const intervencion = parseFloat(horasIntervencion);
+    const desplazamiento = parseFloat(tiempoViaje);
+    
+    const totalHoras = intervencion + desplazamiento;
+    console.log(totalHoras,'total');
+    
+    
+    
 
       const tecnicos = users.filter(
         (user) => user.account_type === "Tecnico" || user.account_type === 'Admin'
@@ -89,8 +113,9 @@ const IntercencionAviso = () => {
     const onSubmit = async (formData) => {
       console.log(formData.estado,'materialIntervencion')
       
-        console.log(formData)
-       
+
+          formData = {...formData,totalHoras}
+          console.log(formData,'formData')
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
@@ -110,6 +135,7 @@ const IntercencionAviso = () => {
             }
 
     }
+    console.log()
 
   return (
     <section className="sectionEdit">
@@ -138,7 +164,7 @@ const IntercencionAviso = () => {
                 </select>
                 { visible === 'Pendiente' ?
                 <>
-                  <label className="edit__label">Motivo de aviso pendiente</label>
+                  <label className="edit__label--motivo">Motivo de aviso pendiente</label>
                 <input className='edit__input'   type="text" name="motivo" placeholder="Motivo"   {...register('motivo')}/>
                 </>
                 :'' }
@@ -180,13 +206,13 @@ const IntercencionAviso = () => {
                 {/* </>
                  } */}
             <label className="edit__label">Fecha Inicio</label>
-                <input className='edit__input'  type="datetime-local" name="fecha_inicio" placeholder="Inicio"  {...register('fecha_inicio')}/>
+                <input className='edit__input'  type="datetime-local" name="fecha_inicio" placeholder="Inicio"  {...register('fecha_inicio')} onChange={fechaIni}/>
             <label className="edit__label">Fecha Fin</label>
-                <input className='edit__input'  type="datetime-local" name="fecha_fin" placeholder="Fin"  {...register('fecha_fin')}/>
+                <input className='edit__input'  type="datetime-local" name="fecha_fin" placeholder="Fin"  {...register('fecha_fin')} onChange={fechaFin}/>
             <label className="edit__label">km</label>
                 <input className='edit__input' type="number" name="km" placeholder="Km"  {...register('km')}/>
             <label className="edit__label">T. Desplazamiento</label>
-                <input className='edit__input' type="number" name="viaje" placeholder="tiempo desplazamiento"  {...register('viaje')}/>
+                <input className='edit__input' type="number" name="viaje" placeholder="tiempo desplazamiento"  {...register('viaje')} onChange={horasViaje}/>
             <label className="edit__label">Intervención</label >
                 <textarea class="textarea"  type="text" name="intervencion" placeholder="Intervencion"  {...register('intervencion')}/>
             {/* <label className="edit__label">Motivo Pendiente </label>
