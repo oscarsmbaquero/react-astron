@@ -183,19 +183,7 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                     {aviso.centro}
                   </Typography>
                   <Typography variant="h6">
-                    {
-                      aviso.estado === "Abierta" ? ( //primera condicion
-                        <Badge bg="success"> {aviso.estado}</Badge>
-                      ) : aviso.estado === "Pendiente" ? ( //segunda condicion
-                        <Badge bg="warning"> {aviso.estado}</Badge>
-                      ) : (
-                        <Badge bg="primary">
-
-                          {" "}
-                          {aviso.estado}:&nbsp;{aviso.user_assigned?.name}
-                        </Badge>
-                      ) //si no cumple tercera condicion
-                    }
+                  <Badge bg="warning"> {aviso.estado}:&nbsp;{aviso.motivo}</Badge>
                   </Typography>
                   <Typography variant="h6"></Typography>
                   <Typography variant="body1" color="text.secondary">

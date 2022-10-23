@@ -18,6 +18,7 @@ const IntercencionAviso = () => {
     const { id } =useParams();
     const [material, setMaterial] = useState([]);
     const [materialById, setMaterialById] = useState([]);
+    const [visible,setVisible]=useState('Cerrada')
 
     const { register, handleSubmit, formState: {errors, isValid}, setValue, } = useForm({mode: "onChange"});
     let navigate = useNavigate();
@@ -65,7 +66,12 @@ const IntercencionAviso = () => {
           });
       }, [userLogged.token]);
 
-      console.log(materialById,'materialById');
+      //funcion que determina el estado de la intervencin, si esta Pendiente habilita el select de motivo de pendiente
+      const captureType = (e) => {
+        setVisible(e.target.value);
+    }
+    
+    console.log(visible,'visible');
 
       const tecnicos = users.filter(
         (user) => user.account_type === "Tecnico" || user.account_type === 'Admin'
@@ -82,7 +88,8 @@ const IntercencionAviso = () => {
     
     const onSubmit = async (formData) => {
       console.log(formData.estado,'materialIntervencion')
-        //console.log(formData.tecnicoIntervencion,'formData')
+      
+        console.log(formData)
         // const hora_fin = formData.fecha_fin;
         // const hora_inicio = formData.fecha_inicio;
         // console.log(hora_inicio,hora_fin,39);
@@ -94,25 +101,6 @@ const IntercencionAviso = () => {
         // const hora_ini = new Date();
         //  const hora =hora_ini.getHours()
         //  console.log(hora);
-        if(formData.estado === 'Pendiente'){
-          Swal.fire({
-            title: "Motivo de aviso Pendiente",
-            text: "Especifica motivo de aviso Pendiente",
-            input: 'text',
-            showCancelButton: true        
-        }).then((result) => {
-            if (result.value) {
-                console.log("Result: " + result.value);
-                const motivo=result.value;
-                 formData ={...formData,motivo};
-                console.log(formData,'formData')
-
-            }
-        });
-        }
-        
-
-           
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
@@ -151,13 +139,19 @@ const IntercencionAviso = () => {
                 <textarea class="textarea" readOnly {...setValue("averia", aviso.averia)} type="text" name="averia" placeholder="Averia"  {...register('averia')}/>
             {/* <label className="edit__label">Centro</label>
                 <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>             */}
-            <label className="edit__label" >Estado</label>
-                <select className='edit__input'  {...setValue("estado", aviso.estado)} type="text" name="estado" placeholder="Estado"  {...register('estado')}>
-                        {/* <option value="Abierta">Abierta</option>
-                        <option value="Asignada">Asignada</option> */}
-                        <option value="Pendiente">Pendiente</option>
-                        <option value="Cerrada">Cerrada</option>
+            <label className="edit__label">Estado</label>
+                <select className='edit__input'  type="text" name="estado" placeholder="Estado"  {...register('estado')} onChange={captureType}>
+                        <option selected value ="Sua">Selecciona estado</option>
+                        {/* <option value ="Pendiente">Pendiente</option>  */}
+                        <option value ="Cerrada">Cerrada</option>
+                        <option value ="Pendiente">Pendiente</option>
                 </select>
+                { visible === 'Pendiente' ?
+                <>
+                  <label className="edit__label">Motivo de aviso pendiente</label>
+                <input className='edit__input'   type="text" name="motivo" placeholder="Motivo"   {...register('motivo')}/>
+                </>
+                :'' }
                 {userLogged.rol === 'Dispatch'?
                  <>
                  <label className="edit__label">Técnico</label>
@@ -205,7 +199,9 @@ const IntercencionAviso = () => {
                 <input className='edit__input' {...setValue("viaje", aviso.viaje)} type="number" name="viaje" placeholder="tiempo desplazamiento"  {...register('viaje')}/>
             <label className="edit__label">Intervención</label >
                 <textarea class="textarea"  type="text" name="intervencion" placeholder="Intervencion"  {...register('intervencion')}/>
-            
+            {/* <label className="edit__label">Motivo Pendiente </label>
+                <input className='edit__input' type="text" name="motivo" placeholder="Motivo Pendiente"   {...register('motivo')}/> */}
+               
             <br></br>
             {aviso.estado === 'Cerrada'?
             <p>Averia Cerrada</p>
