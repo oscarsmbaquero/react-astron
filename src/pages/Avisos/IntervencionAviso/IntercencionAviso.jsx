@@ -91,7 +91,7 @@ const IntercencionAviso = () => {
     const intervencion = parseFloat(horasIntervencion);
     const desplazamiento = parseFloat(tiempoViaje);
     
-    const totalHoras = intervencion + desplazamiento;
+    const totalHoras = (intervencion + desplazamiento);
     console.log(totalHoras,'total');
     
     

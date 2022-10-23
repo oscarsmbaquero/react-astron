@@ -60,6 +60,7 @@ const MostrarIntervencion = () => {
             viaje: intervencion.viaje[index],
             tecnico: intervencion.tecnicoIntervencion[index],
             material: intervencion.materialIntervencion[index],
+            totalHoras: intervencion.totalHoras[index],
           })
         ))
 
@@ -100,6 +101,7 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="center">T desplazamiento</StyledTableCell>
             <StyledTableCell align="center">Técnico</StyledTableCell>
             <StyledTableCell align="center">Material</StyledTableCell>
+            <StyledTableCell align="center">Horas Totales</StyledTableCell>
         </TableHead>
         <TableBody>
           {intervencionTabla.map((aviso) => (
@@ -114,6 +116,7 @@ const MostrarIntervencion = () => {
             <StyledTableCell align="left">{aviso.viaje}</StyledTableCell>
             <StyledTableCell align="left">{aviso.tecnico}</StyledTableCell>
             <StyledTableCell align="left">{aviso.material}</StyledTableCell>
+            <StyledTableCell align="left">{aviso.totalHoras}</StyledTableCell>
             {/* <Link to={`/edit/user/${aviso._id}`}>
                   <IconButton  
                     aria-label="delete" 
