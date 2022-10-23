@@ -90,17 +90,7 @@ const IntercencionAviso = () => {
       console.log(formData.estado,'materialIntervencion')
       
         console.log(formData)
-        // const hora_fin = formData.fecha_fin;
-        // const hora_inicio = formData.fecha_inicio;
-        // console.log(hora_inicio,hora_fin,39);
-        // const elemInicio = hora_inicio.toString().slice(11,16);
-        // const elemFinal = hora_fin.toString().slice(11,16);
-        // console.log(elemInicio,elemFinal,41);
-        // const horas =elemFinal-elemInicio;
-        // const prueba = parseInt(elemInicio,10)
-        // const hora_ini = new Date();
-        //  const hora =hora_ini.getHours()
-        //  console.log(hora);
+       
             try {
     
                 const result = await fetch(`${BASE_URL}/avisos/${id}` ,{//modifico url 24/06/2022
@@ -141,7 +131,7 @@ const IntercencionAviso = () => {
                 <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>             */}
             <label className="edit__label">Estado</label>
                 <select className='edit__input'  type="text" name="estado" placeholder="Estado"  {...register('estado')} onChange={captureType}>
-                        <option selected value ="Sua">Selecciona estado</option>
+                        <option selected value ="">Selecciona estado</option>
                         {/* <option value ="Pendiente">Pendiente</option>  */}
                         <option value ="Cerrada">Cerrada</option>
                         <option value ="Pendiente">Pendiente</option>
@@ -194,9 +184,9 @@ const IntercencionAviso = () => {
             <label className="edit__label">Fecha Fin</label>
                 <input className='edit__input'  type="datetime-local" name="fecha_fin" placeholder="Fin"  {...register('fecha_fin')}/>
             <label className="edit__label">km</label>
-                <input className='edit__input' {...setValue("km", aviso.km)} type="number" name="km" placeholder="Km"  {...register('km')}/>
+                <input className='edit__input' type="number" name="km" placeholder="Km"  {...register('km')}/>
             <label className="edit__label">T. Desplazamiento</label>
-                <input className='edit__input' {...setValue("viaje", aviso.viaje)} type="number" name="viaje" placeholder="tiempo desplazamiento"  {...register('viaje')}/>
+                <input className='edit__input' type="number" name="viaje" placeholder="tiempo desplazamiento"  {...register('viaje')}/>
             <label className="edit__label">Intervención</label >
                 <textarea class="textarea"  type="text" name="intervencion" placeholder="Intervencion"  {...register('intervencion')}/>
             {/* <label className="edit__label">Motivo Pendiente </label>

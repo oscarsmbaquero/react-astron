@@ -206,31 +206,7 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                   sx={{
                     justifyContent: "center",
                   }}
-                >
-                  {aviso.estado === "Asignado" ? (
-                    <Button variant="contained" color="error" size="small">
-                      <Link
-                        to={`/avisos/reasignar/${aviso._id}/${aviso.user_assigned?._id}`}
-                      >
-                        Reasignar
-                      </Link>
-                    </Button>
-                  ) : (
-                    <Button variant="contained" size="small">
-                      <Link
-                        to={`/avisos/asignar/${aviso._id}/${aviso.n_incidencia}/${aviso.centro}`}
-                      >
-                        Asignar
-                      </Link>
-                    </Button>
-                  )}
-                  {aviso.user_assigned?.name === userLogged.name &&
-                  <Button variant="contained" color="warning" size="small">
-                    <Link to={`/avisos/intervencion/${aviso._id}`}>
-                      Añadir Int.
-                    </Link>
-                  </Button>
-                  }
+                >                  
                   <Button variant="contained" color="success" size="small">
                     <Link to={`/mostrar/intervencion/${aviso._id}`}>
                       Mostrar Int.
