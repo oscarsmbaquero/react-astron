@@ -231,11 +231,13 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
                     </Link>
                   </Button>
                   }
+                  { aviso.intervencion.length !== 0 &&
                   <Button variant="contained" color="success" size="small">
                     <Link to={`/mostrar/intervencion/${aviso._id}`}>
                       Mostrar Int.
                     </Link>
                   </Button>
+                  }
                 </CardActions>
               </Card>
             </Grid>

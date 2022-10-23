@@ -36,7 +36,7 @@ const PendientesCaceres = () => {
 
 
 
-  console.log(avisos, "avisos");
+  
   let [page, setPage] = useState(1);
   const PER_PAGE = 4;
 
@@ -62,6 +62,7 @@ const PendientesCaceres = () => {
   const pendientesCaceres = avisos.filter(
     (avisos) => avisos.provincia === "Cáceres" && avisos.estado ==='Pendiente'
   );
+  console.log(pendientesCaceres,'pendientesCaceres');
 
   useEffect(() => {
     fetch(`${BASE_URL}/users`)
