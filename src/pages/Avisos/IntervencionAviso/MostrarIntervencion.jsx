@@ -71,8 +71,8 @@ const MostrarIntervencion = () => {
 
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.primary.light,
-      color: theme.palette.text.primary,
+      backgroundColor: theme.palette.common.black,
+      color:theme.palette.common.white,
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
@@ -80,6 +80,7 @@ const MostrarIntervencion = () => {
   }));
   
   const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },

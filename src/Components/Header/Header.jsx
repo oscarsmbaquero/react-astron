@@ -103,12 +103,17 @@ function Header() {
             </Nav.Link>
             }
           </Nav>
+          {userLogged.id ?
+          <>
           <Nav>
             <Nav.Link href="#deets" className="user">{userLogged.name}</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
             <Avatar alt="Remy Sharp" src={userLogged.image} className="avatar" />
             </Nav.Link>
           </Nav>
+          </>
+          :''}
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>

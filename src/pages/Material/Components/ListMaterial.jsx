@@ -14,8 +14,8 @@ import { TablePagination } from '@material-ui/core';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#8CEFEE',
-    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.common.black,
+    color:theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -23,6 +23,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
@@ -40,14 +41,14 @@ const ListMaterial = ({material}) => {
     <TableContainer component={Paper}>
      <Table sx={{ minWidth: 700 }} aria-label="customized table">
        <TableHead>
-           <StyledTableCell align="left">Imagen</StyledTableCell>
-           <StyledTableCell align="left">Descripción</StyledTableCell>
-           <StyledTableCell align="left">Almacén</StyledTableCell>
-           <StyledTableCell align="left">Unidades</StyledTableCell>
-           <StyledTableCell align="left">Estado</StyledTableCell>
-           <StyledTableCell align="left">Incidencia</StyledTableCell>
-           <StyledTableCell align="left">Tipo de Material</StyledTableCell>
-           <StyledTableCell align="left">Acciones</StyledTableCell>
+           <StyledTableCell align="center">Imagen</StyledTableCell>
+           <StyledTableCell align="center">Descripción</StyledTableCell>
+           <StyledTableCell align="center">Almacén</StyledTableCell>
+           <StyledTableCell align="center">Unidades</StyledTableCell>
+           <StyledTableCell align="center">Estado</StyledTableCell>
+           <StyledTableCell align="center">Incidencia</StyledTableCell>
+           <StyledTableCell align="center">Tipo de Material</StyledTableCell>
+           <StyledTableCell align="center">Acciones</StyledTableCell>
        </TableHead>
        <TableBody>
          {material.map((mat) => (
@@ -58,13 +59,13 @@ const ListMaterial = ({material}) => {
            <StyledTableCell>
            <Avatar alt="Remy Sharp" src={mat.description} />
            </StyledTableCell>
-           <StyledTableCell align="left">{mat.descripcion}</StyledTableCell>
-           <StyledTableCell align="left">{mat.almacen}</StyledTableCell>
-           <StyledTableCell align="left">{mat.unidades}</StyledTableCell>
-           <StyledTableCell align="left">{mat.estado}</StyledTableCell>
-           <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
-           <StyledTableCell align="left">{mat.tipo}</StyledTableCell>
-             <StyledTableCell align="left">
+           <StyledTableCell align="center">{mat.descripcion}</StyledTableCell>
+           <StyledTableCell align="center">{mat.almacen}</StyledTableCell>
+           <StyledTableCell align="center">{mat.unidades}</StyledTableCell>
+           <StyledTableCell align="center">{mat.estado}</StyledTableCell>
+           <StyledTableCell align="center">{mat.incidencia}</StyledTableCell>
+           <StyledTableCell align="center">{mat.tipo}</StyledTableCell>
+             <StyledTableCell align="center">
               { userLogged.name === mat.almacen && 
                 <IconButton  
                    aria-label="delete" 

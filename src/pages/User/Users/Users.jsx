@@ -13,24 +13,25 @@ import Swal from 'sweetalert2'// hay que
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: '#9BE2E1',
-      color: theme.palette.text.primary,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-  }));
-  
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-  }));
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color:theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 const Users = () => {
   const userLogged = useGetAuth();  
@@ -76,11 +77,11 @@ const Users = () => {
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
-            <StyledTableCell align="left">Imagen</StyledTableCell>
-            <StyledTableCell align="left">Nombre</StyledTableCell>
-            <StyledTableCell align="left">Email</StyledTableCell>
-            <StyledTableCell align="left">Rol</StyledTableCell>
-            <StyledTableCell align="left">Acciones</StyledTableCell>
+            <StyledTableCell align="center">Imagen</StyledTableCell>
+            <StyledTableCell align="center">Nombre</StyledTableCell>
+            <StyledTableCell align="center">Email</StyledTableCell>
+            <StyledTableCell align="center">Rol</StyledTableCell>
+            <StyledTableCell align="center">Acciones</StyledTableCell>
         </TableHead>
         <TableBody>
           {users.map((user) => (
@@ -91,10 +92,10 @@ const Users = () => {
             <StyledTableCell>
             <Avatar alt="Remy Sharp" src={user.image} />
             </StyledTableCell>
-            <StyledTableCell align="left">{user.name}</StyledTableCell>
-            <StyledTableCell align="left">{user.email}</StyledTableCell>
-            <StyledTableCell align="left">{user.account_type}</StyledTableCell>
-            <StyledTableCell align="left">
+            <StyledTableCell align="center">{user.name}</StyledTableCell>
+            <StyledTableCell align="center">{user.email}</StyledTableCell>
+            <StyledTableCell align="center">{user.account_type}</StyledTableCell>
+            <StyledTableCell align="center">
 
             {userLogged.id === user._id  ?
             <Link to={`/edit/user/${user._id}`}>

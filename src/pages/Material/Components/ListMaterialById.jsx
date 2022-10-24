@@ -13,8 +13,8 @@ import {  Link, useNavigate } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#9BE2E1',
-    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.common.black,
+    color:theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -22,6 +22,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
@@ -61,13 +62,13 @@ const ListMaterialById = ({materialById}) => {
     <TableContainer component={Paper}>
      <Table sx={{ minWidth: 700 }} aria-label="customized table">
        <TableHead>
-           <StyledTableCell align="left">Imagen</StyledTableCell>
-           <StyledTableCell align="left">Descripción</StyledTableCell>
-           <StyledTableCell align="left">Unidades</StyledTableCell>
-           <StyledTableCell align="left">Estado</StyledTableCell>
-           <StyledTableCell align="left">Incidencia</StyledTableCell>
-           <StyledTableCell align="left">Tipo</StyledTableCell>
-           <StyledTableCell align="left">Acciones</StyledTableCell>
+           <StyledTableCell align="center">Imagen</StyledTableCell>
+           <StyledTableCell align="center">Descripción</StyledTableCell>
+           <StyledTableCell align="center">Unidades</StyledTableCell>
+           <StyledTableCell align="center">Estado</StyledTableCell>
+           <StyledTableCell align="center">Incidencia</StyledTableCell>
+           <StyledTableCell align="center">Tipo</StyledTableCell>
+           <StyledTableCell align="center">Acciones</StyledTableCell>
        </TableHead>
        <TableBody>
          {materialById.map((mat) => (
@@ -78,12 +79,12 @@ const ListMaterialById = ({materialById}) => {
            <StyledTableCell>
            <Avatar alt="Remy Sharp" src={mat.description} />
            </StyledTableCell>
-           <StyledTableCell align="left">{mat.descripcion}</StyledTableCell>
-           <StyledTableCell align="left">{mat.unidades}</StyledTableCell>
-           <StyledTableCell align="left">{mat.estado}</StyledTableCell>
-           <StyledTableCell align="left">{mat.incidencia}</StyledTableCell>
-           <StyledTableCell align="left">{mat.tipo}</StyledTableCell>
-           <StyledTableCell align="left">
+           <StyledTableCell align="center">{mat.descripcion}</StyledTableCell>
+           <StyledTableCell align="center">{mat.unidades}</StyledTableCell>
+           <StyledTableCell align="center">{mat.estado}</StyledTableCell>
+           <StyledTableCell align="center">{mat.incidencia}</StyledTableCell>
+           <StyledTableCell align="center">{mat.tipo}</StyledTableCell>
+           <StyledTableCell align="center">
            
            {mat.tipo ==='Reparable' && mat.estado ==='Averiado'?
            <>
@@ -97,7 +98,7 @@ const ListMaterialById = ({materialById}) => {
             </>:''}
             {mat.tipo ==='Consumible' && mat.estado ==='Averiado'?
             
-            <IconButton  color="error" onClick={(e)=> deleteMaterial(e,mat._id)}>
+            <IconButton  color="color" onClick={(e)=> deleteMaterial(e,mat._id)}>
                <DeleteOutlined/>
              </IconButton>
             :''

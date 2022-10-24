@@ -22,25 +22,26 @@ const Items = () => {
   }, []);
  console.log(items);
 
-  const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: '#9BE2E1',
-      color: theme.palette.text.primary,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 16,
-    },
-  }));
-  
-  const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 1,
-    },
-  }));
+ const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color:theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 
   return (
@@ -49,8 +50,8 @@ const Items = () => {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
             
-            <StyledTableCell align="left">Código</StyledTableCell>
-            <StyledTableCell align="left">Descripción</StyledTableCell>
+            <StyledTableCell align="center">Código</StyledTableCell>
+            <StyledTableCell align="center">Descripción</StyledTableCell>
         </TableHead>
         <TableBody>
           {items.map((item) => (
@@ -59,10 +60,10 @@ const Items = () => {
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
             
-            <StyledTableCell align="left">{item.codigo}</StyledTableCell>
-            <StyledTableCell align="left">{item.descripcion}</StyledTableCell>
+            <StyledTableCell align="center">{item.codigo}</StyledTableCell>
+            <StyledTableCell align="center">{item.descripcion}</StyledTableCell>
             
-            <StyledTableCell align="left">
+
             {/* <Link to={`/avisos/intervencion/${}`}>
                   <IconButton  
                     aria-label="delete" 
@@ -76,7 +77,7 @@ const Items = () => {
               </IconButton>
               :'' } */}
               
-            </StyledTableCell> 
+            
             </StyledTableRow>
           ))}
         </TableBody>    

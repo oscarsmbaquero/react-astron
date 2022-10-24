@@ -18,8 +18,8 @@ import Paper from '@mui/material/Paper';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#9BE2E1',
-    color: theme.palette.common.white,
+    backgroundColor: theme.palette.common.black,
+    color:theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -27,6 +27,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
+
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
   },
@@ -95,9 +96,9 @@ const Asignados = () => {
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
-            <StyledTableCell align="left">Centro</StyledTableCell>
-            {/* <StyledTableCell align="left">Averia</StyledTableCell> */}
-            <StyledTableCell align="left">Acciones</StyledTableCell>
+            <StyledTableCell align="center">Centro</StyledTableCell>
+            {/* <StyledTableCell align="center">Averia</StyledTableCell> */}
+            <StyledTableCell align="center">Acciones</StyledTableCell>
         </TableHead>
         <TableBody>
           {avisosAsignados.assigned_avisos.map((aviso) => (
@@ -105,11 +106,11 @@ const Asignados = () => {
               key={aviso._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-            <StyledTableCell align="left">{aviso.centro}</StyledTableCell>
-            {/* <StyledTableCell align="left">{user.surname}</StyledTableCell>
-            <StyledTableCell align="left">{user.email}</StyledTableCell>
-            <StyledTableCell align="left">{user.account_type}</StyledTableCell>*/}
-            <StyledTableCell align="left">
+            <StyledTableCell align="center">{aviso.centro}</StyledTableCell>
+            {/* <StyledTableCell align="center">{user.surname}</StyledTableCell>
+            <StyledTableCell align="center">{user.email}</StyledTableCell>
+            <StyledTableCell align="center">{user.account_type}</StyledTableCell>*/}
+            <StyledTableCell align="center">
             <Link to={`/avisos/intervencion/${aviso._id}`}>
                   <IconButton  
                     aria-label="delete" 

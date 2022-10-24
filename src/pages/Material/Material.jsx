@@ -225,15 +225,34 @@ const Material = () => {
       <div>
         <div>
           <Box sx={{ p: 2 }}>
-            <Button variant="contained" color="primary" onClick={AddTab} >
+            <Button variant="contained" 
+            style={{ borderRadius: 50,
+                backgroundColor: "black",
+                color:'white',
+                margin:'10px',
+               }}
+             onClick={AddTab} >
               Añadir Material
               <BsFillBrushFill />
             </Button>
-            <Button variant="contained" color="primary" onClick={ListTab}>
+            <Button variant="contained" 
+            style={{ borderRadius: 50,
+                backgroundColor: "black",
+                color:'white',
+                margin:'10px',
+                // marginTop:'0px'
+               }}
+             onClick={ListTab}>
               Total Material
               <BsFillSignpost2Fill />
             </Button>
-            <Button variant="contained" color="primary" onClick={TecnicoTab}>
+            <Button variant="contained" 
+            style={{ borderRadius: 50,
+                backgroundColor: "black",
+                color:'white',
+                margin:'10px',
+               }}
+             onClick={TecnicoTab}>
               Material {loggedUser.name}
               <Fingerprint />
             </Button>
