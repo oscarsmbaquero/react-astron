@@ -1,70 +1,136 @@
-//Falta separar el margen inferior entre le "form" y el "login"
+// //Falta separar el margen inferior entre le "form" y el "login"
 
-.sectionEdit{
+// .sectionEdit{
 
-  @media screen and(min-width:810px) {
-      background-color: var(--extra-blue-light);
-      padding: 1em;
-  }
-}
-.edit{
-  margin: 1em auto;
-  max-width: 70%;
-  background-color: white;
-  color:var(--primary-color);
-  @media screen and(min-width:810px) {
-      width: 1000px;
-      border-radius: 18px;
-      color:black;
-      padding: 1em;
-  }
-  &__form{
-      display: flex;
-      flex-direction: column;
-      margin: 1em auto;
-      @media screen and(min-width:810px) {
-          width: 90%;
-          margin-bottom: 2em;
+//   @media screen and(min-width:810px) {
+//       background-color: var(--extra-blue-light);
+//       padding: 1em;
+//   }
+// }
+// .edit{
+//   margin: 1em auto;
+//   max-width: 70%;
+//   background-color: white;
+//   color:var(--primary-color);
+//   @media screen and(min-width:810px) {
+//       width: 1000px;
+//       border-radius: 18px;
+//       color:black;
+//       padding: 1em;
+//   }
+//   &__form{
+//       display: flex;
+//       flex-direction: column;
+//       margin: 1em auto;
+//       @media screen and(min-width:810px) {
+//           width: 90%;
+//           margin-bottom: 2em;
 
-      }
-  }
-  &__label{
+//       }
+//   }
+//   &__label{
+//       text-align:center;
+//       font-weight: bold;
+//       font-family: Georgia, Cambria, Times, "Times New Roman";
+//       @media screen and(min-width:810px) {
+//           text-align:left;
+//       }
+//   }
+//   &__input{
+//       margin:0.5em auto;
+//       width: 70%;
+//       border: 1px solid rgba(0, 0, 0, 0.616);
+//       border-radius: 10px;
+//       @media screen and(min-width:810px) {
+//           width: 100%;
+//       }
+//   }
+//   // &__input:hover{
+
+//   // }
+//   &__button{
+//       margin: 1em auto;
+//       width: 100%;
+//       border-radius: 15px;
+//       background-color: var(--secondary-color);
+//       color: white;
+//       @media screen and(min-width:810px) {
+//           width: 70%;
+//       }
+//   }
+//   &__select{
+//     margin:0.5em auto;
+//       width: 70%;
+//       border: 1px solid rgba(0, 0, 0, 0.616);
+//       border-radius: 10px;
+//       @media screen and(min-width:810px) {
+//           width: 100%;
+//       }
+// }
+// }
+.sectionForm {
+    
+    //background-color: whitesmoke;
+    //margin-top: 25px;
+    //height: 50vh;
+    // margin-bottom: 50px;
+   
+  .form{    
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    
+    &__label{
       text-align:center;
       font-weight: bold;
-      font-family: Georgia, Cambria, Times, "Times New Roman";
-      @media screen and(min-width:810px) {
-          text-align:left;
-      }
+      color:black;
+    }
+    
+    &__input{
+      width: 300px;
+      border: 1px solid black;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    &__input--comensales{
+      width: 200px;
+      text-align: center;
+     
+    }
+    &__textarea{
+      width: 300px;
+      border-radius: 4px;
+      height: 100px;
+      
+    }
   }
-  &__input{
-      margin:0.5em auto;
-      width: 70%;
-      border: 1px solid rgba(0, 0, 0, 0.616);
-      border-radius: 10px;
-      @media screen and(min-width:810px) {
-          width: 100%;
-      }
   }
-  // &__input:hover{
-
-  // }
-  &__button{
-      margin: 1em auto;
-      width: 100%;
-      border-radius: 15px;
-      background-color: var(--secondary-color);
-      color: white;
-      @media screen and(min-width:810px) {
-          width: 70%;
-      }
+  .form{    
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    
+    &__label{
+      text-align:left;
+      font-weight: bold;
+      color:black;
+    }
+    
+    &__input{
+      width: 300px;
+      border: 1px solid black;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    
+    &__textarea{
+      width: 300px;
+      border-radius: 4px;
+      height: 100px;
+      
+    }
   }
-  &__select{
-    margin:0.5em auto;
-      width: 70%;
-      border: 1px solid rgba(0, 0, 0, 0.616);
-      border-radius: 10px;
-      @media screen and(min-width:810px) {
-          width: 100%;
-      }
-}
-}
