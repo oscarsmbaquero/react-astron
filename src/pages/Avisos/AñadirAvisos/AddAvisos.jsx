@@ -66,8 +66,13 @@ const AddAvisos = () => {
                     type="text"
                     name="n_incidencia"
                     placeholder="Nº Incidencia"
-                    {...register("n_incidencia")}
+                    {...register("n_incidencia",{
+                      required: "Campo Obligatorio",
+                    })}
                   />
+                   {errors.n_incidencia && errors.n_incidencia.type === "required" && (
+                <p className="error">{errors.n_incidencia.message}</p>
+              )}
                 </div>
                 <div className="d-flex flex-column col-11 col-md-8 mx-md-3 ">
                   <label className="form__label">Centro * </label>
@@ -76,8 +81,13 @@ const AddAvisos = () => {
                     type="text"
                     name="centro"
                     placeholder="Centro"
-                    {...register("centro")}
-                  />
+                    {...register("centro", {
+                  required: "Campo Obligatotio",
+                })}
+              />
+              {errors.centro && errors.centro.type === "required" && (
+                <p className="error">{errors.centro.message}</p>
+              )}
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row">
@@ -88,8 +98,13 @@ const AddAvisos = () => {
                     type="text"
                     name="localidad"
                     placeholder="Localidad"
-                    {...register("localidad")}
-                  />
+                    {...register("localidad", {
+                  required: "Campo Obligatotio",
+                })}
+              />
+              {errors.localidad && errors.localidad.type === "required" && (
+                <p className="error">{errors.localidad.message}</p>
+              )}
                 </div>
                 <div className="d-flex flex-column col-11 col-md-6 mx-md-3  ">
                   <label className="form__label">Provincia * </label>
@@ -107,8 +122,14 @@ const AddAvisos = () => {
                     type="text"
                     name="averia"
                     placeholder="Descripción averia"
-                    {...register("averia")}
-                  />
+                    {...register("averia", {
+                  required: "Campo Obligatotio",
+                })}
+              />
+              {errors.averia && errors.averia.type === "required" && (
+                <p className="error">{errors.averia.message}</p>
+              )}
+                  
                 </div>
               </div>
               <div className="d-flex flex-column flex-md-row">
