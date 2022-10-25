@@ -44,6 +44,7 @@ export default function App() {
           OIT
         </a>
       </div>
+      
     </MDBFooter>
   );
 }

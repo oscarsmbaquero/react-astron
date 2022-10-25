@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../EditAviso/EditAviso.scss";
+import "./Intervencion.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../assets/ApiRoutes";
@@ -24,8 +24,7 @@ const IntercencionAviso = () => {
   const [fechaInicio, setFechaInicio] = useState();
   const [fechaFinal, setFechaFinal] = useState();
   const [tiempoViaje, setTiempoViaje] = useState();
-  
-  const animatedComponents = makeAnimated();
+
   const {
     register,
     handleSubmit,
@@ -115,10 +114,9 @@ const IntercencionAviso = () => {
   //console.log(materialFiltrado,'material por usuario')
 
   const onSubmit = async (formData) => {
-    console.log(formData.estado, "materialIntervencion");
 
     formData = { ...formData, totalHoras };
-    console.log(formData, "formData");
+    //console.log(formData, "formData");
     try {
       const result = await fetch(`${BASE_URL}/avisos/${id}`, {
         //modifico url 24/06/2022
@@ -128,231 +126,236 @@ const IntercencionAviso = () => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(formData.motivo, 33);
       const resData = await result.json();
 
+      Swal.fire({
+        title: "Success!",
+        text: "Intervención añadida",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
       navigate("/avisos/caceres");
       console.log(resData);
     } catch (error) {
       console.log(error);
     }
   };
-  console.log();
 
   return (
-    <section className="sectionEdit">
+    <div>
       {!aviso || !material || !users ? (
         <Loader />
       ) : (
-        <div className="edit">
-          <h3>Añadir Intervención</h3>
-          <h2>{aviso.n_incidencia}</h2>
-          <form onSubmit={handleSubmit(onSubmit)} class="edit__form">
-            <label className="edit__label">Nº Incidencia</label>
-            <input
-              className="edit__input"
-              readOnly
-              {...setValue("n_incidencia", aviso.n_incidencia)}
-              type="text"
-              name="name"
-              placeholder="Nº Incidencia"
-              {...register("n_incidencia")}
-            />
-            <label className="edit__label">Centro</label>
-            <input
-              className="edit__input"
-              readOnly
-              {...setValue("centro", aviso.centro)}
-              type="text"
-              name="centro"
-              placeholder="Centro"
-              {...register("centro")}
-            />
-            <label className="edit__label">Localidad</label>
-            <input
-              className="edit__input"
-              readOnly
-              {...setValue("localidad", aviso.localidad)}
-              type="text"
-              name="localidad"
-              placeholder="Localidad"
-              {...register("localidad")}
-            />
-            <label className="edit__label">Provincia</label>
-            <input
-              className="edit__input"
-              readOnly
-              {...setValue("provincia", aviso.provincia)}
-              type="text"
-              name="localidad"
-              placeholder="Provincia"
-              {...register("provincia")}
-            />
-            <label className="edit__label">Averia</label>
-            <textarea
-              class="textarea"
-              readOnly
-              {...setValue("averia", aviso.averia)}
-              type="text"
-              name="averia"
-              placeholder="Averia"
-              {...register("averia")}
-            />
-            {/* <label className="edit__label">Centro</label>
-                <input className='edit__input' {...setValue("prioridad", aviso.prioridad)} type="text" name="prioridad" placeholder="Prioridad"  {...register('prioridad')}/>             */}
-            <label className="edit__label">Estado</label>
-            <select
-              className="edit__input"
-              type="text"
-              name="estado"
-              placeholder="Estado"
-              {...register("estado")}
-              onChange={captureType}
-            >
-              <option selected value="">
-                Selecciona estado
-              </option>
-              {/* <option value ="Pendiente">Pendiente</option>  */}
-              <option value="Cerrada">Cerrada</option>
-              <option value="Pendiente">Pendiente</option>
-            </select>
-            {visible === "Pendiente" ? (
-              <>
-                <label className="edit__label--motivo">
-                  Motivo de aviso pendiente
-                </label>
-                <input
-                  className="edit__input"
-                  type="text"
-                  name="motivo"
-                  placeholder="Motivo"
-                  {...register("motivo")}
-                />
-              </>
-            ) : (
-              ""
-            )}
-            {userLogged.rol === "Dispatch" ? (
-              <>
-                <label className="edit__label">Técnico</label>
-                <select
-                  name="jobs"
-                  className="edit__input"
-                  {...register("tecnicoIntervencion")}
+        <div className="container">
+          <section >
+            <div className="col-11 col-lg-11 mx-5 mt-5">
+              <h3>Añadir Intervención</h3>
+              <h2>{aviso.n_incidencia}</h2>
+              <form onSubmit={handleSubmit(onSubmit)} >              
+                <div className="d-flex flex-column flex-md-row">
+                  <div className="d-flex flex-column col-11 col-md-3  ">
+                    <label className="form__label">Selecciona estado * </label>
+                    <select
+                      {...register("estado")}
+                      className="form-control"
+                      onChange={captureType}
+                    >
+                      <option value="Cerrada">Cerrada</option>
+                      <option value="Pendiente">Pendiente</option>
+                    </select>
+                  </div>
+                  <div className="d-flex flex-column col-11 col-md-9  mx-md-3">
+                    {visible === "Pendiente" ? (
+                      <>
+                        <label className="form__label">
+                          Motivo de aviso pendiente *
+                        </label>
+                        <input
+                          className="form-control"
+                          type="text"
+                          name="motivo"
+                          placeholder="Motivo"
+                          {...register("motivo", {
+                            required: "Campo Obligatotio",
+                          })}
+                        />
+                        {errors.motivo && errors.motivo.type === "required" && (
+                          <p className="error">{errors.motivo.message}</p>
+                        )}
+                      </>
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <div className="d-flex flex-column flex-md-row">
+                  <div className="d-flex flex-column col-11 col-md-6 ">
+                    {userLogged.rol === "Dispatch" ? (
+                      <>
+                        <label className="form__label">Técnico *</label>
+                        <select
+                          className="form-control"
+                          {...register("tecnicoIntervencion")}
+                        >
+                          <option selected>Selecciona Técnico *</option>
+                          {tecnicos.map((user) => (
+                            <option key={user._id} value={user.id}>
+                              {user.name}
+                            </option>
+                          ))}
+                        </select>
+                      </>
+                    ) : (
+                      <>
+                        <label className="form__label">Técnico * </label>
+                        <input
+                          className="form-control"
+                          readOnly
+                          {...setValue("tecnicoIntervencion", userLogged.name)}
+                          type="text"
+                          name="tecnicoIntervencion"
+                          placeholder="Tecnico Intervencion"
+                          {...register("tecnicoIntervencion")}
+                        />
+                      </>
+                    )}
+                  </div>
+                  <div className="d-flex flex-column col-11 col-md-6 mx-md-3">
+                    {userLogged.rol === "Dispatch" ? (
+                      <>
+                        <label className="form__label">
+                          Consumo Material *
+                        </label>
+                        <select
+                          name="jobs"
+                          className="form-control"
+                          {...register("materialIntervencion")}
+                        >
+                          <option selected value="Sin Material">
+                            Sin Material
+                          </option>
+                          {material.map((el) => (
+                            <option key={el._id} value={el.id}>
+                              {el.descripcion}&nbsp;&nbsp;{el.almacen}
+                            </option>
+                          ))}
+                        </select>
+                      </>
+                    ) : (
+                      <>
+                        <label className="form__label">
+                          Consumo Material *
+                        </label>
+                        <select
+                          name="jobs"
+                          className="form-control"
+                          {...register("materialIntervencion")}
+                        >
+                          <option
+                            selected
+                            value="No hay consumo"
+                            class="bold-option"
+                          >
+                            No hay consumo
+                          </option>
+                          {materialOperativo.map((el) => (
+                            <option key={el._id} value={el._id}>
+                              {el.descripcion}
+                            </option>
+                          ))}
+                        </select>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div className="d-flex flex-column flex-md-row justify-content-center">
+                  <div className="d-flex flex-column col-11 col-md-2 ">
+                    <label className="form__label">Fecha Inicio *</label>
+                    <input
+                      className="form-control"
+                      type="datetime-local"
+                      name="fecha_inicio"
+                      placeholder="Inicio"
+                      {...register("fecha_inicio")}
+                      onChange={fechaIni}
+                    />
+                  </div>
+                  <div className="d-flex flex-column col-11 col-md-2  mx-md-4">
+                    <label className="form__label">Fecha Fin *</label>
+                    <input
+                      className="form-control"
+                      type="datetime-local"
+                      name="fecha_fin"
+                      {...register("fecha_fin")}
+                      onChange={fechaFin}
+                    />
+                  </div>
+                  <div className="d-flex flex-column col-11 col-md-2 mx-md-3">
+                    <label className="form__label"> Km * </label>
+                    <input
+                      className="form-control"
+                      type="number"
+                      name="km"
+                      placeholder="Km"
+                      {...register("km", {
+                            required: "Campo Obligatotio",
+                          })}
+                        />
+                        {errors.km && errors.km.type === "required" && (
+                          <p className="error">{errors.km.message}</p>
+                        )}
+                  </div>
+                  <div className="d-flex flex-column col-11 col-md-3 mx-md-2">
+                    <label className="form__label"> Despl. * </label>
+                    <input
+                      className="form-control"
+                      type="number"
+                      name="viaje"
+                      placeholder="Tiempo Despl."
+                       {...register("viaje", {
+                            required: "Campo Obligatotio",
+                          })}
+                          onChange={horasViaje}
+                        />
+                        {errors.viaje && errors.viaje.type === "required" && (
+                          <p className="error">{errors.viaje.message}</p>
+                        )}
+                  </div>
+                </div>
+                <div className="d-flex flex-column flex-md-row ">
+                  <div className="d-flex flex-column col-11 col-md-12 mx-md-auto">
+                    <label className="form__label">Intervención *</label>
+                    <textarea
+                      rows={5}
+                      class="form-control"
+                      type="text"
+                      name="intervencion"
+                      placeholder="Intervencion"
+                      {...register("intervencion")}
+                    />
+                  </div>
+                </div>
+                <br />
+                <Button
+                  variant="contained"
+                  //color="primary"
+                  type="submit"
+                  endIcon={<SendIcon />}
+                  style={{
+                    borderRadius: 50,
+                    backgroundColor: "black",
+                    color: "white",
+                    // marginTop:'0px'
+                  }}
                 >
-                  <option selected>Selecciona Técnico</option>
-                  {tecnicos.map((user) => (
-                    <option key={user._id} value={user.id}>
-                      {user.name} {user.surname}
-                    </option>
-                  ))}
-                </select>
-              </>
-            ) : (
-              <>
-                <label className="edit__label">Técnico</label>
-                <input
-                  className="edit__input"
-                  readOnly
-                  {...setValue("tecnicoIntervencion", userLogged.name)}
-                  type="text"
-                  name="tecnicoIntervencion"
-                  placeholder="Tecnico Intervencion"
-                  {...register("tecnicoIntervencion")}
-                />
-              </>
-            )}
-            {userLogged.rol === "Dispatch" ? (
-              <>
-                <label className="edit__label">Consumo Material</label>
-                <select name="jobs"  className='edit__input' {...register('materialIntervencion')}>
-                        <option selected value="Sin Material">Sin Material</option>
-                        {material.map((el) => (
-                        <option key={el._id} value={el.id}>{el.descripcion}&nbsp;&nbsp;{el.almacen}</option>
-                    ))}
-                </select>
-                
-              </>
-            ) : (
-              <>
-                <label className="edit__label">Consumo Material</label>
-                <select
-                  name="jobs"
-                  className="edit__input"
-                  {...register("materialIntervencion")}
-                >
-                  <option selected value="No hay consumo" class="bold-option">
-                    No hay consumo
-                  </option>
-                  {materialOperativo.map((el) => (
-                    <option key={el._id} value={el._id}>
-                      {el.descripcion}
-                    </option>
-                  ))}
-                </select>
-              </>
-            )}
-
-            {/* </>
-                 } */}
-            <label className="edit__label">Fecha Inicio</label>
-            <input
-              className="edit__input"
-              type="datetime-local"
-              name="fecha_inicio"
-              placeholder="Inicio"
-              {...register("fecha_inicio")}
-              onChange={fechaIni}
-            />
-            <label className="edit__label">Fecha Fin</label>
-            <input
-              className="edit__input"
-              type="datetime-local"
-              name="fecha_fin"
-              placeholder="Fin"
-              {...register("fecha_fin")}
-              onChange={fechaFin}
-            />
-            <label className="edit__label">km</label>
-            <input
-              className="edit__input"
-              type="number"
-              name="km"
-              placeholder="Km"
-              {...register("km")}
-            />
-            <label className="edit__label">T. Desplazamiento</label>
-            <input
-              className="edit__input"
-              type="number"
-              name="viaje"
-              placeholder="tiempo desplazamiento"
-              {...register("viaje")}
-              onChange={horasViaje}
-            />
-            <label className="edit__label">Intervención</label>
-            <textarea
-              class="textarea"
-              type="text"
-              name="intervencion"
-              placeholder="Intervencion"
-              {...register("intervencion")}
-            />
-            {/* <label className="edit__label">Motivo Pendiente </label>
-                <input className='edit__input' type="text" name="motivo" placeholder="Motivo Pendiente"   {...register('motivo')}/> */}
-
-            <br></br>
-            {aviso.estado === "Cerrada" ? (
-              <p>Averia Cerrada</p>
-            ) : (
-              <Button variant="contained" type="submit" endIcon={<SendIcon />}>
-                Enviar
-              </Button>
-            )}
-          </form>
+                  Enviar
+                </Button>
+              </form>
+            </div>
+          </section>
         </div>
       )}
-    </section>
+    </div>
   );
 };
 

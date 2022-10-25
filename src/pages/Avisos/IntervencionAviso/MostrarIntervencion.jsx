@@ -110,14 +110,14 @@ const MostrarIntervencion = () => {
               key={aviso._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-            <StyledTableCell align="left">{aviso.fecha_inicio}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.fecha_fin}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.intervencion}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.km}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.viaje}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.tecnico}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.material}</StyledTableCell>
-            <StyledTableCell align="left">{aviso.totalHoras}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.fecha_inicio}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.fecha_fin}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.intervencion}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.km}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.viaje}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.tecnico}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.material}</StyledTableCell>
+            <StyledTableCell align="center">{aviso.totalHoras}</StyledTableCell>
             {/* <Link to={`/edit/user/${aviso._id}`}>
                   <IconButton  
                     aria-label="delete" 
