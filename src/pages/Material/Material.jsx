@@ -26,7 +26,7 @@ const Material = () => {
   const [material, setMaterial] = useState({});
   const [users, setUsers] = useState([]);
   const [materialById, setMaterialById] = useState([]);
-  const [value, setValue] = React.useState(0);
+  //const [value, setValue] = React.useState(0);
 
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);

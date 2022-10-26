@@ -107,7 +107,7 @@ Filtramos por empresa o por puestos ofertados, previo paso a minusculas*/
   return (
     <>
       <div className="searchContainer">
-        <SearchInput  placeholder="Buscar por centro, averia... " onChange={onInputChange} />
+        <SearchInput onChange={onInputChange} />
       </div>
       <Container>
         <Grid container spacing={5}>

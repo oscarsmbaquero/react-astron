@@ -1,3 +1,4 @@
+import './Selectuser.scss'
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import { useParams } from "react-router-dom";
@@ -90,18 +91,17 @@ const SelectUser = () => {
 
 //console.log(users);
 
-  const filteredUser = users.filter((user) =>
-     user.account_type !=='Dispatch'
+  const filteredUser = users.filter((user) =>user.account_type !=='Dispatch'
      
   );
   //console.log(filteredUser,56);
 
   return (
     <div>
-      <p>Asignar el aviso con número de incidencia</p>
-      <h2>{n_incidencia}</h2>
+      <span>Asignar Incidencia número :</span><h3>{n_incidencia}</h3>
+      {/* <h3>{n_incidencia}</h3> */}
       {/* <select name="users"  className='select'> */}
-      <select value={selected} onChange={handleChange}>
+      <select value={selected} onChange={handleChange} className="select-user">
         {/* <option>Selecciona un usuario</option> */}
         <option key={"default"} selected value={"default"} >
           Selecciona un usuario
@@ -118,7 +118,16 @@ const SelectUser = () => {
           <input className="sectionForm__input" id="email" name="n_incidencia"  type="hidden" value={n_incidencia}/>
           <input className="sectionForm__input" id="name" name="centro"  type="hidden" value={centro}/>
           <input className="sectionForm__input" id="name" name="email"  type="hidden" value={userEmail}/>
-          <Button variant="contained" type='submit'  endIcon={<SendIcon />} >
+          <Button variant="contained" 
+                  type='submit'  
+                  endIcon={<SendIcon />}  
+                  style={{ borderRadius: 50,
+                  backgroundColor: "black",
+                  color:'white',
+                  margin:'10px',
+                  // marginTop:'0px'
+                }}
+                  >
               Enviar Mail
           </Button>
         </form>

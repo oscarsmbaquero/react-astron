@@ -98,7 +98,7 @@ const ListMaterialById = ({materialById}) => {
             </>:''}
             {mat.tipo ==='Consumible' && mat.estado ==='Averiado'?
             
-            <IconButton  color="color" onClick={(e)=> deleteMaterial(e,mat._id)}>
+            <IconButton  color="primary" onClick={(e)=> deleteMaterial(e,mat._id)}>
                <DeleteOutlined/>
              </IconButton>
             :''
