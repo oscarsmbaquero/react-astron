@@ -46,6 +46,10 @@ const routes = [
     element: <SignUp />,
   },
   {
+    path: "/avisos/caceres/listado",
+    element: <Avisos />,
+  },
+  {
     path: "/avisos/caceres",
     element: <AvisosCaceres />,
   },

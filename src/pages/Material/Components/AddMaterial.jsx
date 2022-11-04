@@ -13,7 +13,10 @@ const AddMaterial = ({ usersFiltered }) => {
   let navigate = useNavigate();
 
   const onSubmit = async (formData) => {
-    console.log(formData, 1555);
+    
+    //console.log(formData.unidades, 'unidades');
+    formData = { ...formData, unidades :'1' };
+    console.log(formData,'formdata');
     try {
       const result = await fetch(`${BASE_URL}/material`, {
         method: "POST",
@@ -72,14 +75,14 @@ const AddMaterial = ({ usersFiltered }) => {
             <option value="Consumible">Consumible</option>
             <option value="Reparable">Reparable</option>
           </select>
-          <label className="edit__label">Unidades</label>
-          <input
+          {/* <label className="edit__label">Unidades</label> */}
+          {/* <input
             className="edit__input"
             type="number"
             name="unidades"
             placeholder="Unidades"
             {...register("unidades")}
-          />
+          /> */}
           <br></br>
           <Button variant="contained" type="submit" endIcon={<SendIcon />}>
             Enviar

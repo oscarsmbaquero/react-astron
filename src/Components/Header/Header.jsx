@@ -34,6 +34,7 @@ function Header() {
            {userLogged.id ? 
            <>           
             <NavDropdown  title={<span><i class="fa-solid fa-city"></i><br/>Cáceres</span>} id="basic-nav-dropdown"> 
+              <NavDropdown.Item href="/avisos/caceres/listado"><i class="fa-regular fa-folder-open">&nbsp;</i>Listado</NavDropdown.Item>
               <NavDropdown.Item href="/avisos/caceres"><i class="fa-regular fa-folder-open">&nbsp;</i>Abiertos</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/pendientes/caceres"><i class="fa-regular fa-folder-open">&nbsp;</i>Pendientes
