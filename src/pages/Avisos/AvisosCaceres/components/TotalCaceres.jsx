@@ -3,32 +3,29 @@ import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
 import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-  import AddIcon from "@mui/icons-material/Add";
-  import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { red } from '@mui/material/colors';
+import styled from "styled-components";
   
-import { useState } from 'react';
 
 const TotalCaceres = ({avisos}) => {
 
- 
-
     const clickHandler = (e, id) => {
-        console.log(id);
       };
       const columns = [
         {
-          name: "Incidencia",
+          name: "INCIDENCIA" ,
           selector: (row) => <Badge bg="primary" text="bold">{row.n_incidencia}</Badge>,
           sortable: true,
         },
         {
-          name: "Centro",
+          name: "CENTRO",
           selector: (row) => row.centro,
           sortable: true,
           
         },
         {
-          name: "Estado",
+          name: "ESTADO",
           selector: (row) =>
             row.estado === "Pendiente" ? (
               <Badge bg="danger">{row.estado}</Badge>
@@ -40,12 +37,12 @@ const TotalCaceres = ({avisos}) => {
           sortable: true,
         },
         {
-          name: "Localidad",
+          name: "LOCALIDAD",
           selector: (row) => row.localidad,
           sortable: true,
         },
         {
-          name: "Acciones",
+          name: "ACCIONES",
           // selector: (row) => row.localidad,
           cell: (row) => (
             //
@@ -53,7 +50,7 @@ const TotalCaceres = ({avisos}) => {
             {console.log(row._id)}
               <Link to={`/avisos/details/${row._id}`}>
                 <IconButton aria-label="delete" color="success">
-                  <AddIcon />
+                  <Create />
                 </IconButton>
               </Link>
               <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>
@@ -68,20 +65,16 @@ const TotalCaceres = ({avisos}) => {
         },
       ];
   
-    
-
-    console.log(avisos,'avisos abiertos');
   return (
-    <>
-  
+    
       <DataTable
     //   title="Avisos Totales"
       columns={columns}
       data={avisos}
       pagination
       dense
+      responsive
     /> 
-    </>
   )
 }
 
