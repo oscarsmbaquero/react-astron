@@ -72,7 +72,7 @@ const AbiertosCaceres = ({users,avisos}) => {
   
   return (
     <DataTable
-    //   title="Avisos Totales"
+      title="Abiertos"
       columns={columns}
       data={avisos}
       pagination

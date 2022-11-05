@@ -38,12 +38,19 @@ const PendientesCaceres = ({users,avisos}) => {
     },
     {
       name: "N/INTER",
-      selector: (row) => row.intervencion.length,
-      sortable: true,
+      selector: (row) =>
+      row.intervencion.length === 1 ? (
+        <Badge bg="success">{row.intervencion.length}</Badge>
+      ) : row.intervencion.length > 1 && row.intervencion.length <= 3 ? (
+        <Badge bg="warning">{row.intervencion.length}</Badge>
+      ) : (
+        <Badge bg="danger">{row.intervewncion.length}</Badge>
+      ),
+    sortable: true,
     },
     {
-      name: "TECNICO",
-      selector: (row) => row.user_assigned?.name,
+      name: "MOTIVO",
+      selector: (row) => row.motivo,
       sortable: true,
     },
     {
