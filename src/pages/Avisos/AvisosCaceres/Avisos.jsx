@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
 import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+  import AddIcon from "@mui/icons-material/Add";
 import { Link } from "react-router-dom";
 
 const Avisos = () => {
@@ -25,13 +25,14 @@ const Avisos = () => {
   const columns = [
     {
       name: "Incidencia",
-      selector: (row) => row.n_incidencia,
+      selector: (row) => <Badge bg="primary" text="bold">{row.n_incidencia}</Badge>,
       sortable: true,
     },
     {
       name: "Centro",
       selector: (row) => row.centro,
       sortable: true,
+      
     },
     {
       name: "Estado",
@@ -93,11 +94,12 @@ const Avisos = () => {
   // ]
   return (
     <DataTable
-      title="Avisos Totales"
+      // title="Avisos Totales"
       columns={columns}
       data={avisos}
       // expandableRows expandableRowsComponent={ExpandedComponent}
       pagination
+      dense
     />
   );
 };
