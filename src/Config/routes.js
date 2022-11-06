@@ -26,6 +26,7 @@ import SignUp from "../pages/User/Register/SignUp";
 import Asignados from "../pages/User/Users/Asignados";
 import Material from "../pages/Material/Material";
 import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
+import ReubicarMaterial from "../pages/Material/Components/ReubicarMaterial";
 
 
 
@@ -105,6 +106,10 @@ const routes = [
   {
     path: "/material",
     element: <Material />,
+  },
+  {
+    path: "/material/reubicar/:id/:userLogged/",
+    element: <ReubicarMaterial />,
   },
   
   

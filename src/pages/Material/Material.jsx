@@ -72,7 +72,7 @@ const Material = () => {
       .then((data) => {
         setMaterialById(data);
       });
-  }, [loggedUser.token]);
+  }, [material]);
 
   console.log(materialById, "materialById");
 

@@ -6,10 +6,12 @@ import { Avatar, Container, Table, TableBody,  TableContainer, TableHead, TableR
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import Paper from '@mui/material/Paper';
 import { Create, DeleteOutlined } from '@mui/icons-material';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
 import Swal from 'sweetalert2'
 import {  Link, useNavigate } from 'react-router-dom';
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -35,6 +37,8 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const ListMaterialById = ({materialById}) => {
   const navigate = useNavigate();
+  const userLogged = useGetAuth();
+  console.log(userLogged.id,'Loged')
 
   const deleteMaterial = (e, material) => {
     //console.log('Entro',material);
@@ -57,6 +61,9 @@ const ListMaterialById = ({materialById}) => {
     }
     })
   }
+
+
+
   return (
     <Container sx={{padding:4}}>
     <TableContainer component={Paper}>
@@ -86,8 +93,16 @@ const ListMaterialById = ({materialById}) => {
            <StyledTableCell align="center">{mat.tipo}</StyledTableCell>
            <StyledTableCell align="center">
            
-           {mat.tipo ==='Reparable' && mat.estado ==='Averiado'?
+           {mat.estado === 'Operativo' ? 
            <>
+           <IconButton  color="primary"> <Link to={`/material/reubicar/${mat._id}/${userLogged.id}`}><CallSplitIcon/></Link>
+               
+              
+             </IconButton>
+             </>
+           :''}
+           {mat.tipo ==='Reparable' && mat.estado ==='Averiado'?
+            <>
            {/* <Link > */}
                  <IconButton  
                    aria-label="delete" 
@@ -95,10 +110,11 @@ const ListMaterialById = ({materialById}) => {
                    ><SendIcon />
                  </IconButton>
             {/* </Link> */}
-            </>:''}
+            </>
+            :''}
             {mat.tipo ==='Consumible' && mat.estado ==='Averiado'?
             
-            <IconButton  color="primary" onClick={(e)=> deleteMaterial(e,mat._id)}>
+             <IconButton  color="primary" onClick={(e)=> deleteMaterial(e,mat._id)}>
                <DeleteOutlined/>
              </IconButton>
             :''
