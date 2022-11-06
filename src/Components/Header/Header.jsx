@@ -33,22 +33,26 @@ function Header() {
           <Nav className="me-auto">
            {userLogged.id ? 
            <>           
-            <NavDropdown  title={<span><i class="fa-solid fa-city"></i><br/>Cáceres</span>} id="basic-nav-dropdown"> 
+            {/* <NavDropdown  title={<span><i class="fa-solid fa-city"></i><br/>Cáceres</span>} id="basic-nav-dropdown"> 
               <NavDropdown.Item href="/avisos/caceres/listado"><i class="fa-regular fa-folder-open">&nbsp;</i>Listado</NavDropdown.Item>
               <NavDropdown.Item href="/avisos/caceres"><i class="fa-regular fa-folder-open">&nbsp;</i>Abiertos</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/pendientes/caceres"><i class="fa-regular fa-folder-open">&nbsp;</i>Pendientes
               </NavDropdown.Item>
               <NavDropdown.Item href="/cerrados/caceres"><i class="fa-solid fa-folder-closed">&nbsp;</i>Cerrados</NavDropdown.Item>
-            </NavDropdown>
-            <NavDropdown  title={<span><i class="fa-solid fa-city"></i><br/>Badajoz</span>} id="basic-nav-dropdown"> 
+            </NavDropdown> */}
+            {/* <NavDropdown  title={<span><i class="fa-solid fa-city"></i><br/>Badajoz</span>} id="basic-nav-dropdown"> 
               <NavDropdown.Item href="/cartaFood"><i class="fa-solid fa-utensils">&nbsp;</i>Abiertos</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/cartaCervezas"><i class="fa-solid fa-beer-mug-empty">&nbsp;</i>
                 Pendientes
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3"><i class="fa-solid fa-wine-glass-empty">&nbsp;</i>Cerrados</NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
+            <Nav.Link as={Link} to={"/avisos/caceres"}>
+            <i class="fa-solid fa-city"></i>
+              &nbsp;Cáceres
+            </Nav.Link>
             <Nav.Link as={Link} to={"/avisos/badajoz"}>
             <i class="fa-solid fa-city"></i>
               &nbsp;Badajoz

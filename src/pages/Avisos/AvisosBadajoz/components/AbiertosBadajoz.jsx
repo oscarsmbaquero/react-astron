@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
-const PendientesCaceres = ({users,avisos}) => {
-  console.log(avisos[3].intervencion.length,1)
+const AbiertosCaceres = ({users,avisos}) => {
+  
   console.log(avisos);
   const clickHandler = (e, id) => {
   };
@@ -37,20 +37,8 @@ const PendientesCaceres = ({users,avisos}) => {
       sortable: true,
     },
     {
-      name: "N/INTER",
-      selector: (row) =>
-      row.intervencion.length === 1 ? (
-        <Badge bg="success">{row.intervencion.length}</Badge>
-      ) : row.intervencion.length > 1 && row.intervencion.length < 3 ? (
-        <Badge bg="warning">{row.intervencion.length}</Badge>
-      ) :  row.intervencion.length > 3(
-        <Badge bg="danger">{row.intervewncion.length}</Badge>
-      ),
-    sortable: true,
-    },
-    {
-      name: "MOTIVO",
-      selector: (row) => row.motivo,
+      name: "TECNICO",
+      selector: (row) => row.user_assigned?.name,
       sortable: true,
     },
     {
@@ -84,7 +72,7 @@ const PendientesCaceres = ({users,avisos}) => {
   
   return (
     <DataTable
-    //   title="Avisos Totales"
+      title="Abiertos"
       columns={columns}
       data={avisos}
       pagination
@@ -95,4 +83,4 @@ const PendientesCaceres = ({users,avisos}) => {
   )
 }
 
-export default PendientesCaceres
+export default AbiertosCaceres

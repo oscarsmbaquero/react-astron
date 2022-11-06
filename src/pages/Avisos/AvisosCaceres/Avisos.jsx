@@ -3,7 +3,7 @@ import { BASE_URL } from "../../../assets/ApiRoutes";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-
+import Loader from "../../../core/components/Loader/Loader";
 //import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import TotalCaceres from "./components/TotalCaceres";
@@ -28,25 +28,31 @@ const Avisos = () => {
       .then((response) => response.json())
       .then((data) => SetUsers(data));
   }, []);
-  // const onInputChange = (e) => {
-  //   console.log("Entro");
-  //   setKeyword(e.target.value.toLowerCase());
-  // };
-  const avisosAbiertos = avisos.filter(
-    (avisos) => avisos.estado === "Abierta" || avisos.estado === "Asignado"
+
+  //filtros Avisos Caceres
+  const avisosCaceres = avisos.filter((avisos) => avisos.provincia ==='Cáceres');
+  console.log(avisosCaceres,'Caceres')
+  
+  const avisosAbiertos = avisosCaceres.filter(
+    (avisos) => (avisos.estado === "Abierta" || 
+                avisos.estado === "Asignado")  && 
+                (avisos.provincia === 'Cáceres')
   );
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const avisosPendientes = avisos.filter(
+  const avisosPendientes = avisosCaceres.filter(
     (avisos) => avisos.estado === "Pendiente"
   );
-  const avisosCerrados = avisos.filter(
+  const avisosCerrados = avisosCaceres.filter(
     (avisos) => avisos.estado === "Cerrada"
   );
+  //fin filtros Avisos Caceres
+  
 
   return (
-    <>
+   <>
+    
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
         <Tabs
           value={value}
@@ -62,7 +68,7 @@ const Avisos = () => {
       <Box sx={{ padding: 6 }}>
         {value === 0 && (
           <Box>
-            <TotalCaceres avisos={avisos} />
+            <TotalCaceres avisos={avisosCaceres} />
           </Box>
         )}
         {value === 1 && (

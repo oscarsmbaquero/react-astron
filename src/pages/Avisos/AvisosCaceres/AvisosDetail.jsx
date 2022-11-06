@@ -3,16 +3,18 @@ import React,{ useState, useEffect} from 'react'
 import { Badge, Card, Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { BASE_URL } from "../../../assets/ApiRoutes";
+import { useNavigate } from "react-router-dom";
 import './AvisosCaceres.scss';
 import { useGetAuth } from "../../../context/context";
 import { Create, DeleteOutlined } from '@mui/icons-material';
 import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
+import Swal from "sweetalert2"; // hay que probarlo
 
 const AvisosDetail = () => {
   const userLogged = useGetAuth();
   const { id } = useParams();
-  console.log(id,'param');
+  const navigate = useNavigate();
 
   let [avisos, SetAvisos] = useState();
   
@@ -23,7 +25,29 @@ const AvisosDetail = () => {
       .then(response => response.json())
       .then(data => SetAvisos(data))      
      }, [id]); 
- console.log(avisos,'llego')
+ 
+
+     const deleteaviso = (e, aviso) => {
+      console.log(aviso);
+      e.preventDefault();
+      fetch(`${BASE_URL}/avisos/${aviso}`, {
+        method: "DELETE",
+        headers: {
+          //'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userLogged.token}`,
+        },
+      }).then((res) => {
+        if (res.status === 200) {
+          console.log("Borrado");
+          Swal.fire("Eliminado", res.message, "success");
+          fetch(`${BASE_URL}/avisos`)
+            .then((response) => response.json())
+            .then((data) => SetAvisos(data));
+  
+          navigate("/avisos/caceres")
+        }
+      });
+    };
  return (
   <div>
   { !avisos ? <p>Cargando...</p> : 
@@ -71,7 +95,7 @@ const AvisosDetail = () => {
                       ) : (
                         <IconButton
                           color="error"
-                          // onClick={(e) => deleteaviso(e, avisos._id)}
+                           onClick={(e) => deleteaviso(e, avisos._id)}
                         >
                           <DeleteOutlined />
                         </IconButton>

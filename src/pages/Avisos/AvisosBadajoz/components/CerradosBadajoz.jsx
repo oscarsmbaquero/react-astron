@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 
-const PendientesCaceres = ({users,avisos}) => {
-  console.log(avisos[3].intervencion.length,1)
+const CerradosCaceres = ({users,avisos}) => {
+  
   console.log(avisos);
   const clickHandler = (e, id) => {
   };
@@ -41,16 +41,16 @@ const PendientesCaceres = ({users,avisos}) => {
       selector: (row) =>
       row.intervencion.length === 1 ? (
         <Badge bg="success">{row.intervencion.length}</Badge>
-      ) : row.intervencion.length > 1 && row.intervencion.length < 3 ? (
+      ) : row.intervencion.length > 1 || row.intervencion.length <= 3 ? (
         <Badge bg="warning">{row.intervencion.length}</Badge>
-      ) :  row.intervencion.length > 3(
+      ) : row.intervencion.length > 3 (
         <Badge bg="danger">{row.intervewncion.length}</Badge>
       ),
     sortable: true,
     },
     {
-      name: "MOTIVO",
-      selector: (row) => row.motivo,
+      name: "TECNICO CIERRE",
+      selector: (row) => row.tecnicoIntervencion.at(-1),
       sortable: true,
     },
     {
@@ -95,4 +95,4 @@ const PendientesCaceres = ({users,avisos}) => {
   )
 }
 
-export default PendientesCaceres
+export default CerradosCaceres

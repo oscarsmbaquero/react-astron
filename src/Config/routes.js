@@ -1,11 +1,11 @@
 
 // import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
-import SelectCompanies from "../core/components/SelectCompanies/SelectCompanies";
+//import SelectCompanies from "../core/components/SelectCompanies/SelectCompanies";
 import SelectUser from "../core/components/SelectUsers/SelectUser";
-import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
-import AvisosCaceres from "../pages/Avisos/AvisosCaceres/AvisosCaceres";
+
+
 import AvisosDetail from "../pages/Avisos/AvisosCaceres/AvisosDetail";
-import AvisosCaceresDetail from "../pages/Avisos/AvisosCaceres/AvisosDetail";
+
 import Avisos from "../pages/Avisos/AvisosCaceres/Avisos";
 import AddAvisos from "../pages/Avisos/AñadirAvisos/AddAvisos";
 import EditAviso from "../pages/Avisos/EditAviso/EditAviso";
@@ -14,7 +14,7 @@ import FormContact from "../pages/Form/FormContact";
 import Home from "../pages/Home/Home";
 import Login from "../pages/User/Login/Login";
 import Register from "../pages/User/Register/Register";
-import PendientesCaceres from "../pages/Avisos/AvisosCaceres/PendientesCaceres";
+
 import ReselectUser from "../core/components/ReselectUser/ReselectUser";
 import MostrarIntervencion from "../pages/Avisos/IntervencionAviso/MostrarIntervencion";
 import Users from "../pages/User/Users/Users";
@@ -25,7 +25,8 @@ import SignIn from "../pages/User/Login/SignIn";
 import SignUp from "../pages/User/Register/SignUp";
 import Asignados from "../pages/User/Users/Asignados";
 import Material from "../pages/Material/Material";
-import CerradosCaceres from "../pages/Avisos/AvisosCaceres/CerradosCaceres";
+import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
+
 
 
 const routes = [
@@ -46,20 +47,8 @@ const routes = [
     element: <SignUp />,
   },
   {
-    path: "/avisos/caceres/listado",
-    element: <Avisos />,
-  },
-  {
     path: "/avisos/caceres",
-    element: <AvisosCaceres />,
-  },
-  {
-    path: "/pendientes/caceres",
-    element: <PendientesCaceres />,
-  },
-  {
-    path: "/cerrados/caceres",
-    element: <CerradosCaceres />,
+    element: <Avisos />,
   },
   {
     path: "/avisos/badajoz",
