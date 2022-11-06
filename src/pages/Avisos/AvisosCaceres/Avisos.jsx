@@ -10,6 +10,7 @@ import TotalCaceres from "./components/TotalCaceres";
 import AbiertosCaceres from "./components/AbiertosCaceres";
 import PendientesCaceres from "./components/PendientesCaceres";
 import { Typography } from "@mui/material";
+import CerradosCaceres from "./components/CerradosCaceres";
 
 const Avisos = () => {
   let [avisos, SetAvisos] = useState([]);
@@ -32,7 +33,7 @@ const Avisos = () => {
   //   setKeyword(e.target.value.toLowerCase());
   // };
   const avisosAbiertos = avisos.filter(
-    (avisos) => avisos.estado === "Abierta" || avisos.estado === 'Asignado'
+    (avisos) => avisos.estado === "Abierta" || avisos.estado === "Asignado"
   );
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -40,12 +41,18 @@ const Avisos = () => {
   const avisosPendientes = avisos.filter(
     (avisos) => avisos.estado === "Pendiente"
   );
-  
+  const avisosCerrados = avisos.filter(
+    (avisos) => avisos.estado === "Cerrada"
+  );
 
   return (
     <>
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <Tabs value={value} onChange={handleChange} centered>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          centered
+        >
           <Tab label="Total" />
           <Tab label="Abiertos" />
           <Tab label="Pendientes" />
@@ -60,17 +67,17 @@ const Avisos = () => {
         )}
         {value === 1 && (
           <Box>
-           <AbiertosCaceres avisos={avisosAbiertos} users={users}/> 
+            <AbiertosCaceres avisos={avisosAbiertos} users={users} />
           </Box>
         )}
         {value === 2 && (
           <Box>
-          <PendientesCaceres avisos={avisosPendientes} users={users}/> 
+            <PendientesCaceres avisos={avisosPendientes} users={users} />
           </Box>
         )}
         {value === 3 && (
           <Box>
-            <Typography>The four tab</Typography>
+            <CerradosCaceres avisos={avisosCerrados}/>
           </Box>
         )}
       </Box>

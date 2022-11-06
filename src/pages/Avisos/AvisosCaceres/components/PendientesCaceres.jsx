@@ -41,7 +41,7 @@ const PendientesCaceres = ({users,avisos}) => {
       selector: (row) =>
       row.intervencion.length === 1 ? (
         <Badge bg="success">{row.intervencion.length}</Badge>
-      ) : row.intervencion.length > 1 && row.intervencion.length <= 3 ? (
+      ) : row.intervencion.length > 1 || row.intervencion.length < 3 ? (
         <Badge bg="warning">{row.intervencion.length}</Badge>
       ) : (
         <Badge bg="danger">{row.intervewncion.length}</Badge>
