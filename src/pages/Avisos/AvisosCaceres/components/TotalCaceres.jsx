@@ -41,28 +41,28 @@ const TotalCaceres = ({avisos}) => {
           selector: (row) => row.localidad,
           sortable: true,
         },
-        {
-          name: "ACCIONES",
-          // selector: (row) => row.localidad,
-          cell: (row) => (
-            //
-            <>
-            {console.log(row._id)}
-              <Link to={`/avisos/details/${row._id}`}>
-                <IconButton aria-label="delete" color="success">
-                  <Create />
-                </IconButton>
-              </Link>
-              <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>
-                <DeleteOutlined />
-              </IconButton>
-              ,
-            </>
-          ),
-          ignoreRowClick: true,
-          allowOverflow: true,
-          button: true,
-        },
+        // {
+        //   name: "ACCIONES",
+        //   // selector: (row) => row.localidad,
+        //   cell: (row) => (
+        //     //
+        //     <>
+        //     {console.log(row._id)}
+        //       <Link to={`/avisos/details/${row._id}`}>
+        //         <IconButton aria-label="delete" color="success">
+        //           <Create />
+        //         </IconButton>
+        //       </Link>
+        //       <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>
+        //         <DeleteOutlined />
+        //       </IconButton>
+        //       ,
+        //     </>
+        //   ),
+        //   ignoreRowClick: true,
+        //   allowOverflow: true,
+        //   button: true,
+        // },
       ];
   
   return (

@@ -43,8 +43,8 @@ const AbiertosCaceres = ({users,avisos}) => {
     },
     {
       name: "LOCALIDAD",
-      selector: (row) => row.localidad,
       sortable: true,
+      selector: (row) => row.localidad,
     },
     {
       name: "ACCIONES",
@@ -52,8 +52,8 @@ const AbiertosCaceres = ({users,avisos}) => {
       cell: (row) => (
         //
         <>
-        {console.log(row._id)}
-          <Link to={`/avisos/details/${row._id}`}>
+        {console.log(row._id,'row._id')}
+          <Link to={`/avisos/details/${row._id}/${ row.user_assigned?.name}`}>
             <IconButton aria-label="delete" color="success">
               <Create />
             </IconButton>

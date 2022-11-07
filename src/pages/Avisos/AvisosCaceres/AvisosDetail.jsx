@@ -13,20 +13,19 @@ import Swal from "sweetalert2"; // hay que probarlo
 
 const AvisosDetail = () => {
   const userLogged = useGetAuth();
-  const { id } = useParams();
+  const { id,  userAssigned} = useParams();
   const navigate = useNavigate();
 
   let [avisos, SetAvisos] = useState();
   
-
+console.log(userAssigned,'userSigned');
   useEffect(() => {
     
     fetch(`${BASE_URL}/avisos/${id}`)
       .then(response => response.json())
       .then(data => SetAvisos(data))      
      }, [id]); 
- 
-
+    console.log(avisos,'avisos');
      const deleteaviso = (e, aviso) => {
       console.log(aviso);
       e.preventDefault();
@@ -145,7 +144,7 @@ const AvisosDetail = () => {
                         <Badge bg="primary">
 
                           {" "}
-                          {avisos.estado}:&nbsp;{avisos.user_assigned?.name}
+                          {avisos.estado}:&nbsp;{userAssigned || ''}
                         </Badge>
                       ) //si no cumple tercera condicion
                     }
@@ -177,7 +176,7 @@ const AvisosDetail = () => {
                       </Link>
                     </Button>
                   )}
-                  {avisos.user_assigned?.name === userLogged.name &&
+                  {avisos.user_assigned === userLogged.id &&
                   <Button variant="contained" color="warning" size="small">
                     <Link to={`/avisos/intervencion/${avisos._id}`}>
                       Añadir Int.

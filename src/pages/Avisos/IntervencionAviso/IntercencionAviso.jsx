@@ -60,7 +60,7 @@ const IntercencionAviso = () => {
   }, [userLogged.token]);
   console.log(material, "material");
   useEffect(() => {
-    fetch(`${BASE_URL}/material/${userLogged.name}`, {
+    fetch(`${BASE_URL}/material/${userLogged.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

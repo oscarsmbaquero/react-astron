@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 
 const PendientesCaceres = ({users,avisos}) => {
-  console.log(avisos[3].intervencion.length,1)
+  // console.log(avisos[3].intervencion?.length,1)
   console.log(avisos);
   const clickHandler = (e, id) => {
   };
@@ -39,7 +39,7 @@ const PendientesCaceres = ({users,avisos}) => {
     {
       name: "N/INTER",
       selector: (row) =>
-      row.intervencion.length === 1 ? (
+      row.intervencion?.length === 1 ? (
         <Badge bg="success">{row.intervencion.length}</Badge>
       ) : row.intervencion.length > 1 && row.intervencion.length < 3 ? (
         <Badge bg="warning">{row.intervencion.length}</Badge>
