@@ -3,20 +3,21 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import { useParams } from "react-router-dom";
 import SendIcon from '@mui/icons-material/Send';
-import emailjs from '@emailjs/browser';
 import Swal from "sweetalert2";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const ReubicarMaterial = () => {
+  let navigate = useNavigate();
   const [users, setUsers] = useState([]);
   const [selected, setSelected] = useState("default");
-  const [btnState, setBtnState] = useState(false);
+  
   
 
-  const { id, userLogged  } = useParams();
+  const { id  } = useParams();
 
   console.log("ID", id);
-  console.log("user", userLogged);
+ 
  
   useEffect(() => {
     fetch(`${BASE_URL}/users`)
@@ -31,65 +32,30 @@ const ReubicarMaterial = () => {
     
     if (userId !== "default") fetchApi(userId);
   };
-
-  
-  console.log(selected,'selected');
-
-  
-  const selectedUser = users.filter((user) =>
-  user._id === selected
-  
-  );
-  //console.log(selectedUser,42);
-   const userEmail = selectedUser[0]?.email;
-//console.log(userEmail,'userMail')
-
-  const sendMail = (e) => {
-    e.preventDefault();
-
-    try {
-      console.log(e.target.name,'email');
-     
-      emailjs.sendForm('service_esqoixc','template_3jjni99',e.target,'dso8n6rVU1ADlfbV4')
-      .then(response =>console.log(response))
-
-      Swal.fire({
-        title: 'Éxito!',
-        text: 'Enviada notificación correctamente',
-        icon: 'success',
-        confirmButtonText: 'Ok'
-      })
-      //navigate("/");
-
-    } catch (error) {
-      //navigate("/FormContact");
-    }
-
-  }
+ 
 
   const fetchApi = (userId) => {
-    fetch(`${BASE_URL}/users/assignAviso`, {
+    fetch(`${BASE_URL}/material/ubicar`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         //  Authorization: `Bearer ${userLogged.token}`
       },
       body: JSON.stringify({
-        userId: userId,
-        avisoId: id,
-        estado: 'Asignado'
+        userSelected: userId,
+        materialId: id,
+        //userEnvia: userLogged,
       }),
     })
       .then((res) => {
         if (res.status === 200) {
-          Swal.fire("Aviso asignado correctamente", res.message, "success");
-          setBtnState(true);
+          Swal.fire("Traspaso de material ok", res.message, "success");
+          navigate("/material");
         }
       })
       .catch((error) => console.error(error));
   };
 
-//console.log(users);
 
   const filteredUser = users.filter((user) =>user.account_type !=='Dispatch'
      
@@ -112,28 +78,6 @@ const ReubicarMaterial = () => {
           </option>
         ))}
       </select>
-      {btnState ?
-      {/* <div>
-        <form onSubmit={sendMail}>
-          <input className="sectionForm__input" id="email" name="n_incidencia"  type="hidden" value={n_incidencia}/>
-          <input className="sectionForm__input" id="name" name="centro"  type="hidden" value={centro}/>
-          <input className="sectionForm__input" id="name" name="email"  type="hidden" value={userEmail}/>
-          <Button variant="contained" 
-                  type='submit'  
-                  endIcon={<SendIcon />}  
-                  style={{ borderRadius: 50,
-                  backgroundColor: "black",
-                  color:'white',
-                  margin:'10px',
-                  // marginTop:'0px'
-                }}
-                  >
-              Enviar Mail
-          </Button>
-        </form>
-        </div>   */}
-      :''
-      }
     </div>
   );
 };

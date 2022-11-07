@@ -10,6 +10,7 @@ import IconButton from '@mui/material/IconButton';
 import Swal from 'sweetalert2'
 import {  Link, Navigate } from 'react-router-dom';
 import { TablePagination } from '@material-ui/core';
+import CallSplitIcon from '@mui/icons-material/CallSplit';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,6 +37,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const ListMaterial = ({material}) => {
     const userLogged = useGetAuth();  
+    console.log(userLogged,'userLoged')
   return (
     <Container sx={{padding:4}}>
     <TableContainer component={Paper}>
@@ -60,18 +62,21 @@ const ListMaterial = ({material}) => {
            <Avatar alt="Remy Sharp" src={mat.description} />
            </StyledTableCell>
            <StyledTableCell align="center">{mat.descripcion}</StyledTableCell>
-           <StyledTableCell align="center">{mat.almacen}</StyledTableCell>
+           <StyledTableCell align="center">{mat.almacen.name}</StyledTableCell>
            <StyledTableCell align="center">{mat.unidades}</StyledTableCell>
            <StyledTableCell align="center">{mat.estado}</StyledTableCell>
            <StyledTableCell align="center">{mat.incidencia}</StyledTableCell>
            <StyledTableCell align="center">{mat.tipo}</StyledTableCell>
              <StyledTableCell align="center">
-              { userLogged.name === mat.almacen && 
-                <IconButton  
-                   aria-label="delete" 
-                   color="primary" 
-                   ><Create />
+              { userLogged.id === mat.almacen._id &&
+              <>
+                 <IconButton  
+                     color="primary"> 
+                     <Link to={`/material/reubicar/${mat._id}/${userLogged.id}`}>
+                       <CallSplitIcon/>
+                     </Link>
                  </IconButton>
+              </>   
               }
            </StyledTableCell>
            </StyledTableRow>

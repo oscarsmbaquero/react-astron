@@ -65,8 +65,8 @@ const AddMaterial = ({ usersFiltered }) => {
               Selecciona un usuario
             </option>
             {usersFiltered.map((option) => (
-              <option key={option._id} value={option.name}>
-                {option.name} {option.surname}
+              <option key={option._id} value={option._id}>
+                {option.name}
               </option>
             ))}
           </select>

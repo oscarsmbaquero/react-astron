@@ -95,9 +95,11 @@ const ListMaterialById = ({materialById}) => {
            
            {mat.estado === 'Operativo' ? 
            <>
-           <IconButton  color="primary"> <Link to={`/material/reubicar/${mat._id}/${userLogged.id}`}><CallSplitIcon/></Link>
-               
-              
+             <IconButton  
+                     color="primary"> 
+                     <Link to={`/material/reubicar/${mat._id}/${userLogged.id}`}>                      
+                       <CallSplitIcon/>
+                     </Link>
              </IconButton>
              </>
            :''}

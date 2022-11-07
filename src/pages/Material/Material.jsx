@@ -26,12 +26,6 @@ const Material = () => {
   const [material, setMaterial] = useState({});
   const [users, setUsers] = useState([]);
   const [materialById, setMaterialById] = useState([]);
-  //const [value, setValue] = React.useState(0);
-
-  // const handleChange = (event, newValue) => {
-  //   setValue(newValue);
-  // };
-  console.log(loggedUser.name, "nameLoggedUser");
   useEffect(() => {
     fetch(`${BASE_URL}/material`, {
       method: "GET",
@@ -58,10 +52,10 @@ const Material = () => {
   const usersFiltered = users.filter(
     (user) => user.account_type === "Tecnico" || user.account_type === "Admin"
   );
-  //console.log(usersFiltered,'userFiltered')
+  console.log(loggedUser.id,'loggedUser')
 
   useEffect(() => {
-    fetch(`${BASE_URL}/material/${loggedUser.name}`, {
+    fetch(`${BASE_URL}/material/${loggedUser.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
