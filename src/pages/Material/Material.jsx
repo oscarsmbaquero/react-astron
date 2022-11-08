@@ -52,7 +52,7 @@ const Material = () => {
   const usersFiltered = users.filter(
     (user) => user.account_type === "Tecnico" || user.account_type === "Admin"
   );
-  console.log(loggedUser.id,'loggedUser')
+  console.log(loggedUser.id, "loggedUser");
 
   useEffect(() => {
     fetch(`${BASE_URL}/material/${loggedUser.id}`, {
@@ -219,34 +219,43 @@ const Material = () => {
       <div>
         <div>
           <Box sx={{ p: 2 }}>
-            <Button variant="contained" 
-            style={{ borderRadius: 50,
+            <Button
+              variant="contained"
+              style={{
+                borderRadius: 50,
                 backgroundColor: "black",
-                color:'white',
-                margin:'10px',
-               }}
-             onClick={AddTab} >
+                color: "white",
+                margin: "10px",
+              }}
+              onClick={AddTab}
+            >
               Añadir Material
               <BsFillBrushFill />
             </Button>
-            <Button variant="contained" 
-            style={{ borderRadius: 50,
+            <Button
+              variant="contained"
+              style={{
+                borderRadius: 50,
                 backgroundColor: "black",
-                color:'white',
-                margin:'10px',
+                color: "white",
+                margin: "10px",
                 // marginTop:'0px'
-               }}
-             onClick={ListTab}>
+              }}
+              onClick={ListTab}
+            >
               Total Material
               <BsFillSignpost2Fill />
             </Button>
-            <Button variant="contained" 
-            style={{ borderRadius: 50,
+            <Button
+              variant="contained"
+              style={{
+                borderRadius: 50,
                 backgroundColor: "black",
-                color:'white',
-                margin:'10px',
-               }}
-             onClick={TecnicoTab}>
+                color: "white",
+                margin: "10px",
+              }}
+              onClick={TecnicoTab}
+            >
               Material {loggedUser.name}
               <Fingerprint />
             </Button>

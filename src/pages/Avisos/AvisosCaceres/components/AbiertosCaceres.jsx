@@ -10,11 +10,10 @@ import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import styled from "styled-components";
-import { useGetAuth } from "../../../../context/context";
 
-const AbiertosCaceres = ({ users, avisos }) => {
-  const userLogged = useGetAuth();
-  console.log(userLogged.id, "userId");
+
+const AbiertosCaceres = ({ users, avisos, userLogged }) => {
+  
 
   const columns = [
     {

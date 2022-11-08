@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { NavLink, useNavigate } from "react-router-dom";
 import { logout, useDispatchAuth, useGetAuth } from "../../context";
-
+import "./Header.scss";
 import logoAstron from "../../assets/images/logo2.png";
 
 import Container from "react-bootstrap/Container";

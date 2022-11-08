@@ -4,7 +4,7 @@ import { Badge, Card, Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import { useNavigate } from "react-router-dom";
-import './AvisosCaceres.scss';
+// import './AvisosCaceres.scss';
 import { useGetAuth } from "../../../context/context";
 import { Create, DeleteOutlined } from '@mui/icons-material';
 import AddIcon from "@mui/icons-material/Add";

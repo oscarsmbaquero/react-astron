@@ -1,34 +1,14 @@
 import React from "react";
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
-import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
+import { Create } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import { red } from "@mui/material/colors";
-import styled from "styled-components";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
-
-const TotalCaceres = ({ avisos }) => {
-  const [isHovering, setIsHovering] = useState(false);
-  const [isHovering2, setIsHovering2] = useState(false);
 
 
-  const handleMouseOver = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  };
-  const handleMouseOver2 = () => {
-    setIsHovering2(true);
-  };
-
-  const handleMouseOut2 = () => {
-    setIsHovering2(false);
-  };
-
+const TotalCaceres = ({ avisos,userLogged }) => {
+  
 
   const columns = [
     {
@@ -69,17 +49,16 @@ const TotalCaceres = ({ avisos }) => {
         row //
       ) => (
         <>
-          <Link to={`/avisos/details/${row._id}`}  onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+          <Link to={`/avisos/details/${row._id}`}>
             <IconButton aria-label="delete" color="success">
               <SearchIcon />
-              {isHovering && <h6>Detalle</h6>}
+
             </IconButton>
           </Link>
-          <Link to={`/edit/aviso/${row._id}`}  >
-            <IconButton aria-label="delete" color="secondary" onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2}>
+          <Link to={`/edit/aviso/${row._id}`}>
+            <IconButton aria-label="delete" color="secondary">
               <Create />
             </IconButton>
-            {isHovering2 && <h6>Edit</h6>}
           </Link>
         </>
       ),
