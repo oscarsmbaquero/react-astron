@@ -11,21 +11,22 @@ import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2"; // hay que probarlo
 
+
 const AvisosDetail = () => {
   const userLogged = useGetAuth();
-  const { id,  userAssigned} = useParams();
+  const { id} = useParams();
   const navigate = useNavigate();
 
   let [avisos, SetAvisos] = useState();
   
-console.log(userAssigned,'userSigned');
+
   useEffect(() => {
     
     fetch(`${BASE_URL}/avisos/${id}`)
       .then(response => response.json())
       .then(data => SetAvisos(data))      
      }, [id]); 
-    console.log(avisos,'avisos');
+   
      const deleteaviso = (e, aviso) => {
       console.log(aviso);
       e.preventDefault();
@@ -86,31 +87,31 @@ console.log(userAssigned,'userSigned');
                   }}
                   title ={avisos.centro}
                   titleStyle={{textAlign: 'center'}}
-                  action={
-                    <>
-                      {" "}
-                      {userLogged.rol === "Tecnico" ? (
-                        ""
-                      ) : (
-                        <IconButton
-                          color="error"
-                           onClick={(e) => deleteaviso(e, avisos._id)}
-                        >
-                          <DeleteOutlined />
-                        </IconButton>
-                      )}
-                      <Link to={`/edit/avisos/${avisos._id}`}>
-                        <IconButton aria-label="delete" color="secondary">
-                          <Create />
-                        </IconButton>
-                      </Link>
-                      <Link to={`/avisos/details/${avisos._id}`}>
-                        <IconButton aria-label="delete" color="success">
-                          <AddIcon />
-                        </IconButton>
-                      </Link>
-                    </>
-                  }
+                  // action={
+                  //   <>
+                  //     {" "}
+                  //     {userLogged.rol === "Tecnico" ? (
+                  //       ""
+                  //     ) : (
+                  //       <IconButton
+                  //         color="error"
+                  //          onClick={(e) => deleteaviso(e, avisos._id)}
+                  //       >
+                  //         <DeleteOutlined />
+                  //       </IconButton>
+                  //     )}
+                  //     <Link to={`/edit/avisos/${avisos._id}`}>
+                  //       <IconButton aria-label="delete" color="secondary">
+                  //         <Create />
+                  //       </IconButton>
+                  //     </Link>
+                  //     <Link to={`/avisos/details/${avisos._id}`}>
+                  //       <IconButton aria-label="delete" color="success">
+                  //         <AddIcon />
+                  //       </IconButton>
+                  //     </Link>
+                  //   </>
+                  // }
                   // title ={avisos.n_incidencia}
                    
                 />
@@ -144,7 +145,7 @@ console.log(userAssigned,'userSigned');
                         <Badge bg="primary">
 
                           {" "}
-                          {avisos.estado}:&nbsp;{userAssigned || ''}
+                          {avisos.estado}
                         </Badge>
                       ) //si no cumple tercera condicion
                     }
@@ -159,30 +160,6 @@ console.log(userAssigned,'userSigned');
                     justifyContent: "center",
                   }}
                 >
-                  {avisos.estado === "Asignado" ? (
-                    <Button variant="contained" color="error" size="small">
-                      <Link
-                        to={`/avisos/reasignar/${avisos._id}/${avisos.user_assigned?._id}`}
-                      >
-                        Reasignar
-                      </Link>
-                    </Button>
-                  ) : (
-                    <Button variant="contained" size="small">
-                      <Link
-                        to={`/avisos/asignar/${avisos._id}/${avisos.n_incidencia}/${avisos.centro}`}
-                      >
-                        Asignar
-                      </Link>
-                    </Button>
-                  )}
-                  {avisos.user_assigned === userLogged.id &&
-                  <Button variant="contained" color="warning" size="small">
-                    <Link to={`/avisos/intervencion/${avisos._id}`}>
-                      Añadir Int.
-                    </Link>
-                  </Button>
-                  }
                   { avisos.intervencion.length !== 0 &&
                   <Button variant="contained" color="success" size="small">
                     <Link to={`/mostrar/intervencion/${avisos._id}`}>

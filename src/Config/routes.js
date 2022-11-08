@@ -60,7 +60,7 @@ const routes = [
     element: <AddAvisos />,
   },
   {
-    path: "/avisos/details/:id/:userAssigned",
+    path: "/avisos/details/:id",
     element: <AvisosDetail />,
   },
   {

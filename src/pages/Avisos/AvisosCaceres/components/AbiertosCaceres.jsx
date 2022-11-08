@@ -1,28 +1,35 @@
-import React from 'react';
+import React from "react";
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
 import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
+import SearchIcon from "@mui/icons-material/Search";
+import Button from "@mui/material/Button";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import ConstructionIcon from "@mui/icons-material/Construction";
 import styled from "styled-components";
+import { useGetAuth } from "../../../../context/context";
 
+const AbiertosCaceres = ({ users, avisos }) => {
+  const userLogged = useGetAuth();
+  console.log(userLogged.id, "userId");
 
-const AbiertosCaceres = ({users,avisos}) => {
-  
-  console.log(avisos);
-  const clickHandler = (e, id) => {
-  };
   const columns = [
     {
-      name: "INCIDENCIA" ,
-      selector: (row) => <Badge bg="primary" text="bold">{row.n_incidencia}</Badge>,
+      name: "INCIDENCIA",
+      selector: (row) => (
+        <Badge bg="primary" text="bold">
+          {row.n_incidencia}
+        </Badge>
+      ),
       sortable: true,
     },
     {
       name: "CENTRO",
       selector: (row) => row.centro,
       sortable: true,
-      
     },
     {
       name: "ESTADO",
@@ -52,15 +59,34 @@ const AbiertosCaceres = ({users,avisos}) => {
       cell: (row) => (
         //
         <>
-        {console.log(row._id,'row._id')}
-          <Link to={`/avisos/details/${row._id}/${ row.user_assigned?.name}`}>
-            <IconButton aria-label="delete" color="success">
-              <Create />
-            </IconButton>
-          </Link>
-          <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>
-            <DeleteOutlined />
-          </IconButton>
+          {row.estado === "Asignado" ? (
+            <Link to={`/avisos/reasignar/${row._id}/${row.user_assigned?._id}`}>
+              <IconButton aria-label="delete" color="warning">
+                <GroupAddIcon />
+              </IconButton>
+            </Link>
+          ) : (
+            <Link
+              to={`/avisos/asignar/${row._id}/${row.n_incidencia}/${row.centro}`}
+            >
+              <IconButton aria-label="delete" color="success">
+                <PersonAddAltIcon />
+              </IconButton>
+            </Link>
+          )}
+          {row.user_assigned._id === userLogged.id ? (
+            <Link to={`/avisos/intervencion/${row._id}`}>
+              <IconButton aria-label="delete" color="primary">
+                <ConstructionIcon />
+              </IconButton>
+            </Link>
+          ) : (
+            <Link to={`/avisos/details/${row._id}`}>
+              <IconButton aria-label="delete" color="success">
+                <SearchIcon />
+              </IconButton>
+            </Link>
+          )}
           ,
         </>
       ),
@@ -69,7 +95,7 @@ const AbiertosCaceres = ({users,avisos}) => {
       button: true,
     },
   ];
-  
+
   return (
     <DataTable
       title="Abiertos"
@@ -78,9 +104,8 @@ const AbiertosCaceres = ({users,avisos}) => {
       pagination
       dense
       responsive
-    /> 
+    />
+  );
+};
 
-  )
-}
-
-export default AbiertosCaceres
+export default AbiertosCaceres;

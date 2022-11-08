@@ -2,6 +2,7 @@ import React from 'react';
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
 import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -65,11 +66,11 @@ const PendientesCaceres = ({users,avisos}) => {
         //
         <>
         {console.log(row._id)}
-          <Link to={`/avisos/details/${row._id}`}>
-            <IconButton aria-label="delete" color="success">
-              <Create />
-            </IconButton>
-          </Link>
+        <Link to={`/avisos/details/${row._id}`}>
+              <IconButton aria-label="delete" color="success">
+                <SearchIcon />
+              </IconButton>
+            </Link>
           <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>
             <DeleteOutlined />
           </IconButton>
