@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
 import { Create } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
+import Loader from "../../../../core/components/Loader/Loader";
 
 const TotalCaceres = ({ avisos, userLogged }) => {
+
+  const [columns, setColumns] = useState([]);
+	const [pending, setPending] = React.useState(true);
+  
 
   const conditionalRowStyles = [
     {
@@ -23,60 +28,67 @@ const TotalCaceres = ({ avisos, userLogged }) => {
     },
   ]
 
-  const columns = [
-    {
-      name: "INCIDENCIA",
-      selector: (row) => (row.n_incidencia),
-      sortable: true,
-    },
-    {
-      name: "CENTRO",
-      selector: (row) => row.centro,
-      sortable: true,
-    },
-    {
-      name: "ESTADO",
-      selector: (row) =>
-        row.estado === "Pendiente" ? (
-          <Badge bg="danger">{row.estado}</Badge>
-        ) : row.estado === "Abierto" ? (
-          <Badge bg="primary">{row.estado}</Badge>
-        ) : row.estado === "Asignado" ? (
-          <Badge bg="warning">{row.estado}</Badge>
-        ) : (
-          <Badge bg="success">{row.estado}</Badge>
-        ),
-      sortable: true,
-    },
-    {
-      name: "LOCALIDAD",
-      selector: (row) => row.localidad,
-      sortable: true,
-    },
-    {
-      name: "ACCIONES",
-      // selector: (row) => row.localidad,
-      cell: (
-        row //
-      ) => (
-        <>
-          <Link to={`/avisos/details/${row._id}`}>
-            <IconButton aria-label="delete" color="success">
-              <SearchIcon />
-            </IconButton>
-          </Link>
-          <Link to={`/edit/aviso/${row._id}`}>
-            <IconButton aria-label="delete" color="secondary">
-              <Create />
-            </IconButton>
-          </Link>
-        </>
-      ),
-      ignoreRowClick: true,
-      allowOverflow: true,
-      button: true,
-    },
-  ];
+
+  useEffect(() => {
+		const timeout = setTimeout(() => {
+			setColumns([
+				{
+              name: "INCIDENCIA",
+              selector: (row) => (row.n_incidencia),
+              sortable: true,
+            },
+            {
+              name: "CENTRO",
+              selector: (row) => row.centro,
+              sortable: true,
+            },
+            {
+              name: "ESTADO",
+              selector: (row) =>
+                row.estado === "Pendiente" ? (
+                  <Badge bg="danger">{row.estado}</Badge>
+                ) : row.estado === "Abierto" ? (
+                  <Badge bg="primary">{row.estado}</Badge>
+                ) : row.estado === "Asignado" ? (
+                  <Badge bg="warning">{row.estado}</Badge>
+                ) : (
+                  <Badge bg="success">{row.estado}</Badge>
+                ),
+              sortable: true,
+            },
+            {
+              name: "LOCALIDAD",
+              selector: (row) => row.localidad,
+              sortable: true,
+            },
+            {
+              name: "ACCIONES",
+              // selector: (row) => row.localidad,
+              cell: (
+                row //
+              ) => (
+                <>
+                  <Link to={`/avisos/details/${row._id}`}>
+                    <IconButton aria-label="delete" color="success">
+                      <SearchIcon />
+                    </IconButton>
+                  </Link>
+                  <Link to={`/edit/aviso/${row._id}`}>
+                    <IconButton aria-label="delete" color="secondary">
+                      <Create />
+                    </IconButton>
+                  </Link>
+                </>
+              ),
+              ignoreRowClick: true,
+              allowOverflow: true,
+              button: true,
+            },
+			]);
+			setPending(false);
+		}, 2000);
+		return () => clearTimeout(timeout);
+	}, []);
 
   return (
     <DataTable
@@ -87,6 +99,8 @@ const TotalCaceres = ({ avisos, userLogged }) => {
       dense
       responsive
       conditionalRowStyles={conditionalRowStyles}
+      progressPending={pending}
+      progressComponent={<Loader />}
     />
   );
 };

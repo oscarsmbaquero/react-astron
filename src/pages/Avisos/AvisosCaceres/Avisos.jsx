@@ -3,7 +3,7 @@ import { BASE_URL } from "../../../assets/ApiRoutes";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Loader from "../../../core/components/Loader/Loader";
+// import Loader from "../../../core/components/Loader/Loader";
 //import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import TotalCaceres from "./components/TotalCaceres";
@@ -32,9 +32,11 @@ const Avisos = () => {
   }, []);
 
   //filtros Avisos Caceres
-  const avisosCaceres = avisos.filter((avisos) => avisos.provincia ==='Cáceres');
-  console.log(avisosCaceres,'Caceres')
-  
+  const avisosCaceres = avisos.filter(
+    (avisos) => avisos.provincia === "Cáceres"
+  );
+  console.log(avisosCaceres, "Caceres");
+
   const avisosAbiertos = avisosCaceres.filter(
     (avisos) => avisos.estado === "Abierto" || avisos.estado === "Asignado"
   );
@@ -48,15 +50,16 @@ const Avisos = () => {
     (avisos) => avisos.estado === "Cerrada"
   );
   //fin filtros Avisos Caceres
-  
 
   return (
-   <>
-    
+    <>
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
         <Tabs
           value={value}
-          onChange={handleChange}
+          onChange={handleChange}          
+          variant="scrollable"
+          scrollButtons="auto"
+          aria-label="scrollable auto tabs example"
           centered
         >
           <Tab label="Total" />
@@ -66,7 +69,7 @@ const Avisos = () => {
           <Tab label="Asignados" />
         </Tabs>
       </Box>
-      <Box sx={{ padding: 6 }}>
+      <Box sx={{ padding: 3 }}>
         {value === 0 && (
           <Box>
             <TotalCaceres avisos={avisosCaceres} userLogged={userLogged} />
@@ -74,17 +77,21 @@ const Avisos = () => {
         )}
         {value === 1 && (
           <Box>
-            <AbiertosCaceres avisos={avisosAbiertos} users={users} userLogged={userLogged}/>
+            <AbiertosCaceres
+              avisos={avisosAbiertos}
+              users={users}
+              userLogged={userLogged}
+            />
           </Box>
         )}
         {value === 2 && (
           <Box>
-            <PendientesCaceres avisos={avisosPendientes} users={users}/>
+            <PendientesCaceres avisos={avisosPendientes} users={users} />
           </Box>
         )}
         {value === 3 && (
           <Box>
-            <CerradosCaceres avisos={avisosCerrados}/>
+            <CerradosCaceres avisos={avisosCerrados} />
           </Box>
         )}
       </Box>
