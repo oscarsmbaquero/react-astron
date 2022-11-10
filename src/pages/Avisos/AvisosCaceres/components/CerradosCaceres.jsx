@@ -29,7 +29,7 @@ const CerradosCaceres = ({users,avisos}) => {
       selector: (row) =>
         row.estado === "Pendiente" ? (
           <Badge bg="danger">{row.estado}</Badge>
-        ) : row.estado === "Abierta" ? (
+        ) : row.estado === "Abierto" ? (
           <Badge bg="primary">{row.estado}</Badge>
         ) : (
           <Badge bg="success">{row.estado}</Badge>
@@ -64,7 +64,6 @@ const CerradosCaceres = ({users,avisos}) => {
       cell: (row) => (
         //
         <>
-        {console.log(row._id)}
           <Link to={`/avisos/details/${row._id}`}>
             <IconButton aria-label="delete" color="success">
               <Create />

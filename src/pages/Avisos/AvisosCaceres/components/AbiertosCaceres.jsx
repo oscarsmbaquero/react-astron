@@ -13,8 +13,7 @@ import styled from "styled-components";
 
 
 const AbiertosCaceres = ({ users, avisos, userLogged }) => {
-  
-
+  console.log(avisos,'aosdjaodj')
   const columns = [
     {
       name: "INCIDENCIA",
@@ -35,7 +34,7 @@ const AbiertosCaceres = ({ users, avisos, userLogged }) => {
       selector: (row) =>
         row.estado === "Pendiente" ? (
           <Badge bg="danger">{row.estado}</Badge>
-        ) : row.estado === "Abierta" ? (
+        ) : row.estado === "Abierto" ? (
           <Badge bg="primary">{row.estado}</Badge>
         ) : (
           <Badge bg="success">{row.estado}</Badge>
@@ -58,34 +57,25 @@ const AbiertosCaceres = ({ users, avisos, userLogged }) => {
       cell: (row) => (
         //
         <>
-          {row.estado === "Asignado" ? (
+            {row.estado === "Asignado" ? (
             <Link to={`/avisos/reasignar/${row._id}/${row.user_assigned?._id}`}>
               <IconButton aria-label="delete" color="warning">
                 <GroupAddIcon />
               </IconButton>
             </Link>
           ) : (
-            <Link
-              to={`/avisos/asignar/${row._id}/${row.n_incidencia}/${row.centro}`}
+            <Link to={`/avisos/asignar/${row._id}/${row.n_incidencia}/${row.centro}`}
             >
               <IconButton aria-label="delete" color="success">
                 <PersonAddAltIcon />
               </IconButton>
             </Link>
           )}
-          {row.user_assigned._id === userLogged.id ? (
-            <Link to={`/avisos/intervencion/${row._id}`}>
-              <IconButton aria-label="delete" color="primary">
-                <ConstructionIcon />
-              </IconButton>
-            </Link>
-          ) : (
-            <Link to={`/avisos/details/${row._id}`}>
+        <Link to={`/avisos/details/${row._id}`}>
               <IconButton aria-label="delete" color="success">
                 <SearchIcon />
               </IconButton>
             </Link>
-          )}
           ,
         </>
       ),

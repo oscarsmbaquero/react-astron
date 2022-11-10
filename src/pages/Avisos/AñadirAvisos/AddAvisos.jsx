@@ -59,7 +59,7 @@ const AddAvisos = () => {
               {/* <img className="logoReservas1" src={logo} alt="logo"></img> */}
               <br />
               <div className="d-flex flex-column flex-md-row">
-                <div className="d-flex flex-column col-11 col-md-4 ">
+                <div className="d-flex flex-column col-11 col-md-3 ">
                   <label className="form__label">Incidencia * </label>
                   <input
                     className="form-control"
@@ -74,7 +74,7 @@ const AddAvisos = () => {
                 <p className="error">{errors.n_incidencia.message}</p>
               )}
                 </div>
-                <div className="d-flex flex-column col-11 col-md-8 mx-md-3 ">
+                <div className="d-flex flex-column col-11 col-md-9 mx-md-3 ">
                   <label className="form__label">Centro * </label>
                   <input
                     className="form-control"
@@ -142,8 +142,8 @@ const AddAvisos = () => {
                 </div>
                 <div className="d-flex flex-column col-11 col-md-6 mx-md-3 ">
                   <label className="form__label">Estado * </label>
-                  <select {...register("estado")} className="form-control">
-                    <option value="Abierta" selected>Abierta</option>
+                  <select {...register("estado")} className="form-control" >
+                    <option value="Abierto" selected>Abierto</option>
                     
                   </select>
                   

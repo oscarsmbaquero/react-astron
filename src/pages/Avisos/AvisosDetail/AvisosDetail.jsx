@@ -137,7 +137,7 @@ const AvisosDetail = () => {
                   </Typography>
                   <Typography variant="h6">
                     {
-                      avisos.estado === "Abierta" ? ( //primera condicion
+                      avisos.estado === "Abierto" ? ( //primera condicion
                         <Badge bg="success"> {avisos.estado}</Badge>
                       ) : avisos.estado === "Pendiente" ? ( //segunda condicion
                         <Badge bg="warning"> {avisos.estado}</Badge>

@@ -36,9 +36,7 @@ const Avisos = () => {
   console.log(avisosCaceres,'Caceres')
   
   const avisosAbiertos = avisosCaceres.filter(
-    (avisos) => (avisos.estado === "Abierta" || 
-                avisos.estado === "Asignado")  && 
-                (avisos.provincia === 'Cáceres')
+    (avisos) => avisos.estado === "Abierto" || avisos.estado === "Asignado"
   );
   const handleChange = (event, newValue) => {
     setValue(newValue);

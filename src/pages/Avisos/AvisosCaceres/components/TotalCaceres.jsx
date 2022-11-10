@@ -6,18 +6,27 @@ import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 
+const TotalCaceres = ({ avisos, userLogged }) => {
 
-const TotalCaceres = ({ avisos,userLogged }) => {
-  
+  const conditionalRowStyles = [
+    {
+      when: row => row.estado === 'Pendiente',
+      style: {
+        backgroundColor: 'rgb(206, 255, 255)',
+        //backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        color: 'black',
+        text:'bold',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+  ]
 
   const columns = [
     {
       name: "INCIDENCIA",
-      selector: (row) => (
-        <Badge bg="primary" text="bold">
-          {row.n_incidencia}
-        </Badge>
-      ),
+      selector: (row) => (row.n_incidencia),
       sortable: true,
     },
     {
@@ -30,8 +39,10 @@ const TotalCaceres = ({ avisos,userLogged }) => {
       selector: (row) =>
         row.estado === "Pendiente" ? (
           <Badge bg="danger">{row.estado}</Badge>
-        ) : row.estado === "Abierta" ? (
+        ) : row.estado === "Abierto" ? (
           <Badge bg="primary">{row.estado}</Badge>
+        ) : row.estado === "Asignado" ? (
+          <Badge bg="warning">{row.estado}</Badge>
         ) : (
           <Badge bg="success">{row.estado}</Badge>
         ),
@@ -52,7 +63,6 @@ const TotalCaceres = ({ avisos,userLogged }) => {
           <Link to={`/avisos/details/${row._id}`}>
             <IconButton aria-label="delete" color="success">
               <SearchIcon />
-
             </IconButton>
           </Link>
           <Link to={`/edit/aviso/${row._id}`}>
@@ -76,6 +86,7 @@ const TotalCaceres = ({ avisos,userLogged }) => {
       pagination
       dense
       responsive
+      conditionalRowStyles={conditionalRowStyles}
     />
   );
 };

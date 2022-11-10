@@ -38,7 +38,7 @@ const AvisosBadajoz = () => {
   console.log(avisosBadajoz,'Badajoz')
   
   const avisosAbiertos = avisosBadajoz.filter(
-    (avisos) => (avisos.estado === "Abierta" || avisos.estado === "Asignado")  
+    (avisos) => (avisos.estado === "Abierto" || avisos.estado === "Asignado")  
                 
   );
   const handleChange = (event, newValue) => {
