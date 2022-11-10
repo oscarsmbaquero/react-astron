@@ -211,7 +211,7 @@ const IntercencionAviso = () => {
                         <input
                           className="form-control"
                           readOnly
-                          {...setValue("tecnicoIntervencion", userLogged.name)}
+                          {...setValue("tecnicoIntervencion", userLogged.name, userLogged.id)}
                           type="text"
                           name="tecnicoIntervencion"
                           placeholder="Tecnico Intervencion"

@@ -12,6 +12,7 @@ import PendientesCaceres from "./components/PendientesCaceres";
 import { Typography } from "@mui/material";
 import CerradosCaceres from "./components/CerradosCaceres";
 import { useGetAuth } from "../../../context/context";
+import MisAvisos from "./components/MisAvisos";
 
 const Avisos = () => {
   let [avisos, SetAvisos] = useState([]);
@@ -49,6 +50,11 @@ const Avisos = () => {
   const avisosCerrados = avisosCaceres.filter(
     (avisos) => avisos.estado === "Cerrada"
   );
+  const misAvisos = avisos.filter(
+    (avisos) => avisos.user_assigned?._id === userLogged.id
+  );
+  console.log(misAvisos,'misAvisos')
+  console.log(userLogged,'userLogged')
   //fin filtros Avisos Caceres
 
   return (
@@ -60,16 +66,16 @@ const Avisos = () => {
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
-          centered
+          //centered
         >
           <Tab label="Total" />
           <Tab label="Abiertos" />
           <Tab label="Pendientes" />
           <Tab label="Cerrados" />
-          <Tab label="Asignados" />
+          <Tab label="Mis Avisos" />
         </Tabs>
       </Box>
-      <Box sx={{ padding: 3 }}>
+      <Box sx={{ padding: 1 }}>
         {value === 0 && (
           <Box>
             <TotalCaceres avisos={avisosCaceres} userLogged={userLogged} />
@@ -92,6 +98,11 @@ const Avisos = () => {
         {value === 3 && (
           <Box>
             <CerradosCaceres avisos={avisosCerrados} />
+          </Box>
+        )}
+        {value === 4 && (
+          <Box>
+            <MisAvisos avisos={misAvisos} />
           </Box>
         )}
       </Box>
