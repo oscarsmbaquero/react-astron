@@ -63,6 +63,7 @@ const Avisos = () => {
           <Tab label="Abiertos" />
           <Tab label="Pendientes" />
           <Tab label="Cerrados" />
+          <Tab label="Asignados" />
         </Tabs>
       </Box>
       <Box sx={{ padding: 6 }}>

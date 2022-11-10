@@ -163,7 +163,7 @@ const AvisosDetail = () => {
                   { avisos.intervencion.length !== 0 &&
                   <Button variant="contained" color="success" size="small">
                     <Link to={`/mostrar/intervencion/${avisos._id}`}>
-                      Mostrar Int.
+                      Mostrar Intervenciónes
                     </Link>
                   </Button>
                   }

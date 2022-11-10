@@ -5,6 +5,7 @@ import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
+import PersonAddAltIcon from "@mui/icons-material/GroupAdd";
 import styled from "styled-components";
 
 
@@ -65,14 +66,17 @@ const PendientesCaceres = ({users,avisos}) => {
       cell: (row) => (
         //
         <>
-        <Link to={`/avisos/details/${row._id}`}>
+         <Link to={`/avisos/asignar/${row._id}/${row.n_incidencia}/${row.centro}`}
+            >
               <IconButton aria-label="delete" color="success">
-                <SearchIcon />
+                <PersonAddAltIcon />
               </IconButton>
             </Link>
-          <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>
-            <DeleteOutlined />
-          </IconButton>
+            <Link to={`/avisos/details/${row._id}`}>
+            <IconButton aria-label="delete" color="success">
+              <SearchIcon />
+            </IconButton>
+          </Link>
           ,
         </>
       ),
