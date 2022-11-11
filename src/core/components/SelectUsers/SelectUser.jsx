@@ -97,7 +97,7 @@ const SelectUser = () => {
   //console.log(filteredUser,56);
 
   return (
-    <div>
+    <div className='search'>
       <span>Asignar Incidencia número :</span><h3>{n_incidencia}</h3>
       {/* <h3>{n_incidencia}</h3> */}
       {/* <select name="users"  className='select'> */}
