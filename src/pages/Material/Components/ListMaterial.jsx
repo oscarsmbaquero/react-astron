@@ -62,13 +62,13 @@ const ListMaterial = ({material}) => {
            <Avatar alt="Remy Sharp" src={mat.description} />
            </StyledTableCell>
            <StyledTableCell align="center">{mat.descripcion}</StyledTableCell>
-           <StyledTableCell align="center">{mat.almacen.name}</StyledTableCell>
+           <StyledTableCell align="center">{mat.almacen?.name}</StyledTableCell>
            <StyledTableCell align="center">{mat.unidades}</StyledTableCell>
            <StyledTableCell align="center">{mat.estado}</StyledTableCell>
            <StyledTableCell align="center">{mat.incidencia}</StyledTableCell>
            <StyledTableCell align="center">{mat.tipo}</StyledTableCell>
              <StyledTableCell align="center">
-              { userLogged.id === mat.almacen._id &&
+              { userLogged.id === mat.almacen?._id &&
               <>
                  <IconButton  
                      color="primary"> 

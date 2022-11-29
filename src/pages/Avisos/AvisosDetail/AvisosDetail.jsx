@@ -63,8 +63,7 @@ const AvisosDetail = () => {
        </div>
     </div> */}
     <Container>
-        <Grid container spacing={5}>
-          
+        <Grid container spacing={5}>          
             <Grid item key={avisos._id} xs={12} md={12} lg={12}>
               <Card
                 elevation={5}
@@ -170,12 +169,7 @@ const AvisosDetail = () => {
                 </CardActions>
               </Card>
             </Grid>
-          ))
-          
-          
-          
         </Grid>
-       
       </Container>
   </>}
 </div>
