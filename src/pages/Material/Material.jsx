@@ -9,6 +9,7 @@ import "./Material.scss";
 import AddMaterial from "./Components/AddMaterial";
 import ListMaterial from "./Components/ListMaterial";
 import ListMaterialById from "./Components/ListMaterialById";
+import MaterialEnvio from "./Components/MaterialEnvio";
 
 import { tabsInitState, tabsReducer } from "../../utils/MaterialReducer";
 import { Avatar } from "@mui/material";
@@ -17,6 +18,7 @@ import { Box, Button } from "@material-ui/core";
 import Fingerprint from "@mui/icons-material/Fingerprint";
 import { BsFillBrushFill } from "react-icons/bs";
 import { BsFillSignpost2Fill } from "react-icons/bs";
+import SendIcon from "@mui/icons-material/Send";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -68,10 +70,9 @@ const Material = () => {
       });
   }, [material]);
 
-  console.log(materialById, "materialById");
-
-  //let total = JSON.parse(materialById);
-  //console.log(total);
+  const materialEnvio = materialById.filter(
+    (user) => user.estado === "Averiado" && user.tipo === "Reparable"
+  );
 
   //sacamos el nuero total de articulos por inventario
   let reducetotal = materialById.reduce(
@@ -145,30 +146,14 @@ const Material = () => {
   const AddTab = () => dispatch({ type: "ADD", payload: tabsInitState });
   const ListTab = () => dispatch({ type: "LIST" });
   const TecnicoTab = () => dispatch({ type: "TECNICO" });
+  const EnvioMaterialTab = () => dispatch({ type: "ENVIO" });
 
   const navigate = useNavigate();
 
   return (
     <section>
       <div className="profile">
-        {/* <div className="profile__photo">
-          <Avatar
-            alt="Remy Sharp"
-            src={loggedUser.image}
-            className="profile__photo__img"
-          />
-        </div> */}
-        {/* <div className="profile__personal">
-          <h1>{loggedUser.name}</h1>
-          <h3>{loggedUser.email}</h3>
-        </div> */}
-
         <div className="pizarra">
-          {/* <Avatar
-            alt="Remy Sharp"
-            src={loggedUser.image}
-            className="profile__photo__img"
-          /> */}
           <h1 class="pizarra__h1">Averiado</h1>
           <p class="pizarra__p">Consumible:&nbsp;{totalAveriadoConsumible}</p>
           <p class="pizarra__p">Reparable:&nbsp;{totalAveriadoReparable}</p>
@@ -223,8 +208,8 @@ const Material = () => {
               variant="contained"
               style={{
                 borderRadius: 50,
-                backgroundColor: "black",
-                color: "white",
+                backgroundColor: "yellow",
+                color: "black",
                 margin: "10px",
               }}
               onClick={AddTab}
@@ -236,8 +221,8 @@ const Material = () => {
               variant="contained"
               style={{
                 borderRadius: 50,
-                backgroundColor: "black",
-                color: "white",
+                backgroundColor: "red",
+                color: "black",
                 margin: "10px",
                 // marginTop:'0px'
               }}
@@ -250,7 +235,7 @@ const Material = () => {
               variant="contained"
               style={{
                 borderRadius: 50,
-                backgroundColor: "black",
+                backgroundColor: "green",
                 color: "white",
                 margin: "10px",
               }}
@@ -259,6 +244,23 @@ const Material = () => {
               Material {loggedUser.name}
               <Fingerprint />
             </Button>
+            {materialEnvio.length >= 1?
+              <Button
+              variant="contained"
+              style={{
+                borderRadius: 50,
+                backgroundColor: "blue",
+                color: "white",
+                margin: "10px",
+              }}
+              onClick={EnvioMaterialTab}
+            >
+              Envios {loggedUser.name}
+              <SendIcon />
+            </Button>
+            :''
+            }
+            
           </Box>
 
           {tabs.addMaterial && (
@@ -274,6 +276,11 @@ const Material = () => {
           {tabs.tecnicoMaterial && (
             <>
               <ListMaterialById materialById={materialById} />
+            </>
+          )}
+          {tabs.materialEnvio && (
+            <>
+              <MaterialEnvio materialEnvio={materialEnvio} loggedUser={loggedUser} />
             </>
           )}
         </div>

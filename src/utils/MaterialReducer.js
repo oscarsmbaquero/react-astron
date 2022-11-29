@@ -2,6 +2,7 @@ export const tabsInitState = {
   addMaterial: false,
   listMaterial: false,
   tecnicoMaterial: false,
+  materialEnvio: false,
 };
 
 export const tabsReducer = (currentState, action) => {
@@ -20,6 +21,11 @@ export const tabsReducer = (currentState, action) => {
       return {
         ...action.payload,
         tecnicoMaterial: true,
+      };
+      case "ENVIO":
+      return {
+        ...action.payload,
+        materialEnvio: true,
       };
 
     default:

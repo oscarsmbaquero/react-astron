@@ -13,6 +13,7 @@ import Swal from 'sweetalert2'
 import {  Link, useNavigate } from 'react-router-dom';
 
 
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -35,32 +36,48 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
-const ListMaterialById = ({materialById}) => {
+const ListMaterialById = ({materialEnvio,loggedUser}) => {
   const navigate = useNavigate();
   const userLogged = useGetAuth();
-  console.log(userLogged.id,'Loged')
+  //console.log(userLogged.id,'Loged')
 
-  const deleteMaterial = (e, material) => {
-    //console.log('Entro',material);
-    e.preventDefault();
-    fetch(`${BASE_URL}/material/${material}`,{
-     method: 'DELETE',
-     headers: {
-      //'Content-Type': 'multipart/form-data',
-       //Authorization: `Bearer ${userLogged.token}`
-  },
-     }).then(res=>{
-       if(res.status === 200){
-        //console.log('Borrado');
-      Swal.fire("Material eliminado", res.message,"success");
-      navigate("/material")
-      
-      
-      navigate("/material")
-      
-    }
-    })
+  const envioAlmacen=(mat)=>{
+   console.log('Entro',mat);
+   Swal.fire({  
+    title: 'Deseas enviar material a Almacén?',  
+    showDenyButton: true,  showCancelButton: true,  
+    confirmButtonText: `Enviar`,  
+    denyButtonText: `Cancelar`,
+  }).then((result) => {  
+      /* Read more about isConfirmed, isDenied below */  
+      if (result.isConfirmed) {
+        fetch(`${BASE_URL}/material/envioAlmacen`,{
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                 //Authorization: `Bearer ${userLogged.token}`
+            },
+            body: JSON.stringify({
+                
+                mat: mat,
+                tecnicoEnvio: loggedUser
+                
+            })
+            
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    Swal.fire("Enviado material a Almacén", res.message, "success");
+                   
+                }
+            }).catch((error) => console.error(error))
+        
+      } else if (result.isDenied) {    
+          Swal.fire('Changes are not saved', '', 'info')  
+       }
+  });
   }
+   
 
 
 
@@ -78,7 +95,7 @@ const ListMaterialById = ({materialById}) => {
            <StyledTableCell align="center">Acciones</StyledTableCell>
        </TableHead>
        <TableBody>
-         {materialById.map((mat) => (
+         {materialEnvio.map((mat) => (
            <StyledTableRow
              key={mat._id}
              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -92,39 +109,15 @@ const ListMaterialById = ({materialById}) => {
            <StyledTableCell align="center">{mat.incidencia}</StyledTableCell>
            <StyledTableCell align="center">{mat.tipo}</StyledTableCell>
            <StyledTableCell align="center">
-           
-           {mat.estado === 'Operativo' ? 
-           <>
-             <IconButton  
-                     color="primary"> 
-                     <Link to={`/material/reubicar/${mat._id}/${userLogged.id}`}>
-                       <CallSplitIcon/>
-                     </Link>
-             </IconButton>
-             </>
-           :''}
-           {mat.tipo ==='Reparable' && mat.estado ==='Averiado'?
-            <>
-           {/* <Link > */}
-                 <IconButton  
-                   aria-label="delete" 
-                   color="primary" 
+                 <IconButton onClick={() => envioAlmacen(mat)} 
+                   aria-label="delete"
+                   color="primary"
                    ><SendIcon />
                  </IconButton>
-            {/* </Link> */}
-            </>
-            :''}
-            {mat.tipo ==='Consumible' && mat.estado ==='Averiado'?
-            
-             <IconButton  color="primary" onClick={(e)=> deleteMaterial(e,mat._id)}>
-               <DeleteOutlined/>
-             </IconButton>
-            :''
-            }
-           </StyledTableCell> 
+           </StyledTableCell>
            </StyledTableRow>
          ))}
-       </TableBody>    
+       </TableBody>
      </Table>
     </TableContainer>
    </Container>
