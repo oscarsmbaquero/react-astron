@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const MisAvisos = ({ avisos }) => {
-  console.log(avisos);
+  console.log(avisos,'avisos');
   const clickHandler = (e, id) => {};
   const columns = [
     {

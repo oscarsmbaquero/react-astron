@@ -116,7 +116,7 @@ const IntercencionAviso = () => {
   const onSubmit = async (formData) => {
 
     formData = { ...formData, totalHoras };
-    //console.log(formData, "formData");
+    console.log(formData, "formData");
     try {
       const result = await fetch(`${BASE_URL}/avisos/${id}`, {
         //modifico url 24/06/2022
@@ -207,11 +207,11 @@ const IntercencionAviso = () => {
                       </>
                     ) : (
                       <>
-                        <label className="form__label">Técnico * </label>
+                        {/* <label className="form__label">Técnico * </label> */}
                         <input
                           className="form-control"
-                          readOnly
-                          {...setValue("tecnicoIntervencion", userLogged.name, userLogged.id)}
+                          hidden
+                          {...setValue("tecnicoIntervencion", userLogged.id)}
                           type="text"
                           name="tecnicoIntervencion"
                           placeholder="Tecnico Intervencion"

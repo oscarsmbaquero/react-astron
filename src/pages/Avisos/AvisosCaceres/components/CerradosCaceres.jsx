@@ -5,11 +5,12 @@ import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import Loader from "../../../../core/components/Loader/Loader";
 
 
 const CerradosCaceres = ({users,avisos}) => {
   
-  console.log(avisos);
+  
   const clickHandler = (e, id) => {
   };
   const columns = [
@@ -83,6 +84,10 @@ const CerradosCaceres = ({users,avisos}) => {
   ];
   
   return (
+    <div>
+    {!avisos? <Loader/>
+    :
+  
     <DataTable
     //   title="Avisos Totales"
       columns={columns}
@@ -90,8 +95,9 @@ const CerradosCaceres = ({users,avisos}) => {
       pagination
       dense
       responsive
-    /> 
-
+    />
+    }
+    </div>
   )
 }
 

@@ -260,6 +260,22 @@ const Material = () => {
             </Button>
             :''
             }
+            {loggedUser.name === 'Almacén'?
+              <Button
+              variant="contained"
+              style={{
+                borderRadius: 50,
+                backgroundColor: "blue",
+                color: "white",
+                margin: "10px",
+              }}
+              onClick={EnvioMaterialTab}
+            >
+              Material Reparado {loggedUser.name}
+              <SendIcon />
+            </Button>
+            :''
+            }
             
           </Box>
 
