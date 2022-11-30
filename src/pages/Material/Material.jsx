@@ -54,7 +54,7 @@ const Material = () => {
   const usersFiltered = users.filter(
     (user) => user.account_type === "Tecnico" || user.account_type === "Admin"
   );
-  console.log(loggedUser.id, "loggedUser");
+  
 
   useEffect(() => {
     fetch(`${BASE_URL}/material/${loggedUser.id}`, {
@@ -69,7 +69,7 @@ const Material = () => {
         setMaterialById(data);
       });
   }, [material]);
-
+  console.log(material,'material')
   const materialEnvio = materialById.filter(
     (user) => user.estado === "Averiado" && user.tipo === "Reparable"
   );
