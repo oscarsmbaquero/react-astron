@@ -58,7 +58,7 @@ const MostrarIntervencion = () => {
             fecha_fin:intervencion.fecha_fin[index] ,
             km: intervencion.km[index],
             viaje: intervencion.viaje[index],
-            tecnico: intervencion.tecnicoIntervencion[index],
+            tecnico: intervencion.tecnicoIntervencion[index].name,
             material: intervencion.materialIntervencion[index],
             totalHoras: intervencion.totalHoras[index],
           })
