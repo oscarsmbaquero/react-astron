@@ -21,7 +21,6 @@ import Certificaciones from "../pages/Certificaciones/Certificaciones";
 import EditUser from "../pages/User/Users/EditUser/EditUser";
 import SignIn from "../pages/User/Login/SignIn";
 import SignUp from "../pages/User/Register/SignUp";
-import Asignados from "../pages/User/Users/Asignados";
 import Material from "../pages/Material/Material";
 import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
 import ReubicarMaterial from "../pages/Material/Components/ReubicarMaterial";
@@ -80,10 +79,6 @@ const routes = [
   {
     path: "/mostrar/intervencion/:id",
     element: <MostrarIntervencion />,
-  },
-  {
-    path: "/us/asignados",
-    element: <Asignados />,
   },
   {
     path: "/users",

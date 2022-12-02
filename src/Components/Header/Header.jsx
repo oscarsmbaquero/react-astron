@@ -69,12 +69,6 @@ function Header() {
             <i class="fa-sharp fa-solid fa-list"></i>
               &nbsp;Certificaciones
             </Nav.Link>
-            { userLogged.rol === 'Tecnico' || userLogged.rol ==='Admin' ?//solo lo pinto a los tecnicos o Admin
-              <Nav.Link as={Link} to={"/us/asignados"}>
-              <i class="fa-solid fa-user"></i>
-                &nbsp;Asignados
-              </Nav.Link>
-            :''}
             <Nav.Link as={Link} to={"/users"}>
             <i class="fa-solid fa-users"></i>
               &nbsp;Usuarios
