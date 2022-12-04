@@ -59,7 +59,7 @@ const MostrarIntervencion = () => {
             km: intervencion.km[index],
             viaje: intervencion.viaje[index],
             tecnico: intervencion.tecnicoIntervencion[index].name,
-            material: intervencion.materialIntervencion[index],
+            material: intervencion.materialIntervencion[index]?.descripcion,
             totalHoras: intervencion.totalHoras[index],
           })
         ))

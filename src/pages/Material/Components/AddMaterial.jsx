@@ -16,7 +16,7 @@ const AddMaterial = ({ usersFiltered }) => {
     
     //console.log(formData.unidades, 'unidades');
     formData = { ...formData, unidades :'1' };
-    console.log(formData,'formdata');
+    //console.log(formData,'formdata');
     try {
       const result = await fetch(`${BASE_URL}/material`, {
         method: "POST",
@@ -84,6 +84,10 @@ const AddMaterial = ({ usersFiltered }) => {
             {...register("unidades")}
           /> */}
           <br></br>
+          {/* <button className="button">
+            <span className="text">Submit</span>
+            <i className="ri-check-line icon"></i>
+          </button> */}
           <Button variant="contained" type="submit" endIcon={<SendIcon />}>
             Enviar
           </Button>

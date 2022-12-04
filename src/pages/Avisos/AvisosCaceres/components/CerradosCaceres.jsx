@@ -10,7 +10,7 @@ import Loader from "../../../../core/components/Loader/Loader";
 
 const CerradosCaceres = ({users,avisos}) => {
   
-  
+  console.log(avisos,'avisos')
   const clickHandler = (e, id) => {
   };
   const columns = [
@@ -52,7 +52,7 @@ const CerradosCaceres = ({users,avisos}) => {
     },
     {
       name: "TECNICO CIERRE",
-      selector: (row) => row.tecnicoIntervencion.at(-1),
+      selector: (row) => row.tecnicoIntervencion[row.intervencion.length -1].name,
       sortable: true,
     },
     {
