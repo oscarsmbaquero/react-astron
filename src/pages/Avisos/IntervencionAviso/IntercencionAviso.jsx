@@ -116,7 +116,7 @@ const IntercencionAviso = () => {
   const onSubmit = async (formData) => {
 
     formData = { ...formData, totalHoras };
-    console.log(formData, "formData");
+    console.log(formData.materialIntervencion, "formData");
     try {
       const result = await fetch(`${BASE_URL}/avisos/${id}`, {
         //modifico url 24/06/2022
@@ -253,7 +253,7 @@ const IntercencionAviso = () => {
                         >
                           <option
                             selected
-                            value="No hay consumo"
+                            value="638e32a42062209de55fd347"
                             class="bold-option"
                           >
                             No hay consumo
@@ -262,6 +262,7 @@ const IntercencionAviso = () => {
                             <option key={el._id} value={el._id}>
                               {el.descripcion}
                             </option>
+                            
                           ))}
                         </select>
                       </>
