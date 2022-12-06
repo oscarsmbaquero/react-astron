@@ -25,7 +25,7 @@ function Header() {
     
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img src={logoAstron} className="logo" alt={logoAstron} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
