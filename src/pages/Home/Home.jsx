@@ -128,8 +128,8 @@ export default function Home() {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <div className="graficas_container">
-                <div className="graficas">
+              <div className="graficas_home">
+                <div className="grafica_home">
                   <h6>Interv. / Aviso</h6>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -147,7 +147,7 @@ export default function Home() {
                     text={`${promedioCaceres} % `}
                   />
                 </div>
-                <div className="graficas">
+                <div className="grafica_home">
                   <h6>T. Avisos</h6>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -165,7 +165,7 @@ export default function Home() {
                     text={`${totalCaceres}`}
                   />
                 </div>
-                <div className="graficas">
+                <div className="grafica_home">
                   <h6>T. Pendientes</h6>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -202,8 +202,8 @@ export default function Home() {
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <div className="graficas_container">
-                <div className="graficas">
+              <div className="graficas_home">
+                <div className="grafica_home">
                   <h6>Interv. / Aviso</h6>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -221,7 +221,7 @@ export default function Home() {
                     text={`${promedioBadajoz} % `}
                   />
                 </div>
-                <div className="graficas">
+                <div className="grafica_home">
                   <h6>T. Avisos</h6>
                   <CircularProgressbar
                     styles={buildStyles({
@@ -239,7 +239,7 @@ export default function Home() {
                     text={`${totalBadajoz}`}
                   />
                 </div>
-                <div className="graficas">
+                <div className="grafica_home">
                   <h6>T. Pendientes</h6>
                   <CircularProgressbar
                     styles={buildStyles({
