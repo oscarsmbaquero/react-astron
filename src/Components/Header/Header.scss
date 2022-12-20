@@ -177,3 +177,22 @@ span2{
   //display: flex;
   //justify-content: right;
 }
+.custom-link {
+  color: white;
+  font-size:12px;  
+  font-family:  'Caveat',cursive;
+  text-decoration: none;
+  margin-left: 10px;
+  @media screen and (max-width: 991px){
+    margin-top: 10px;
+    }
+  }
+  
+  .custom-link:hover {
+  color: rgba(30, 149, 175, 0.97);
+  }
+  
+  .custom-link.active {
+    color: rgba(153, 7, 7, 0.97);
+    font-weight: bold;
+  }

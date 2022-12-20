@@ -34,12 +34,13 @@ const AvisosBadajoz = () => {
   }, []);
 
   //filtros Avisos Caceres
-  const avisosBadajoz = avisos.filter((avisos) => avisos.provincia ==='Badajoz');
-  console.log(avisosBadajoz,'Badajoz')
-  
+  const avisosBadajoz = avisos.filter(
+    (avisos) => avisos.provincia === "Badajoz"
+  );
+  console.log(avisosBadajoz, "Badajoz");
+
   const avisosAbiertos = avisosBadajoz.filter(
-    (avisos) => (avisos.estado === "Abierto" || avisos.estado === "Asignado")  
-                
+    (avisos) => avisos.estado === "Abierto" || avisos.estado === "Asignado"
   );
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -51,17 +52,11 @@ const AvisosBadajoz = () => {
     (avisos) => avisos.estado === "Cerrada"
   );
   //fin filtros Avisos Caceres
-  
 
   return (
-   <>
-    
+    <>
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          centered
-        >
+        <Tabs value={value} onChange={handleChange} centered>
           <Tab label="Total" />
           <Tab label="Abiertos" />
           <Tab label="Pendientes" />
@@ -86,7 +81,7 @@ const AvisosBadajoz = () => {
         )}
         {value === 3 && (
           <Box>
-            <CerradosBadajoz avisos={avisosCerrados}/>
+            <CerradosBadajoz avisos={avisosCerrados} />
           </Box>
         )}
       </Box>

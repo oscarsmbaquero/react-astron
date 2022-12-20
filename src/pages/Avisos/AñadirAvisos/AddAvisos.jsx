@@ -3,19 +3,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import "./AddAvisos.scss";
-import Loader from "../../../core/components/Loader/Loader";
 import Swal from "sweetalert2"; // hay que probarlo
-import {
-  Button,
-  Container,
-  FormControl,
-  FormHelperText,
-  Grid,
-  Input,
-  InputLabel,
-} from "@mui/material";
+import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import logo from "../../../assets/images/logo.jpg";
 
 //import { Container, FormControl, InputLabel, Input, FormHelperText} from '@mui/material/FormControl';
 
