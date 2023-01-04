@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { logout, useDispatchAuth, useGetAuth } from "../../context";
 import "./Header.scss";
 import logoAstron from "../../assets/images/logo2.png";
@@ -31,69 +31,73 @@ function Header() {
           <Nav className="me-auto">
             {userLogged.id ? (
               <>
-                <NavLink
+                <Nav.Link
                   as={Link}
+                  eventKey="0"
                   to={"/avisos/caceres"}
                   className="custom-link"
                 >
                   <i class="fa-solid fa-city"></i>
                   &nbsp;Cáceres
-                </NavLink>
-                <NavLink
+                </Nav.Link>
+                <Nav.Link
                   as={Link}
+                  eventKey="1"
                   to={"/avisos/badajoz"}
                   className="custom-link"
                 >
                   <i class="fa-solid fa-city"></i>
                   &nbsp;Badajoz
-                </NavLink>
-                <NavLink as={Link} to={"/items"} className="custom-link">
+                </Nav.Link>
+                <Nav.Link as={Link} eventKey="2" to={"/items"} className="custom-link">
                   <i class="fa-solid fa-sitemap"></i>
                   &nbsp;Items
-                </NavLink>
-                <NavLink as={Link} to={"/material"} className="custom-link">
+                </Nav.Link>
+                <Nav.Link as={Link} eventKey="3" to={"/material"} className="custom-link">
                   <i class="fa-solid fa-laptop"></i>
                   &nbsp;Material
-                </NavLink>
-                <NavLink
+                </Nav.Link>
+                <Nav.Link
                   as={Link}
+                  eventKey="4"
                   to={"/certificaciones"}
                   className="custom-link"
                 >
                   <i class="fa-sharp fa-solid fa-list"></i>
                   &nbsp;Certificaciones
-                </NavLink>
-                <NavLink as={Link} to={"/users"} className="custom-link">
+                </Nav.Link>
+                <Nav.Link as={Link} eventKey="5" to={"/users"} className="custom-link">
                   <i class="fa-solid fa-users"></i>
                   &nbsp;Usuarios
-                </NavLink>
+                </Nav.Link>
                 {userLogged.rol === "Dispatch" || userLogged.rol === "Admin" ? (
-                  <NavLink
+                  <Nav.Link
                     as={Link}
                     to={"/anadir/avisos"}
                     className="custom-link"
                   >
                     <i class="fa-sharp fa-solid fa-plus"></i>
                     &nbsp;A. Aviso
-                  </NavLink>
+                  </Nav.Link>
                 ) : (
                   ""
                 )}
-                <NavLink
+                <Nav.Link
                   as={Link}
+                  eventKey="6"
                   to={"/"}
                   onClick={handleLogout}
                   className="custom-link"
                 >
                   <i class="fa-solid fa-toggle-off"></i>
                   &nbsp;LogOut
-                </NavLink>
+                </Nav.Link>
               </>
             ) : (
-              <NavLink as={Link} to={"/user/login"} className="custom-link">
+              <Nav.Link as={Link} eventKey="7" to={"/user/login"} className="custom-link">
                 <i class="fa-solid fa-toggle-on"></i>
                 &nbsp;Login
-              </NavLink>
+              </Nav.Link>
             )}
           </Nav>
           {userLogged.id ? (

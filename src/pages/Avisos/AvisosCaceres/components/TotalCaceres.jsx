@@ -11,11 +11,34 @@ const TotalCaceres = ({ avisos, userLogged }) => {
 
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
-  
 
   const conditionalRowStyles = [
     {
       when: row => row.estado === 'Pendiente',
+      style: {
+        backgroundColor: 'rgb(255, 258, 0)',
+        //backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        color: 'black',
+        text:'bold',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+    {
+      when: row => row.estado === 'Abierto',
+      style: {
+        backgroundColor: 'rgb(150, 150, 100,258)',
+        //backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        color: 'black',
+        text:'bold',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+    {
+      when: row => row.estado === 'Cerrada',
       style: {
         backgroundColor: 'rgb(206, 255, 255)',
         //backgroundColor: 'rgba(63, 195, 128, 0.9)',
@@ -28,13 +51,17 @@ const TotalCaceres = ({ avisos, userLogged }) => {
     },
   ]
 
-
   useEffect(() => {
 		const timeout = setTimeout(() => {
 			setColumns([
 				{
               name: "INCIDENCIA",
               selector: (row) => (row.n_incidencia),
+              sortable: true,
+            },
+            {
+              name: "ENTRADA",
+              selector: (row) => row.createdAt,
               sortable: true,
             },
             {

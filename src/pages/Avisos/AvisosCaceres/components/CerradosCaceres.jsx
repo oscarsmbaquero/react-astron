@@ -1,16 +1,14 @@
 import React from 'react';
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
-import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
+import { DeleteOutlined } from "@mui/icons-material";
+import SearchIcon from "@mui/icons-material/Search";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import Loader from "../../../../core/components/Loader/Loader";
 
 
 const CerradosCaceres = ({users,avisos}) => {
-  
-  console.log(avisos,'avisos')
   const clickHandler = (e, id) => {
   };
   const columns = [
@@ -68,7 +66,7 @@ const CerradosCaceres = ({users,avisos}) => {
         <>
           <Link to={`/avisos/details/${row._id}`}>
             <IconButton aria-label="delete" color="success">
-              <Create />
+            <SearchIcon />
             </IconButton>
           </Link>
           <IconButton color="error" onClick={(e) => clickHandler(e, row._id)}>

@@ -1,19 +1,15 @@
 import React from "react";
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
-import { AddIcCallOutlined, Create, DeleteOutlined } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import Button from "@mui/material/Button";
 import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import ConstructionIcon from "@mui/icons-material/Construction";
-import styled from "styled-components";
+
 
 
 const AbiertosCaceres = ({ users, avisos, userLogged }) => {
-  console.log(avisos,'aosdjaodj')
   const columns = [
     {
       name: "INCIDENCIA",

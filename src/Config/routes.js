@@ -1,18 +1,11 @@
-
-// import AvisosBadajoz from "../pages/Avisos/AvisosBadajoz/AvisosBadajoz";
-//import SelectCompanies from "../core/components/SelectCompanies/SelectCompanies";
 import SelectUser from "../core/components/SelectUsers/SelectUser";
-
-
 import AvisosDetail from "../pages/Avisos/AvisosDetail/AvisosDetail";
-
 import Avisos from "../pages/Avisos/AvisosCaceres/Avisos";
 import AddAvisos from "../pages/Avisos/AñadirAvisos/AddAvisos";
 import EditAviso from "../pages/Avisos/EditAviso/EditAviso";
 import IntercencionAviso from "../pages/Avisos/IntervencionAviso/IntercencionAviso";
 import FormContact from "../pages/Form/FormContact";
 import Home from "../pages/Home/Home";
-
 import ReselectUser from "../core/components/ReselectUser/ReselectUser";
 import MostrarIntervencion from "../pages/Avisos/IntervencionAviso/MostrarIntervencion";
 import Users from "../pages/User/Users/Users";

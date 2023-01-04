@@ -1,13 +1,10 @@
-import { CardActions, CardContent, CardHeader, Grid, IconButton, Typography } from '@mui/material';
+import { CardActions, CardContent, CardHeader, Grid, Typography } from '@mui/material';
 import React,{ useState, useEffect} from 'react'
 import { Badge, Card, Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { BASE_URL } from "../../../assets/ApiRoutes";
 import { useNavigate } from "react-router-dom";
-// import './AvisosCaceres.scss';
 import { useGetAuth } from "../../../context/context";
-import { Create, DeleteOutlined } from '@mui/icons-material';
-import AddIcon from "@mui/icons-material/Add";
 import Button from "@mui/material/Button";
 import Swal from "sweetalert2"; // hay que probarlo
 
@@ -27,41 +24,31 @@ const AvisosDetail = () => {
       .then(data => SetAvisos(data))      
      }, [id]); 
    
-     const deleteaviso = (e, aviso) => {
-      console.log(aviso);
-      e.preventDefault();
-      fetch(`${BASE_URL}/avisos/${aviso}`, {
-        method: "DELETE",
-        headers: {
-          //'Content-Type': 'multipart/form-data',
-          Authorization: `Bearer ${userLogged.token}`,
-        },
-      }).then((res) => {
-        if (res.status === 200) {
-          console.log("Borrado");
-          Swal.fire("Eliminado", res.message, "success");
-          fetch(`${BASE_URL}/avisos`)
-            .then((response) => response.json())
-            .then((data) => SetAvisos(data));
+    //  const deleteaviso = (e, aviso) => {
+    //   console.log(aviso);
+    //   e.preventDefault();
+    //   fetch(`${BASE_URL}/avisos/${aviso}`, {
+    //     method: "DELETE",
+    //     headers: {
+    //       //'Content-Type': 'multipart/form-data',
+    //       Authorization: `Bearer ${userLogged.token}`,
+    //     },
+    //   }).then((res) => {
+    //     if (res.status === 200) {
+    //       console.log("Borrado");
+    //       Swal.fire("Eliminado", res.message, "success");
+    //       fetch(`${BASE_URL}/avisos`)
+    //         .then((response) => response.json())
+    //         .then((data) => SetAvisos(data));
   
-          navigate("/avisos/caceres")
-        }
-      });
-    };
+    //       navigate("/avisos/caceres")
+    //     }
+    //   });
+    // };
  return (
   <div>
   { !avisos ? <p>Cargando...</p> : 
   <>
-    {/* <div className="details">
-      <div className="details__text">      
-          <h1>{avisos.n_incidencia}</h1>
-          <h2>{avisos.localidad}</h2>          
-          <h2>{avisos.centro}</h2>
-          {avisos.prioridad === 'Urgente' ? <h3 className='urgente'>{avisos.prioridad}</h3> : <h3 className='normal'>{avisos.prioridad}</h3> }
-          
-          <p>{avisos.averia}</p>          
-       </div>
-    </div> */}
     <Container>
         <Grid container spacing={5}>          
             <Grid item key={avisos._id} xs={12} md={12} lg={12}>

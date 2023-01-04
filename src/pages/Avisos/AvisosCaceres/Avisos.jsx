@@ -9,7 +9,6 @@ import "react-tabs/style/react-tabs.css";
 import TotalCaceres from "./components/TotalCaceres";
 import AbiertosCaceres from "./components/AbiertosCaceres";
 import PendientesCaceres from "./components/PendientesCaceres";
-import { Typography } from "@mui/material";
 import CerradosCaceres from "./components/CerradosCaceres";
 import { useGetAuth } from "../../../context/context";
 import MisAvisos from "./components/MisAvisos";
@@ -36,8 +35,6 @@ const Avisos = () => {
   const avisosCaceres = avisos.filter(
     (avisos) => avisos.provincia === "Cáceres"
   );
-  console.log(avisosCaceres, "Caceres");
-
   const avisosAbiertos = avisosCaceres.filter(
     (avisos) => avisos.estado === "Abierto" || avisos.estado === "Asignado"
   );
@@ -53,8 +50,6 @@ const Avisos = () => {
   const misAvisos = avisos.filter(
     (avisos) => avisos.user_assigned?._id === userLogged.id
   );
-  console.log(misAvisos,'misAvisos')
-  console.log(userLogged,'userLogged')
   //fin filtros Avisos Caceres
 
   return (
