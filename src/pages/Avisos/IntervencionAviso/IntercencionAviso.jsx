@@ -58,8 +58,7 @@ const IntercencionAviso = () => {
         setMaterial(data);
       });
   }, [userLogged.token]);
-  console.log(material, "material");
-  useEffect(() => {
+    useEffect(() => {
     fetch(`${BASE_URL}/material/${userLogged.id}`, {
       method: "GET",
       headers: {
@@ -112,7 +111,6 @@ const IntercencionAviso = () => {
   const onSubmit = async (formData) => {
 
     formData = { ...formData, totalHoras };
-    console.log(formData.materialIntervencion, "formData");
     try {
       const result = await fetch(`${BASE_URL}/avisos/${id}`, {
         //modifico url 24/06/2022
@@ -131,9 +129,7 @@ const IntercencionAviso = () => {
         confirmButtonText: "Ok",
       });
       navigate("/avisos/caceres");
-      console.log(resData);
     } catch (error) {
-      console.log(error);
     }
   };
 

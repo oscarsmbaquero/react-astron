@@ -12,6 +12,7 @@ import PendientesCaceres from "./components/PendientesCaceres";
 import CerradosCaceres from "./components/CerradosCaceres";
 import { useGetAuth } from "../../../context/context";
 import MisAvisos from "./components/MisAvisos";
+import Pruebas from './components/Pruebas'
 
 const Avisos = () => {
   let [avisos, SetAvisos] = useState([]);
@@ -31,25 +32,34 @@ const Avisos = () => {
       .then((data) => SetUsers(data));
   }, []);
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   //filtros Avisos Caceres
   const avisosCaceres = avisos.filter(
     (avisos) => avisos.provincia === "Cáceres"
   );
+  const numeroAvisosCaceres = avisosCaceres.length;
   const avisosAbiertos = avisosCaceres.filter(
     (avisos) => avisos.estado === "Abierto" || avisos.estado === "Asignado"
   );
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const numeroAvisosAbiertos = avisosAbiertos.length;
+
   const avisosPendientes = avisosCaceres.filter(
     (avisos) => avisos.estado === "Pendiente"
   );
+  const numeroAvisosPendientes = avisosPendientes.length;
+
   const avisosCerrados = avisosCaceres.filter(
     (avisos) => avisos.estado === "Cerrada"
   );
+  const numeroAvisosCerrados = avisosCerrados.length;
+
   const misAvisos = avisos.filter(
     (avisos) => avisos.user_assigned?._id === userLogged.id
   );
+  const numeroMisAvisos = misAvisos.length;
   //fin filtros Avisos Caceres
 
   return (
@@ -57,17 +67,23 @@ const Avisos = () => {
       <Box sx={{ width: "100%", bgcolor: "background.paper" }}>
         <Tabs
           value={value}
-          onChange={handleChange}          
+          onChange={handleChange}
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
+          indicatorColor="secondary"
+          textColor="secondary"
+          visibleScrollbar="true"
+          
+         
           //centered
         >
-          <Tab label="Total" />
-          <Tab label="Abiertos" />
-          <Tab label="Pendientes" />
-          <Tab label="Cerrados" />
-          <Tab label="Mis Avisos" />
+          <Tab label={`Total-${numeroAvisosCaceres}-`} />
+          <Tab label={`Abiertos-${numeroAvisosAbiertos}-`} />
+          <Tab label={`Pendientes-${numeroAvisosPendientes}-`} />
+          <Tab label={`Cerrados-${numeroAvisosCerrados}-`} />
+          <Tab label={`Mis Avisos-${numeroMisAvisos}-`} />
+          <Tab label="Pruebas" />
         </Tabs>
       </Box>
       <Box sx={{ padding: 1 }}>
@@ -79,6 +95,7 @@ const Avisos = () => {
         {value === 1 && (
           <Box>
             <AbiertosCaceres
+              numeroAvisosAbiertos={numeroAvisosAbiertos}
               avisos={avisosAbiertos}
               users={users}
               userLogged={userLogged}
@@ -98,6 +115,11 @@ const Avisos = () => {
         {value === 4 && (
           <Box>
             <MisAvisos avisos={misAvisos} />
+          </Box>
+        )}
+        {value === 5 && (
+          <Box>
+            <Pruebas avisos={misAvisos} />
           </Box>
         )}
       </Box>

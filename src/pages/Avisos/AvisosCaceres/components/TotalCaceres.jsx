@@ -11,7 +11,7 @@ const TotalCaceres = ({ avisos, userLogged }) => {
 
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
-  const [avisosFinales, setAvisosFinales]= useState([]);
+  //const [avisosFinales, setAvisosFinales]= useState([]);
   const fechaActual = new Date().getTime();
 
   const fechaEntrada = avisos.map(function(element){
@@ -22,7 +22,6 @@ const TotalCaceres = ({ avisos, userLogged }) => {
     return sla2;
 
 })
-console.log(fechaEntrada)
   // console.log(fechaApertura,'fechaApertura'); 
   // console.log(cambiarFecha())
 
@@ -38,6 +37,7 @@ console.log(fechaEntrada)
             estado:aviso.estado,
             localidad:aviso.localidad,
             sla: fechaEntrada[index],
+            id: aviso._id,
 
           })
         ))
@@ -48,9 +48,21 @@ console.log(fechaEntrada)
   
   const conditionalRowStyles = [
     {
+      when: row => row.estado === 'Asignado',
+      style: {
+        backgroundColor: 'rgb(2, 150, 104)',
+        //backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        color: 'black',
+        text:'bold',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+    {
       when: row => row.estado === 'Pendiente',
       style: {
-        backgroundColor: 'rgb(255, 258, 0)',
+        backgroundColor: 'rgb(212, 210, 0)',
         //backgroundColor: 'rgba(63, 195, 128, 0.9)',
         color: 'black',
         text:'bold',
@@ -103,11 +115,11 @@ console.log(fechaEntrada)
               name: "SLA",
               selector: (row) =>
               row.sla <= 4 ? (
-                <Badge bg="success">{row.sla}</Badge>
+                <Badge bg="success">{row.sla} días</Badge>
               ) : row.sla > 4 && row.sla < 14? (
-                <Badge bg="warning">{row.sla}</Badge>
+                <Badge bg="warning">{row.sla} días</Badge>
               ) :
-                <Badge bg="danger">{row.sla}</Badge>,
+                <Badge bg="danger">{row.sla} días</Badge>,
               sortable: true,
             },
             {
@@ -141,12 +153,12 @@ console.log(fechaEntrada)
                 row //
               ) => (
                 <>
-                  <Link to={`/avisos/details/${row._id}`}>
+                  <Link to={`/avisos/details/${row.id}`}>
                     <IconButton aria-label="delete" color="success">
                       <SearchIcon />
                     </IconButton>
                   </Link>
-                  <Link to={`/edit/aviso/${row._id}`}>
+                  <Link to={`/edit/aviso/${row.id}`}>
                     <IconButton aria-label="delete" color="secondary">
                       <Create />
                     </IconButton>
