@@ -11,11 +11,22 @@ const TotalCaceres = ({ avisos, userLogged }) => {
 
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
+  const [avisosFinales, setAvisosFinales]= useState([]);
+  const fechaActual = new Date().getTime();
 
-  const fechaActual = new Date();
-  
-  const fechaEntrada = new Date (avisos[0]?.createdAt).getTime();
-  const diferenciaDias = (( fechaActual - fechaEntrada) /60 / 60 /1000/24).toFixed(0);
+  const fechaEntrada = avisos.map(function(element){
+    const resul = `${element.createdAt}`;
+    const result= Date.parse(resul);
+    const sla = ((fechaActual -result)/60 / 60 /1000/24).toFixed(0);
+    const sla2=parseInt(sla)
+    return sla2;
+
+})
+console.log(fechaEntrada)
+  // console.log(fechaApertura,'fechaApertura'); 
+  // console.log(cambiarFecha())
+
+
 
   const registros =()=>{
     let tabla=[]
@@ -26,12 +37,13 @@ const TotalCaceres = ({ avisos, userLogged }) => {
             centro: aviso.centro,
             estado:aviso.estado,
             localidad:aviso.localidad,
-            sla:diferenciaDias,
+            sla: fechaEntrada[index],
 
           })
         ))
         return tabla;
   }
+  
   
   
   const conditionalRowStyles = [
@@ -84,15 +96,20 @@ const TotalCaceres = ({ avisos, userLogged }) => {
             {
               name: "ENTRADA",
               selector: (row) =>
-             row.createdAt.slice(0,10),
+             row.fecha_entrada.slice(0,10),
               sortable: true,
             },
-            // {
-            //   name: "SLA",
-            //   selector: (row) =>
-            //  row.sla,
-            //   sortable: true,
-            // },
+            {
+              name: "SLA",
+              selector: (row) =>
+              row.sla <= 4 ? (
+                <Badge bg="success">{row.sla}</Badge>
+              ) : row.sla > 4 && row.sla < 14? (
+                <Badge bg="warning">{row.sla}</Badge>
+              ) :
+                <Badge bg="danger">{row.sla}</Badge>,
+              sortable: true,
+            },
             {
               name: "CENTRO",
               selector: (row) => row.centro,
@@ -150,7 +167,7 @@ const TotalCaceres = ({ avisos, userLogged }) => {
     <DataTable
       //   title="Avisos Totales"
       columns={columns}
-      data={avisos}
+      data={registros()}
       pagination
       dense
       responsive
