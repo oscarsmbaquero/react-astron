@@ -101,7 +101,6 @@ const IntercencionAviso = () => {
   const desplazamiento = parseFloat(tiempoViaje);
 
   const totalHoras = intervencion + desplazamiento;
-  console.log(totalHoras, "total");
 
   const tecnicos = users.filter(
     (user) => user.account_type === "Tecnico" || user.account_type === "Admin"
@@ -109,11 +108,6 @@ const IntercencionAviso = () => {
   const materialOperativo = materialById.filter(
     (material) => material.estado === "Operativo"
   );
-
-  // const materialFiltrado = material.filter(
-  //   (mater)=> mater.almacen === userLogged.id
-  // );
-  //console.log(materialFiltrado,'material por usuario')
 
   const onSubmit = async (formData) => {
 

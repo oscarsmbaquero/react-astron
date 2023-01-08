@@ -8,10 +8,31 @@ import SearchIcon from "@mui/icons-material/Search";
 import Loader from "../../../../core/components/Loader/Loader";
 
 const TotalCaceres = ({ avisos, userLogged }) => {
-  
-  console.log(avisos,'avisos');
+
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
+
+  const fechaActual = new Date();
+  
+  const fechaEntrada = new Date (avisos[0]?.createdAt).getTime();
+  const diferenciaDias = (( fechaActual - fechaEntrada) /60 / 60 /1000/24).toFixed(0);
+
+  const registros =()=>{
+    let tabla=[]
+        avisos.map( (aviso, index ) => (
+          tabla.push({
+            n_incidencia:aviso.n_incidencia,
+            fecha_entrada: aviso.createdAt.slice(0,10),
+            centro: aviso.centro,
+            estado:aviso.estado,
+            localidad:aviso.localidad,
+            sla:diferenciaDias,
+
+          })
+        ))
+        return tabla;
+  }
+  
   
   const conditionalRowStyles = [
     {
@@ -50,19 +71,6 @@ const TotalCaceres = ({ avisos, userLogged }) => {
         },
       },
     },
-    {
-      when: row => row.estado === 'Asignado',
-      style: {
-        backgroundColor: 'rgb(20, 255, 255)',
-        //backgroundColor: 'rgba(63, 195, 128, 0.9)',
-        color: 'black',
-        text:'bold',
-        '&:hover': {
-          cursor: 'pointer',
-        },
-      },
-    },
-    
   ]
 
   useEffect(() => {
@@ -79,6 +87,12 @@ const TotalCaceres = ({ avisos, userLogged }) => {
              row.createdAt.slice(0,10),
               sortable: true,
             },
+            // {
+            //   name: "SLA",
+            //   selector: (row) =>
+            //  row.sla,
+            //   sortable: true,
+            // },
             {
               name: "CENTRO",
               selector: (row) => row.centro,
