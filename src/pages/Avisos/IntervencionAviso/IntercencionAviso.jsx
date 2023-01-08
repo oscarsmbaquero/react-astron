@@ -77,6 +77,8 @@ const IntercencionAviso = () => {
   const captureType = (e) => {
     setVisible(e.target.value);
   };
+
+
   const fechaIni = (e) => {
     setFechaInicio(e.target.value);
   };
@@ -310,7 +312,7 @@ const IntercencionAviso = () => {
                     <label className="form__label"> Despl. * </label>
                     <input
                       className="form-control"
-                      type="number"
+                      type="float"
                       name="viaje"
                       placeholder="Tiempo Despl."
                        {...register("viaje", {

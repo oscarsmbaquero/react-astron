@@ -8,10 +8,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import Loader from "../../../../core/components/Loader/Loader";
 
 const TotalCaceres = ({ avisos, userLogged }) => {
-
+  
+  console.log(avisos,'avisos');
   const [columns, setColumns] = useState([]);
 	const [pending, setPending] = React.useState(true);
-
+  
   const conditionalRowStyles = [
     {
       when: row => row.estado === 'Pendiente',
@@ -49,6 +50,19 @@ const TotalCaceres = ({ avisos, userLogged }) => {
         },
       },
     },
+    {
+      when: row => row.estado === 'Asignado',
+      style: {
+        backgroundColor: 'rgb(20, 255, 255)',
+        //backgroundColor: 'rgba(63, 195, 128, 0.9)',
+        color: 'black',
+        text:'bold',
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      },
+    },
+    
   ]
 
   useEffect(() => {
@@ -61,7 +75,8 @@ const TotalCaceres = ({ avisos, userLogged }) => {
             },
             {
               name: "ENTRADA",
-              selector: (row) => row.createdAt,
+              selector: (row) =>
+             row.createdAt.slice(0,10),
               sortable: true,
             },
             {
