@@ -10,9 +10,6 @@ import SendIcon from "@mui/icons-material/Send";
 import { useGetAuth } from "../../../context/context";
 import Swal from "sweetalert2";
 
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
-
 const IntercencionAviso = () => {
   const userLogged = useGetAuth();
   let [aviso, SetAviso] = useState();
@@ -29,9 +26,8 @@ const IntercencionAviso = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
     setValue,
-  } = useForm({ mode: "onChange" });
+    formState: { errors, isValid }}= useForm({ mode: "onChange" });
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -48,8 +44,8 @@ const IntercencionAviso = () => {
 
   useEffect(() => {
     fetch(`${BASE_URL}/items`)
-      .then(response => response.json())
-      .then(data => setItems(data))
+      .then((response) => response.json())
+      .then((data) => setItems(data));
   }, []);
   useEffect(() => {
     fetch(`${BASE_URL}/material`, {
@@ -64,7 +60,7 @@ const IntercencionAviso = () => {
         setMaterial(data);
       });
   }, [userLogged.token]);
-    useEffect(() => {
+  useEffect(() => {
     fetch(`${BASE_URL}/material/${userLogged.id}`, {
       method: "GET",
       headers: {
@@ -82,7 +78,6 @@ const IntercencionAviso = () => {
   const captureType = (e) => {
     setVisible(e.target.value);
   };
-
 
   const fechaIni = (e) => {
     setFechaInicio(e.target.value);
@@ -115,8 +110,8 @@ const IntercencionAviso = () => {
   );
 
   const onSubmit = async (formData) => {
-
     formData = { ...formData, totalHoras };
+    console.log(formData, "formData");
     try {
       const result = await fetch(`${BASE_URL}/avisos/${id}`, {
         //modifico url 24/06/2022
@@ -135,8 +130,7 @@ const IntercencionAviso = () => {
         confirmButtonText: "Ok",
       });
       navigate("/avisos/caceres");
-    } catch (error) {
-    }
+    } catch (error) {}
   };
 
   return (
@@ -145,18 +139,23 @@ const IntercencionAviso = () => {
         <Loader />
       ) : (
         <div className="container">
-          <section >
+          <section>
             <div className="col-11 col-lg-11 mx-4 mt-5">
               <h3>Añadir Int:&nbsp;{aviso.n_incidencia}</h3>
-              <form onSubmit={handleSubmit(onSubmit)} >              
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="d-flex flex-column flex-md-row">
                   <div className="d-flex flex-column col-11 col-md-3  ">
                     <label className="form__label">Selecciona estado * </label>
                     <select
-                      {...register("estado")}
                       className="form-control"
-                      onChange={captureType}
+                    
+                      {...register("estado", {
+                        required: "Estado is required",
+                      })}  onChange={captureType}
                     >
+                      {errors.estado && errors.estado.type === "required" && (
+                        <p>{errors.estado.message}</p>
+                      )}
                       <option value="Cerrada">Cerrada</option>
                       <option value="Pendiente">Pendiente</option>
                     </select>
@@ -182,20 +181,23 @@ const IntercencionAviso = () => {
                       </>
                     ) : (
                       ""
-                    )}                    
+                    )}
                   </div>
-                  <div className="d-flex flex-column col-11 col-md-3  ">
-                    <label className="form__label">Selecciona item  </label>
-                    <select
-                          className="form-control"
-                          {...register("item")}
-                        >
-                          {items.map((item) => (
-                            <option key={item._id} value={item.id}>
-                              {item.descripcion}
-                            </option>
-                          ))}
-                        </select>
+                  <div className="d-flex flex-column col-11 col-md-4">
+                    <label className="form__label">Selecciona item </label>
+                    <select className="form-control" {...register("item", {
+                        required: "Campo Obligatotio",
+                      })}>
+                       {errors.item && errors.item.type === "required" && (
+                          <p className="error">{errors.item.message}</p>
+                        )}
+                      <option selected>Selecciona Item</option>
+                      {items.map((item) => (
+                        <option key={item._id} value={item._id}>
+                          {item.codigo}-{item.descripcion}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-md-row">
@@ -205,8 +207,13 @@ const IntercencionAviso = () => {
                         <label className="form__label">Técnico *</label>
                         <select
                           className="form-control"
-                          {...register("tecnicoIntervencion")}
+                          {...register("tecnicoIntervencion", {
+                            required: "Campo Obligatotio",
+                          })}                          
                         >
+                        {errors.tecnicoIntervencion && errors.tecnicoIntervencion.type === "required" && (
+                          <p className="error">{errors.tecnicoIntervencion.message}</p>
+                        )}
                           <option selected>Selecciona Técnico *</option>
                           {tecnicos.map((user) => (
                             <option key={user._id} value={user.id}>
@@ -272,7 +279,6 @@ const IntercencionAviso = () => {
                             <option key={el._id} value={el._id}>
                               {el.descripcion}
                             </option>
-                            
                           ))}
                         </select>
                       </>
@@ -287,9 +293,14 @@ const IntercencionAviso = () => {
                       type="datetime-local"
                       name="fecha_inicio"
                       placeholder="Inicio"
-                      {...register("fecha_inicio")}
                       onChange={fechaIni}
+                      {...register("fecha_inicio", {
+                            required: "Campo Obligatotio",
+                          })}
                     />
+                     {errors.fecha_inicio && errors.fecha_inicio.type === "required" && (
+                          <p className="error">{errors.fecha_inicio.message}</p>
+                        )}
                   </div>
                   <div className="d-flex flex-column col-11 col-md-2  mx-md-4">
                     <label className="form__label">Fecha Fin *</label>
@@ -297,9 +308,14 @@ const IntercencionAviso = () => {
                       className="form-control"
                       type="datetime-local"
                       name="fecha_fin"
-                      {...register("fecha_fin")}
                       onChange={fechaFin}
+                      {...register("fecha_fin", {
+                            required: "Campo Obligatotio",
+                          })}
                     />
+                     {errors.fecha_fin && errors.fecha_fin.type === "required" && (
+                          <p className="error">{errors.fecha_fin.message}</p>
+                        )}
                   </div>
                   <div className="d-flex flex-column col-11 col-md-2 mx-md-3">
                     <label className="form__label"> Km * </label>
@@ -309,12 +325,12 @@ const IntercencionAviso = () => {
                       name="km"
                       placeholder="Km"
                       {...register("km", {
-                            required: "Campo Obligatotio",
-                          })}
-                        />
-                        {errors.km && errors.km.type === "required" && (
-                          <p className="error">{errors.km.message}</p>
-                        )}
+                        required: "Campo Obligatotio",
+                      })}
+                    />
+                    {errors.km && errors.km.type === "required" && (
+                      <p className="error">{errors.km.message}</p>
+                    )}
                   </div>
                   <div className="d-flex flex-column col-11 col-md-3 mx-md-2">
                     <label className="form__label"> Despl. * </label>
@@ -322,15 +338,16 @@ const IntercencionAviso = () => {
                       className="form-control"
                       type="float"
                       name="viaje"
+                      onChange={horasViaje}
                       placeholder="Tiempo Despl."
-                       {...register("viaje", {
-                            required: "Campo Obligatotio",
-                          })}
-                          onChange={horasViaje}
-                        />
-                        {errors.viaje && errors.viaje.type === "required" && (
-                          <p className="error">{errors.viaje.message}</p>
-                        )}
+                      {...register("viaje", {
+                        required: "Campo Obligatotio",
+                      })}
+                      
+                    />
+                    {errors.viaje && errors.viaje.type === "required" && (
+                      <p className="error">{errors.viaje.message}</p>
+                    )}
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-md-row ">
@@ -342,13 +359,19 @@ const IntercencionAviso = () => {
                       type="text"
                       name="intervencion"
                       placeholder="Intervencion"
-                      {...register("intervencion")}
+                      {...register("intervencion", {
+                        required: "Campo Obligatotio",
+                      })}
                     />
+                     {errors.intervencion && errors.intervencion.type === "required" && (
+                      <p className="error">{errors.intervencion.message}</p>
+                    )}
                   </div>
                 </div>
                 <br />
                 <Button
                   variant="contained"
+                  disabled={!isValid}
                   //color="primary"
                   type="submit"
                   endIcon={<SendIcon />}
