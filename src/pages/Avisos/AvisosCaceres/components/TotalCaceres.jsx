@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import Badge from "react-bootstrap/Badge";
-import { Create } from "@mui/icons-material";
+import { Create, StayPrimaryLandscape } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
@@ -24,7 +24,15 @@ const TotalCaceres = ({ avisos, userLogged }) => {
 })
   // console.log(fechaApertura,'fechaApertura'); 
   // console.log(cambiarFecha())
-
+  const tableCustomStyles = {
+    headCells: {
+      style: {
+        color: 'white',
+        //justifyContent: 'center',
+        backgroundColor: 'black'
+      },
+    },
+  }
 
 
   const registros =()=>{
@@ -177,6 +185,7 @@ const TotalCaceres = ({ avisos, userLogged }) => {
 
   return (
     <DataTable
+    customStyles={tableCustomStyles}
       //   title="Avisos Totales"
       columns={columns}
       data={registros()}
