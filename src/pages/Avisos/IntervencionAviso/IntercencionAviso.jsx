@@ -24,6 +24,7 @@ const IntercencionAviso = () => {
   const [fechaInicio, setFechaInicio] = useState();
   const [fechaFinal, setFechaFinal] = useState();
   const [tiempoViaje, setTiempoViaje] = useState();
+  const [items, setItems] = useState([]);
 
   const {
     register,
@@ -45,6 +46,11 @@ const IntercencionAviso = () => {
       .then((data) => setUsers(data));
   }, []);
 
+  useEffect(() => {
+    fetch(`${BASE_URL}/items`)
+      .then(response => response.json())
+      .then(data => setItems(data))
+  }, []);
   useEffect(() => {
     fetch(`${BASE_URL}/material`, {
       method: "GET",
@@ -140,9 +146,8 @@ const IntercencionAviso = () => {
       ) : (
         <div className="container">
           <section >
-            <div className="col-11 col-lg-11 mx-5 mt-5">
-              <h3>Añadir Intervención</h3>
-              <h2>{aviso.n_incidencia}</h2>
+            <div className="col-11 col-lg-11 mx-4 mt-5">
+              <h3>Añadir Int:&nbsp;{aviso.n_incidencia}</h3>
               <form onSubmit={handleSubmit(onSubmit)} >              
                 <div className="d-flex flex-column flex-md-row">
                   <div className="d-flex flex-column col-11 col-md-3  ">
@@ -156,7 +161,7 @@ const IntercencionAviso = () => {
                       <option value="Pendiente">Pendiente</option>
                     </select>
                   </div>
-                  <div className="d-flex flex-column col-11 col-md-9  mx-md-3">
+                  <div className="d-flex flex-column col-11 col-md-5  mx-md-3">
                     {visible === "Pendiente" ? (
                       <>
                         <label className="form__label">
@@ -177,7 +182,20 @@ const IntercencionAviso = () => {
                       </>
                     ) : (
                       ""
-                    )}
+                    )}                    
+                  </div>
+                  <div className="d-flex flex-column col-11 col-md-3  ">
+                    <label className="form__label">Selecciona item  </label>
+                    <select
+                          className="form-control"
+                          {...register("item")}
+                        >
+                          {items.map((item) => (
+                            <option key={item._id} value={item.id}>
+                              {item.descripcion}
+                            </option>
+                          ))}
+                        </select>
                   </div>
                 </div>
                 <div className="d-flex flex-column flex-md-row">

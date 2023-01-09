@@ -20,7 +20,6 @@ const Items = () => {
       .then(response => response.json())
       .then(data => setItems(data))
   }, []);
- console.log(items);
 
  const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
