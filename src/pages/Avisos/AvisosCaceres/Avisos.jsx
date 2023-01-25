@@ -3,6 +3,7 @@ import { BASE_URL } from "../../../assets/ApiRoutes";
 import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
+import { makeStyles } from '@mui/styles';
 // import Loader from "../../../core/components/Loader/Loader";
 //import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
@@ -12,13 +13,20 @@ import PendientesCaceres from "./components/PendientesCaceres";
 import CerradosCaceres from "./components/CerradosCaceres";
 import { useGetAuth } from "../../../context/context";
 import MisAvisos from "./components/MisAvisos";
-import Pruebas from './components/Pruebas'
+import Pruebas from './components/Pruebas';
+
+const useStyles = makeStyles({
+  selected: {
+    backgroundColor: 'rgb(206, 255, 255)',
+  },
+});
 
 const Avisos = () => {
   let [avisos, SetAvisos] = useState([]);
   let [users, SetUsers] = useState([]);
   const [value, setValue] = React.useState(0);
   const userLogged = useGetAuth();
+  const classes = useStyles();
 
   useEffect(() => {
     fetch(`${BASE_URL}/avisos`)
@@ -73,17 +81,12 @@ const Avisos = () => {
           aria-label="scrollable auto tabs example"
           indicatorColor="secondary"
           textColor="secondary"
-          visibleScrollbar="true"
-          
-         
-          //centered
         >
-          <Tab label={`Total-${numeroAvisosCaceres}-`} />
-          <Tab label={`Abiertos-${numeroAvisosAbiertos}-`} />
-          <Tab label={`Pendientes-${numeroAvisosPendientes}-`} />
-          <Tab label={`Cerrados-${numeroAvisosCerrados}-`} />
-          <Tab label={`Mis Avisos-${numeroMisAvisos}-`} />
-          <Tab label="Pruebas" />
+          <Tab classes={{ selected: classes.selected }} label={`Total-${numeroAvisosCaceres}-`} />
+          <Tab classes={{ selected: classes.selected }} label={`Abiertos-${numeroAvisosAbiertos}-`} />
+          <Tab classes={{ selected: classes.selected }} label={`Pendientes-${numeroAvisosPendientes}-`} />
+          <Tab classes={{ selected: classes.selected }} label={`Cerrados-${numeroAvisosCerrados}-`} />
+          <Tab classes={{ selected: classes.selected }} label={`Mis Avisos-${numeroMisAvisos}-`} />
         </Tabs>
       </Box>
       <Box sx={{ padding: 1 }}>
@@ -116,12 +119,7 @@ const Avisos = () => {
           <Box>
             <MisAvisos avisos={misAvisos} />
           </Box>
-        )}
-        {value === 5 && (
-          <Box>
-            <Pruebas avisos={misAvisos} />
-          </Box>
-        )}
+        )}       
       </Box>
     </>
   );

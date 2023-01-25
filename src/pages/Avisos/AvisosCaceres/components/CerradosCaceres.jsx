@@ -50,7 +50,7 @@ const CerradosCaceres = ({users,avisos}) => {
     },
     {
       name: "TECNICO CIERRE",
-      selector: (row) => row.tecnicoIntervencion[row.intervencion.length -1].name,
+      selector: (row) => row.tecnicoIntervencion[row.intervencion.length -1]?.name,
       sortable: true,
     },
     {
